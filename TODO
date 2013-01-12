@@ -1,0 +1,9 @@
+- Create VM
+- Install MySQL
+rvm
+ruby
+gem list
+get source from github
+Create a reasonable database.yml in config
+rake lang:update
+script/run_tests
