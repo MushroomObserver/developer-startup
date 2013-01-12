@@ -1,0 +1,23 @@
+Download & install VirtualBox
+Add vagrant gem:
+  gem install vagrant
+Get vanilla ubuntu vbox that Ant made:
+  git clone https://github.com/agoddard/the-super-mini-one-click-chef-solo-apache-demo-that-just-uses-vagrant-up-.git
+  cd the-super-mini-one-click-chef-solo-apache-demo-that-just-uses-vagrant-up-
+  vagrant up
+Read: http://wiki.opscode.com/display/chef/Resources
+  Built in "Resources" - Class of something you can manipulate
+Read: http://wiki.opscode.com/display/chef/Attributes
+  Attributes are things you can define on the fly (kind of like variables)
+Chef solo docs: http://docs.vagrantup.com/v1/docs/provisioners/chef_solo.html
+More vagrant docs: http://docs.vagrantup.com/v1/docs/vagrantfile.html
+To get to vagrant box: vagrant ssh
+gem install librarian # Like bundler for cookbooks
+Create Cheffile
+librarian-chef install
+vagrant ssh
+apt-get update
+vagrant reload
+# Pre-existing vagrant boxes: http://www.vagrantbox.es/
+# May want to switch off of the one chosen by the-super-mini...
+# Or do an apt-get update
