@@ -1,0 +1,11 @@
+site "http://community.opscode.com/api/v1"
+
+cookbook "apache2"
+cookbook "mysql"
+
+cookbook 'apt'
+cookbook 'git', 
+  git: 'https://github.com/fnichol/chef-git.git'
+cookbook 'build-essential'
+cookbook 'rvm', 
+  git: 'git://github.com/fnichol/chef-rvm.git', ref: 'v0.8.6'

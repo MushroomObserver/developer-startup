@@ -21,3 +21,8 @@ vagrant reload
 # Pre-existing vagrant boxes: http://www.vagrantbox.es/
 # May want to switch off of the one chosen by the-super-mini...
 # Or do an apt-get update
+Tried adding RVM with:
+  chef.add_recipe("rvm::system") based on 'recipe[rvm::system]' from https://github.com/fnichol/chef-rvm#readme
+  Then ran: vagrant reprovision
+  Got: ERROR:  Could not find a valid gem 'chef' (>= 0) in any repository
+	However when back out that line and re-run vagrant I now get the same error

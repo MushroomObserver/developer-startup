@@ -7,3 +7,8 @@ get source from github
 Create a reasonable database.yml in config
 rake lang:update
 script/run_tests
+Create and example database with some number of images
+
+figure out GitHub projects.
+  Currently: MushroomObserver/mushroom-observer, MushroomObserver/developer-startup, the-super-mini-one-click-chef-solo-apache-demo-that-just-uses-vagrant-up-
+  Might need a new vagrant project.  If so should it be integrated?  Should they all be integrated?
