@@ -9,3 +9,10 @@ cookbook 'git',
 cookbook 'build-essential'
 cookbook 'rvm', 
   git: 'git://github.com/fnichol/chef-rvm.git'
+
+cookbook 'build-essential'
+
+cookbook 'passenger_apache2'
+
+# cookbook 'emacs'
+# Didn't find cookbooks for tcsh vim lynx

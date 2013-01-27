@@ -24,6 +24,24 @@ Vagrant::Config.run do |config|
 		    :server_repl_password => 'repl'
 			}
 		}
+		chef.add_recipe("mysql::ruby")
     chef.add_recipe("rvm::system")
+    # Skipping tcsh vim lynx emacs
+    # chef.add_recipe("emacs")
+    chef.add_recipe("build-essential")
+    chef.add_recipe("passenger_apache2")
+    # subversion subversion-tools \
+    
+    ## libcurl4-openssl-dev (libcurl4-gnutls-dev) libopenssl-ruby \ ???
+    ##  libxslt-dev (libxslt1-dev)
+    ## Add gems
+    ## Git checkout
+    ## Compile tools
+    ## Add users
+    ## sshd_config
   end
+
+  config.vm.provision :shell, :inline => "mkdir -p /var/web"
+  # config.vm.provision :shell, :inline => "git clone https://github.com/MushroomObserver/config-script.git; config-script/run"
+
 end
