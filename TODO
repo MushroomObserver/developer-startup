@@ -12,3 +12,29 @@ Create and example database with some number of images
 figure out GitHub projects.
   Currently: MushroomObserver/mushroom-observer, MushroomObserver/developer-startup, the-super-mini-one-click-chef-solo-apache-demo-that-just-uses-vagrant-up-
   Might need a new vagrant project.  If so should it be integrated?  Should they all be integrated?
+
+	- use git to get setup script
+	- run setup script to do the rest
+
+	get test script running
+	  - run script and see errors
+	  for now work as vagrant user, but perhaps should be another user.  Then need to figure out rvm.
+	    do git as vagrant user?
+	  get db configured
+	  get gems installed and rest of environment working
+
+shared folders
+forwarded ports
+
+"[default] The guest additions on this VM do not match the install version of
+VirtualBox! This may cause things such as forwarded ports, shared
+folders, and more to not work properly. If any of those things fail on
+this machine, please update the guest additions and repackage the
+box.
+
+Guest Additions Version: 4.2.0
+VirtualBox Version: 4.2.6"
+
+generate a reasonable production database and set of images probably starting with the test fixtures
+
+dealing with cookbooks and the librarian
