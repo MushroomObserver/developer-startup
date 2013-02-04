@@ -7,6 +7,7 @@ Vagrant::Config.run do |config|
     "modifyvm", :id,
     "--memory", "1024"
   ]
+  config.vm.forward_port 3000, 4000
 
   config.vm.provision :shell, :inline => "update-locale LANG=en_US.UTF-8"
   config.vm.provision :shell, :inline => "apt-get update"
