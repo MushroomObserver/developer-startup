@@ -12,7 +12,7 @@
 
 - get halt/up to be cleaner
 
-shared folder for source code
+- shared folder for source code (just using /vagrant and developer-startup/)
 
 get webserver running as vagrant user?  or create a mo user?
 
