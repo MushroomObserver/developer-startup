@@ -8,8 +8,6 @@ Vagrant::Config.run do |config|
     "--memory", "1024"
   ]
   config.vm.forward_port 3000, 3000
-  # config.vm.share_folder "web", "/", "/Users/nathan/vb-var"
-  # config.vm.share_folder "mo-shared", "/mo-shared", "/Users/nathan/vb-var"
 
   config.vm.provision :shell, :inline => "update-locale LANG=en_US.UTF-8"
   config.vm.provision :shell, :inline => "apt-get update"
