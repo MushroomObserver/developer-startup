@@ -7,7 +7,9 @@ Vagrant::Config.run do |config|
     "modifyvm", :id,
     "--memory", "1024"
   ]
-  config.vm.forward_port 3000, 4000
+  config.vm.forward_port 3000, 3000
+  # config.vm.share_folder "web", "/", "/Users/nathan/vb-var"
+  # config.vm.share_folder "mo-shared", "/mo-shared", "/Users/nathan/vb-var"
 
   config.vm.provision :shell, :inline => "update-locale LANG=en_US.UTF-8"
   config.vm.provision :shell, :inline => "apt-get update"
@@ -51,6 +53,6 @@ Vagrant::Config.run do |config|
     ## sshd_config
   end
 
-  config.vm.provision :shell, :inline => "git clone https://github.com/MushroomObserver/config-script.git; config-script/run"
+  config.vm.provision :shell, :inline => "git clone https://github.com/MushroomObserver/config-script.git; config-script/run; rm -rf config-script"
 
 end

@@ -1,30 +1,26 @@
 - Create VM
 - Install MySQL
-rvm
-ruby
-gem list
-get source from github
-Create a reasonable database.yml in config
-rake lang:update
-script/run_tests
-Create and example database with some number of images
+- rvm
+- ruby
+- gem list
+- get source from github
+- Create a reasonable database.yml in repo
+- initial database
+- rake lang:update
+- script/run_tests *** passing except for two tests
+- run server by hand
 
-figure out GitHub projects.
-  Currently: MushroomObserver/mushroom-observer, MushroomObserver/developer-startup, the-super-mini-one-click-chef-solo-apache-demo-that-just-uses-vagrant-up-
-  Might need a new vagrant project.  If so should it be integrated?  Should they all be integrated?
+- get halt/up to be cleaner
 
-	- use git to get setup script
-	- run setup script to do the rest
+shared folder for source code
 
-	get test script running
-	  - run script and see errors
-	  for now work as vagrant user, but perhaps should be another user.  Then need to figure out rvm.
-	    do git as vagrant user?
-	  get db configured
-	  get gems installed and rest of environment working
+get webserver running as vagrant user?  or create a mo user?
 
-shared folders
-forwarded ports
+getting production machine configured:
+  getting chef working on 6sync box
+  iptables
+  apache2
+  passenger or unicorn?
 
 "[default] The guest additions on this VM do not match the install version of
 VirtualBox! This may cause things such as forwarded ports, shared
