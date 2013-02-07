@@ -18,7 +18,7 @@ Vagrant::Config.run do |config|
 #    chef.data_bags_path = "data_bags"
 #    chef.roles_path = "roles"
 #    chef.add_role("some_role")
-    chef.add_recipe("apache2")
+    # chef.add_recipe("apache2")
     chef.add_recipe("mysql::server")
 		chef.json = {
 		  :mysql => {
@@ -39,7 +39,7 @@ Vagrant::Config.run do |config|
     # # killall curl
     # Now go back to the machine running vagrant. Kill the 'vagrant up' with a double Control-C and run 'vagrant provision'.
     chef.add_recipe("build-essential")
-    chef.add_recipe("passenger_apache2")
+    # chef.add_recipe("passenger_apache2")
     # subversion subversion-tools \
     
     ## libcurl4-openssl-dev (libcurl4-gnutls-dev) libopenssl-ruby \ ???
