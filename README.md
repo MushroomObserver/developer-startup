@@ -6,13 +6,15 @@ Information and script for creating a full Mushroom Observer development environ
 
 Create working environment
 =================
+On MacOS 10.8.2:
 1) Install VirtualBox
-2) Install ruby
-3) Install git
-4) % git clone https://github.com/MushroomObserver/developer-startup.git
-5) % cd developer-startup
-6) % ./startup
-7) Wait for a while... (5m3.661s on my Mac)
+2) Install git (on Mac use the GitHub GUI)
+3) Install gcc 4.2 compiler for rvm/ruby (on Mac that currently involves installing Xcode from the App Store including the Command Line Tools (Preferences => Downloads and install 'Command Line Tools'))
+4) Install rvm (on Mac first install just rvm (\curl -L https://get.rvm.io | bash -s stable), then run 'rvm requirements'.  Then install Homebrew (ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)") and resolve all the requirements.  Currently that means 'brew update; brew tap homebrew/dupes; brew install autoconf automake apple-gcc42 libtool pkg-config openssl readline libyaml sqlite libxml2 libxslt libksba'.  Now install ruby using RVM: \curl -L https://get.rvm.io | bash -s stable --ruby [Perhaps 'rvm install 1.9.3' would work just as well].  Finally, open a new shell and check the version of ruby with 'ruby --version')
+5) % git clone https://github.com/MushroomObserver/developer-startup.git
+6) % cd developer-startup
+7) % ./startup
+8) Wait for a while... (5m3.661s on my Mac)
 
 Assuming that was successful, you now have a running virtual machine with the MO source code installed, an instance of MySQL and all the goodies to successfully run all the tests and startup a local server (see below).  MySQL can be accessed with usernames/passwords mo/mo or root/root.
 
