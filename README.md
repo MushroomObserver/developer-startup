@@ -53,7 +53,7 @@ Create a user in the new instance of MO
 
 - Go to vagrant machine (% vagrant ssh)
 
-- $ grep verify /vagrant/mushroom-observer/log/developer.log
+- $ grep verify /vagrant/mushroom-observer/log/development.log
 
 - Go to verification URL in your browser
 
