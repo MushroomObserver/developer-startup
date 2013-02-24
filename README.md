@@ -29,7 +29,7 @@ Create working environment
 - If you have bash installed, run the startup script: % ./startup
   Otherwise, just run the commands in this file from any command-line tool.
 
-- Wait for a while... (5m3.661s on my Mac)
+- Wait for a while...
 
 - Test the new machine: % vagrant ssh
   On Windows machines this may require installing an ssh client like Putty.  Attempting to run 'vagrant ssh' will give you the parameters you need to give to Putty.
