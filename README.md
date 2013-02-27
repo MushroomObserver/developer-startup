@@ -1,14 +1,16 @@
 developer-startup
 =================
 
-Information and script for creating a full Mushroom Observer development environment using VirtualBox and Vagrant/Chef
+Welcome to the Mushroom Observer Developer Startup system!  The purpose of this system is to help software
+developers setup an environment where they can contribute to the Mushroom Observer code base.  The basic
+idea is to setup a virtual machine on your personal machine that is configured to serve a test version of the
+Mushroom Observer website and to access the code.  It has been tested on Macintoshes as well as PCs running either Windows or Ubuntu.  This system does require a reasonably powerful computer probably purchased in the last 3 years.
 
-
-Create working environment
+Creating working Mushroom Observer development environment
 --------------------------
-- Install VirtualBox
+- Install VirtualBox: https://www.virtualbox.org/
 
-- Install git (on Mac I've found the GitHub GUI is very useful)
+- Install git: http://git-scm.com/downloads (on my Mac I've found the GitHub GUI is very useful, https://central.github.com/mac/latest)
 
 - Get ruby 1.9.3 working
   There are three different approaches for this documented here: http://www.ruby-lang.org/en/downloads/
