@@ -56,7 +56,7 @@ Start web server
 
 - $ script/server
 
-- Go to http://localhost:3000 in a browser
+- Go to http://localhost:3000 in a browser (note: one developer reports that port-forwarding required use of port 5656 instead of 3000)
 
 Create a user in the new instance of MO
 ---------------------------------------
