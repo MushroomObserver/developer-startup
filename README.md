@@ -23,6 +23,7 @@ Creating working Mushroom Observer development environment
     For me, this meant: brew update; brew tap homebrew/dupes; brew install autoconf automake apple-gcc42 libtool pkg-config openssl readline libyaml sqlite libxml2 libxslt libksba
   - Now install ruby using RVM: \curl -L https://get.rvm.io | bash -s stable --ruby [Perhaps 'rvm install 1.9.3' would work just as well]
   - Finally, open a new shell and check the version of ruby with 'ruby --version'.  You should get something like: ruby 1.9.3p194 (2012-04-20 revision 35410) [x86_64-darwin11.3.0]
+  (Note: If building ruby from source on ubuntu, be sure to install libyaml-dev package first, or psych will not work.)
 
 - Get the developer-startup Git project: % git clone https://github.com/MushroomObserver/developer-startup.git
 
