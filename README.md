@@ -13,29 +13,29 @@ in the last 3 years.
 
 Creating working Mushroom Observer development environment
 --------------------------
-- Install VirtualBox: https://www.virtualbox.org/
+Install VirtualBox: https://www.virtualbox.org/
 
-- Install Vagrant: https://www.vagrantup.com/downloads.html
+Install Vagrant: https://www.vagrantup.com/downloads.html
 
-- Install git: http://git-scm.com/downloads (on my Mac I've found the
+Install git: http://git-scm.com/downloads (on my Mac I've found the
 GitHub GUI can be helpful, https://central.github.com/mac/latest)
 
-- Get the developer-startup Git project:
+Get the developer-startup Git project:
 
     % git clone https://github.com/MushroomObserver/developer-startup.git
 
-- Go into the resulting directory: % cd developer-startup
+Go into the resulting directory: % cd developer-startup
 
-- If you have bash installed (true by default on Linux and MacOSX),
+If you have bash installed (true by default on Linux and MacOSX),
 run the startup script:
 
     % ./startup
 
 Otherwise, just run the commands in ./startup from any command-line tool.
 
-- Wait for a while...
+Wait for a while...
 
-- Login to your new VM: % vagrant ssh
+Login to your new VM: % vagrant ssh
 
 On Windows machines this may require installing an ssh client like
 Putty.  Attempting to run 'vagrant ssh' will give you the parameters
@@ -45,7 +45,7 @@ You have been successful if the final output line is:
 
     vagrant@vagrant-ubuntu-trusty-64:~$ 
 
-- Setup the new VM by running:
+Setup the new VM by running:
 
     % mo-dev /vagrant
 
