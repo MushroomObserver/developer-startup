@@ -1,4 +1,4 @@
 #!/bin/bash
 
-gem install vagrant --no-rdoc --no-ri --conservative
+bundle install
 vagrant up

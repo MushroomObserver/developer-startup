@@ -1,6 +1,6 @@
 cookbooks
 tmp
-.vagrant
+.vagrant*
 Cheffile.lock
 .DS_Store
 mushroom-observer

@@ -1,76 +1,140 @@
 developer-startup
 =================
 
-Welcome to the Mushroom Observer Developer Startup system!  The purpose of this system is to help software
-developers setup an environment where they can contribute to the Mushroom Observer code base.  The basic
-idea is to setup a virtual machine on your personal machine that is configured to serve a test version of the
-Mushroom Observer website and to access the code.  It has been tested on Macintoshes as well as PCs running either Windows or Ubuntu.  This system does require a reasonably powerful computer probably purchased in the last 3 years.
+Welcome to the Mushroom Observer Developer Startup system!  The
+purpose of this system is to help software developers setup an
+environment where they can contribute to the Mushroom Observer code
+base.  The basic idea is to setup a virtual machine (VM) on your
+personal machine that is configured to serve a test version of the
+Mushroom Observer website and to access the code.  It has been tested
+on Macintoshes as well as PCs running either Windows or Ubuntu.  This
+system does require a reasonably powerful computer probably purchased
+in the last 3 years.
 
 Creating working Mushroom Observer development environment
 --------------------------
 - Install VirtualBox: https://www.virtualbox.org/
 
-- Install git: http://git-scm.com/downloads (on my Mac I've found the GitHub GUI is very useful, https://central.github.com/mac/latest)
+- Install Vagrant: https://www.vagrantup.com/downloads.html
 
-- Get ruby 1.9.3 working
-  There are three different approaches for this documented here: http://www.ruby-lang.org/en/downloads/
-  Personally I use RVM since it gives me the flexibility to leave the default ruby installed by MacOS alone and create different ruby environments.  However, this may be overkill for some and RVM forces you to use the Bash shell to really take advantage of it.  In most cases you will need to have a working version of gcc 4.2 or later working to get ruby 1.9.3 installed.
-  To install RVM on my Mac under Mountain Lion I had to do the following:
-  - Install gcc 4.2 compiler for rvm/ruby (on Mac that currently involves installing Xcode from the App Store including the Command Line Tools (Preferences => Downloads and install 'Command Line Tools'))
-  - Install just rvm: \curl -L https://get.rvm.io | bash -s stable
-  - Install Homebrew: ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
-  - Run 'rvm requirements' to get a list of brew requirements to get rvm configured with Ruby 1.9.3.
-    For me, this meant: brew update; brew tap homebrew/dupes; brew install autoconf automake apple-gcc42 libtool pkg-config openssl readline libyaml sqlite libxml2 libxslt libksba
-  - Now install ruby using RVM: \curl -L https://get.rvm.io | bash -s stable --ruby [Perhaps 'rvm install 1.9.3' would work just as well]
-  - Finally, open a new shell and check the version of ruby with 'ruby --version'.  You should get something like: ruby 1.9.3p194 (2012-04-20 revision 35410) [x86_64-darwin11.3.0]
+- Install git: http://git-scm.com/downloads (on my Mac I've found the
+GitHub GUI can be helpful, https://central.github.com/mac/latest)
 
-- Note: If building ruby from source on ubuntu, be sure to install libyaml-dev package first, or psych will not work.
+- Get the developer-startup Git project:
 
-- Get the developer-startup Git project: % git clone https://github.com/MushroomObserver/developer-startup.git
+  % git clone https://github.com/MushroomObserver/developer-startup.git
 
 - Go into the resulting directory: % cd developer-startup
 
-- If you have bash installed, run the startup script: % ./startup
-  Otherwise, just run the commands in this file from any command-line tool.
+- If you have bash installed (true by default on Linux and MacOSX),
+run the startup script:
+
+  % ./startup
+
+Otherwise, just run the commands in ./startup from any command-line tool.
 
 - Wait for a while...
 
-- Test the new machine: % vagrant ssh
-  On Windows machines this may require installing an ssh client like Putty.  Attempting to run 'vagrant ssh' will give you the parameters you need to give to Putty.
-  You have been successful if the final output line is:
-    vagrant@lucid32:~$ 
+- Login to your new VM: % vagrant ssh
 
-Assuming all of that was successful, you now have a running virtual machine with the MO source code installed, an instance of MySQL and all the goodies to successfully run all the tests and startup a local server (see below).  You access the new machine by being in the developer-startup directory and running 'vagrant ssh' or through Putty.  The new instance of MySQL can be accessed with usernames/passwords mo/mo or root/root.
+On Windows machines this may require installing an ssh client like
+Putty.  Attempting to run 'vagrant ssh' will give you the parameters
+you need to give to Putty.
+
+You have been successful if the final output line is:
+
+  vagrant@vagrant-ubuntu-trusty-64:~$ 
+
+- Setup the new VM by running:
+
+  % mo-dev /vagrant
+
+You can actually use any directory on the VM you want.  The advantage of
+using /vagrant is that the MO source code will be available both on the
+VM and on the host machine in the same directory as the Vagrantfile.
+This can be handy if you are use to an editor on the host machine.
+However, it usually makes the tests run more slowly on the VM.  The rest
+of this document assumes that you used /vagrant when calling mo-dev.
+
+Assuming all of that was successful, you now have a running virtual
+machine with the MO source code installed, an instance of MySQL and
+all the goodies to successfully run all the tests and startup a local
+server (see below).  You access the new machine by being in the
+developer-startup directory and running 'vagrant ssh' or through
+Putty.  The new instance of MySQL can be accessed with
+usernames/passwords mo/mo or root/root.
 
 To run the tests in the new environment
 ---------------------------------------
-- Go to vagrant machine ('vagrant ssh' or through Putty)
+Go to the VM ('vagrant ssh' or through Putty)
 
-- $ cd /vagrant/mushroom-observer
+  $ cd /vagrant/mushroom-observer
+  $ rake
 
-- $ script/run_tests
+Note if the VM has been inactive for a while or you know additional
+changes have been added to the source code repository, you may want
+to re-run mo-dev using the directory containing the mushroom-observer
+directory.  This will run standard things like 'git pull',
+'bundle install', run any pending database migrations, and make sure
+your lang files are up to date.
 
 Start web server
 ----------------
-- Go to vagrant machine ('vagrant ssh' or through Putty)
+Go to VM ('vagrant ssh' or through Putty)
 
-- $ cd /vagrant/mushroom-observer
+  $ cd /vagrant/mushroom-observer
+  $ script/server
 
-- $ script/server
-
-- Go to http://localhost:3000 in a browser (note: one developer reports that port-forwarding required use of port 5656 instead of 3000)
+Go to http://localhost:3000 in a browser on the host machine (note:
+one developer reports that port-forwarding required use of port 5656
+instead of 3000)
 
 Create a user in the new instance of MO
 ---------------------------------------
-- Go to http://localhost:3000/account/signup and create a new user in your regular browser
+Go to http://localhost:3000/account/signup and create a new user in
+your regular browser
 
-- Go to vagrant machine ('vagrant ssh' or through Putty): $ grep verify /vagrant/mushroom-observer/log/development.log
-  Note: this information can also be found on the host by looking in develop-start/mushroom-observer/log/development.log
+Go to VM ('vagrant ssh' or through Putty):
 
-- Go to verification URL in your browser
+  $ grep verify /vagrant/mushroom-observer/log/development.log
 
-- Have fun!  (Note the initial database, developer-startup/init.sql, just has the admin user and the language stuff.  It probably makes sense to add some observations, names and images for testing, but I haven't gotten to it yet.)
+Note: this information can also be found on the host machine by
+looking in develop-startup/mushroom-observer/log/development.log
 
-Edit code
----------
-In your developer-startup directory there will be a 'mushroom-observer' directory.  This is a 'shared folder' which is the same as /vagrant/mushroom-observer on the VM.  You can change code here on either machine and it will be picked up by the server on the VM.
+Go to verification URL in your browser
+
+Have fun!  (Note the initial database, developer-startup/init.sql,
+just has the admin user and the language stuff.  It probably makes
+sense to add some observations, names and images for testing, but I
+haven't gotten to it yet.)
+
+Resetting you VM
+----------------
+If something goes wrong or you simply want to start over from scratch,
+on the host machine run:
+
+  $ vagrant destroy
+  $ rm -rf mushroom-observer
+  $ ./startup
+
+and continue as above after the original ./startup.
+
+Rebuilding the Vagrant box from scratch
+---------------------------------------
+If for some reason the VM created using the ./startup does not work or
+it gets outdated for some reason.  You can build a new VM from scratch
+using the ./build script.  Most of the files in developer-startup are
+there solely to support this rebuild process.
+
+Once the ./build script completes you should have a fresh clean VM
+that is equivalent to what you get after you run ./startup.
+
+For those maintaining the Mushroom Observer VM, once you finish the
+./build script, you can create a new version of the box with:
+
+  $ vagrant package
+
+This will create a package.box file in the developer-startup
+directory.  To allow others to use it, this should get uploaded
+to http://images.digitalmycology.com and the Vagrantfile should
+be updated to reference the new box and checked in.
