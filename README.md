@@ -22,14 +22,14 @@ GitHub GUI can be helpful, https://central.github.com/mac/latest)
 
 - Get the developer-startup Git project:
 
-  % git clone https://github.com/MushroomObserver/developer-startup.git
+    % git clone https://github.com/MushroomObserver/developer-startup.git
 
 - Go into the resulting directory: % cd developer-startup
 
 - If you have bash installed (true by default on Linux and MacOSX),
 run the startup script:
 
-  % ./startup
+    % ./startup
 
 Otherwise, just run the commands in ./startup from any command-line tool.
 
@@ -43,11 +43,11 @@ you need to give to Putty.
 
 You have been successful if the final output line is:
 
-  vagrant@vagrant-ubuntu-trusty-64:~$ 
+    vagrant@vagrant-ubuntu-trusty-64:~$ 
 
 - Setup the new VM by running:
 
-  % mo-dev /vagrant
+    % mo-dev /vagrant
 
 You can actually use any directory on the VM you want.  The advantage of
 using /vagrant is that the MO source code will be available both on the
@@ -68,8 +68,8 @@ To run the tests in the new environment
 ---------------------------------------
 Go to the VM ('vagrant ssh' or through Putty)
 
-  $ cd /vagrant/mushroom-observer
-  $ rake
+    $ cd /vagrant/mushroom-observer
+    $ rake
 
 Note if the VM has been inactive for a while or you know additional
 changes have been added to the source code repository, you may want
@@ -82,8 +82,8 @@ Start web server
 ----------------
 Go to VM ('vagrant ssh' or through Putty)
 
-  $ cd /vagrant/mushroom-observer
-  $ script/server
+    $ cd /vagrant/mushroom-observer
+    $ script/server
 
 Go to http://localhost:3000 in a browser on the host machine (note:
 one developer reports that port-forwarding required use of port 5656
@@ -96,7 +96,7 @@ your regular browser
 
 Go to VM ('vagrant ssh' or through Putty):
 
-  $ grep verify /vagrant/mushroom-observer/log/development.log
+    $ grep verify /vagrant/mushroom-observer/log/development.log
 
 Note: this information can also be found on the host machine by
 looking in develop-startup/mushroom-observer/log/development.log
@@ -108,14 +108,14 @@ just has the admin user and the language stuff.  It probably makes
 sense to add some observations, names and images for testing, but I
 haven't gotten to it yet.)
 
-Resetting you VM
-----------------
+Resetting your VM
+-----------------
 If something goes wrong or you simply want to start over from scratch,
 on the host machine run:
 
-  $ vagrant destroy
-  $ rm -rf mushroom-observer
-  $ ./startup
+    $ vagrant destroy
+    $ rm -rf mushroom-observer
+    $ ./startup
 
 and continue as above after the original ./startup.
 
@@ -132,7 +132,7 @@ that is equivalent to what you get after you run ./startup.
 For those maintaining the Mushroom Observer VM, once you finish the
 ./build script, you can create a new version of the box with:
 
-  $ vagrant package
+    $ vagrant package
 
 This will create a package.box file in the developer-startup
 directory.  To allow others to use it, this should get uploaded
