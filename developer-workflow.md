@@ -90,6 +90,7 @@ Some developers primarily (or exclusively) use a Git GUI -- as opposed to typing
 - [ ] investigate gists as better way to insert shell commands
 - [ ] link to ref for pull requests, maybe add note/link(s) on pull/commit messages
 - [ ] maybe use an icon to id when user should type shell commands on VM; will this prevent triple-click to copy just the commands?
+- [ ] test instructions by executing them
 - [x] shorten descriptions
 - [x] after 3.1 release, review instructions for setting up the VM, running the test suite, running the server
 - [x] eliminate extra intra-line white space
