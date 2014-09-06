@@ -46,5 +46,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   else
     config.vm.box = "mo-31"
     config.vm.box_url = "http://images.digitalmycology.com/mo-31.box"
+    config.vm.network "forwarded_port", guest: 3000, host: 3000
   end
 end
