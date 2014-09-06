@@ -24,7 +24,9 @@ Get the developer-startup Git project:
 
     % git clone https://github.com/MushroomObserver/developer-startup.git
 
-Go into the resulting directory: % cd developer-startup
+Go into the resulting directory:
+
+    % cd developer-startup
 
 If you have bash installed (true by default on Linux and MacOSX),
 run the startup script:
@@ -35,7 +37,9 @@ Otherwise, just run the commands in ./startup from any command-line tool.
 
 Wait for a while...
 
-Login to your new VM: % vagrant ssh
+Login to your new VM:
+
+    % vagrant ssh
 
 On Windows machines this may require installing an ssh client like
 Putty.  Attempting to run 'vagrant ssh' will give you the parameters
@@ -47,7 +51,7 @@ You have been successful if the final output line is:
 
 Setup the new VM by running:
 
-    % mo-dev /vagrant
+    $ mo-dev /vagrant
 
 You can actually use any directory on the VM you want.  The advantage of
 using /vagrant is that the MO source code will be available both on the
@@ -113,9 +117,9 @@ Resetting your VM
 If something goes wrong or you simply want to start over from scratch,
 on the host machine run:
 
-    $ vagrant destroy
-    $ rm -rf mushroom-observer
-    $ ./startup
+    % vagrant destroy
+    % rm -rf mushroom-observer
+    % ./startup
 
 and continue as above after the original ./startup.
 
@@ -132,7 +136,7 @@ that is equivalent to what you get after you run ./startup.
 For those maintaining the Mushroom Observer VM, once you finish the
 ./build script, you can create a new version of the box with:
 
-    $ vagrant package
+    % vagrant package
 
 This will create a package.box file in the developer-startup
 directory.  To allow others to use it, this should get uploaded
