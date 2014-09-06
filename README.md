@@ -87,7 +87,7 @@ Start web server
 Go to VM ('vagrant ssh' or through Putty)
 
     $ cd /vagrant/mushroom-observer
-    $ script/server
+    $ rails server
 
 Go to http://localhost:3000 in a browser on the host machine (note:
 one developer reports that port-forwarding required use of port 5656
