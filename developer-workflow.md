@@ -1,7 +1,7 @@
 # developer-workflow #
 This file describes the development workflow for the Mushroom Observer project.  We use a distributed workflow, known as "Integration-Manager" or "forking" workflow. See [Workflow][] below. 
 
-This file assumes that you followed the directions in [developer-startup/README.md](https://github.com/MushroomObserver/developer-startup/README.md) through [Create a user in the new instance of MO](https://github.com/MushroomObserver/developer-startup/README.md#resetting-your-vm) including setting up the VM by running `mo-dev /vagrant`.
+This file assumes that you followed the directions in [README.md](/README.md) through [Create a user in the new instance of MO](/README.md#resetting-your-vm) including setting up the VM by running `mo-dev /vagrant`.
 
 ## Configure Github and Git ##
 - On [Github][], fork (create your own copy of) the [Official MO Repo][]. <br>
