@@ -1,7 +1,7 @@
 # developer-workflow #
 This file describes the development workflow for the Mushroom Observer project.  We use a distributed workflow, known as "Integration-Manager" or "forking" workflow. See [Workflow][] below. 
 
-This file assumes that you followed the directions in [README.md](/README.md) through [Create a user in the new instance of MO](/README.md#create-a-user-in-the-new-instance-of-mo) including setting up the VM by running `mo-dev /vagrant`.
+This file assumes that you followed the directions in [README.md][] through [Create a user in the new instance of MO][] including setting up the VM by running `mo-dev /vagrant`.
 
 ## Configure Github and Git ##
 - On [Github][], fork (create your own copy of) the [Official MO Repo][]. <br>
@@ -48,9 +48,11 @@ Use a [Git GUI][] or on your local machine  <br>
 `git push personal myfixes` <br>
 
 ### Create a Pull Request ###
-- Go to the [Official MO Repo][] and click on "Pull Request".  
-- Choose _myfixes_ in your personal [Github][] repo as the source branch
+- Go to your personal [Github][] repository and click on "Pull Request". 
+- Switch to your feature branch
+- Choose your feature branch in your personal [Github][] repo as the source branch
 - Choose origin repo "master" as the destination branch. (Github will remove your personal branch after the Pull Request is accepted.)
+- For more information see [Using pull requests][].
 
 - - -
 # Notes #
@@ -72,6 +74,7 @@ Some developers primarily (or exclusively) use a Git GUI -- as opposed to typing
 
 - - -
 [comment]: # (The following are link reference definitions)
+[Create a user in the new instance of MO]: /README.md#create-a-user-in-the-new-instance-of-mo)
 [Forking Workflow]: https://www.atlassian.com/git/workflows#!workflow-forking
 [Git GUI]: /developer-workflow.md#git-guis/
 [Github]: https://github.com/
@@ -81,15 +84,17 @@ Some developers primarily (or exclusively) use a Git GUI -- as opposed to typing
 [Integration-Manager Workflow]: http://git-scm.com/book/en/Distributed-Git-Distributed-Workflows#Integration-Manager-Workflow
 [Official MO Repo]: https://github.com/MushroomObserver/mushroom-observer
 [PuTTY]: http://www.chiark.greenend.org.uk/~sgtatham/putty/
+[README.md]: /README.md
 [SourceTree]: http://www.sourcetreeapp.com
+[Using pull requests]: https://help.github.com/articles/using-pull-requests
 [What's the Workflow]: http://stackoverflow.com/questions/20956154/whats-the-workflow-to-contribute-to-an-open-source-project-using-git-pull-reque
 [Workflow]: /developer-workflow.md#workflow/
 
 ##TODO##
-- [ ] test instructions by executing them
 - [ ] investigate gists as better way to insert shell commands
-- [ ] link to ref for pull requests, maybe add note/link(s) on pull/commit messages
 - [ ] maybe use an icon to id when user should type shell commands on VM; will this prevent triple-click to copy just the commands?
+- [x] link to ref for pull requests, maybe add note/link(s) on pull/commit messages
+- [x] test instructions by executing them
 - [x] shorten descriptions
 - [x] after 3.1 release, review instructions for setting up the VM, running the test suite, running the server
 - [x] eliminate extra intra-line white space
