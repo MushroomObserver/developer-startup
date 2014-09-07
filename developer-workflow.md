@@ -1,8 +1,7 @@
 # developer-workflow #
 This file describes the development workflow for the Mushroom Observer project.  We use a distributed workflow, known as "Integration-Manager" or "forking" workflow. See [Workflow][] below. 
 
-## Create the MO development environment ##
-The remainder of this file assumes that you followed the directions in developer-startup/README.md through [Create a user in the new instance of MO](https://github.com/MushroomObserver/developer-startup#create-a-user-in-the-new-instance-of-mo) including setting up the VM by running `mo-dev /vagrant`.
+This file assumes that you followed the directions in [developer-startup/README.md](https://github.com/MushroomObserver/developer-startup/README.md) through [Create a user in the new instance of MO](https://github.com/MushroomObserver/developer-startup/README.md#resetting-your-vm) including setting up the VM by running `mo-dev /vagrant`.
 
 ## Configure Github and Git ##
 - On [Github][], fork (create your own copy of) the [Official MO Repo][]. <br>
@@ -87,10 +86,10 @@ Some developers primarily (or exclusively) use a Git GUI -- as opposed to typing
 [Workflow]: /developer-workflow.md#workflow/
 
 ##TODO##
+- [ ] test instructions by executing them
 - [ ] investigate gists as better way to insert shell commands
 - [ ] link to ref for pull requests, maybe add note/link(s) on pull/commit messages
 - [ ] maybe use an icon to id when user should type shell commands on VM; will this prevent triple-click to copy just the commands?
-- [ ] test instructions by executing them
 - [x] shorten descriptions
 - [x] after 3.1 release, review instructions for setting up the VM, running the test suite, running the server
 - [x] eliminate extra intra-line white space
