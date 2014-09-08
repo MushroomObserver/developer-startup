@@ -51,7 +51,7 @@ Use a [Git GUI][] or on your local machine  <br>
 - Go to your personal [Github][] repository and click on "Pull Request". 
 - Switch to your feature branch
 - Choose your feature branch in your personal [Github][] repo as the source branch
-- Choose origin repo "master" as the destination branch. (Github will remove your personal branch after the Pull Request is accepted.)
+- Choose origin repo "master" as the destination branch. 
 - For more information see [Using pull requests][].
 
 - - -
@@ -89,24 +89,3 @@ Some developers primarily (or exclusively) use a Git GUI -- as opposed to typing
 [Using pull requests]: https://help.github.com/articles/using-pull-requests
 [What's the Workflow]: http://stackoverflow.com/questions/20956154/whats-the-workflow-to-contribute-to-an-open-source-project-using-git-pull-reque
 [Workflow]: /developer-workflow.md#workflow/
-
-##TODO##
-- [ ] investigate gists as better way to insert shell commands
-- [ ] maybe use an icon to id when user should type shell commands on VM; will this prevent triple-click to copy just the commands?
-- [x] link to ref for pull requests, maybe add note/link(s) on pull/commit messages
-- [x] test instructions by executing them
-- [x] shorten descriptions
-- [x] after 3.1 release, review instructions for setting up the VM, running the test suite, running the server
-- [x] eliminate extra intra-line white space
-- [x] possibly color-code to emphasize difference between typing on personal machine versus virtual VM; Don't think this can be done in GFM
-- [x] turn references to Mushroom Observer/mushroom-observer into links
-- [x] use md quotes
-- [x] use [md reference-style links] (http://daringfireball.net/projects/markdown/syntax#link)
-- [x] finish first draft verbal description
-- [x] eliminate extra backticks
-- [x] double-check instructions on which branch to check out, creating local branch 
-- [x] see if I can add diagrams
-- [x] add Shell syntax highlighting
-- [x] add information about server
-- [x] add formatting, like code blocks
-- [x] extract stuff into footnotes, e.g., getting Ruby running
