@@ -42,12 +42,12 @@ Make sure that your local commits are compatible with any changes to the [Offici
 `git pull --rebase origin master` <br>
 - **Fix any conflicts.**
 
-### Push your changes to your personal [Github][] repository ###
+#### Push your changes to your personal [Github][] repository ####
 Use a [Git GUI][] or on your local machine  <br>
 `git checkout myfixes` <br>
 `git push personal myfixes` <br>
 
-### Create a Pull Request ###
+#### Create a Pull Request ####
 - Go to your personal [Github][] repository and click on "Pull Request". 
 - Switch to your feature branch
 - Choose your feature branch in your personal [Github][] repo as the source branch
@@ -58,15 +58,15 @@ Use a [Git GUI][] or on your local machine  <br>
 # Notes #
 ## Workflow ##
 ![Integration-Manager-Workflow-Diagram](http://git-scm.com/figures/18333fig0502-tn.png)  
-We use "integration-manager" or "forking" workflow.
--Each developer:
-  - Clones the official MO repository to the developer's local machine;
-  - On the developer's local machine, creates a personal feature branch for the developer's changes;
-  - Pushes the personal branch from the local machine to the developer's personal, publicly readable copy (fork) on [Github][];
-  - Creates a pull request in [Github][].
-- A manager then
-  - merges the developer's changes to the manager's local machine;
-  - if the developer's changes are acceptable, pushes them to the official MO repository.
+We use "integration-manager" or "forking" workflow.<br>
+Each developer:
+- Clones the official MO repository to the developer's local machine;
+- On the developer's local machine, creates a personal feature branch for the developer's changes;
+- Pushes the personal branch from the local machine to the developer's personal, publicly readable copy (fork) on [Github][];
+- Creates a pull request in [Github][].<br>
+A manager then
+- merges the developer's changes to the manager's local machine;
+- if the developer's changes are acceptable, pushes them to the official MO repository.
 For more information, see [Integration-Manager Workflow][] and [Forking Workflow][]; _cf._ [What's the Workflow][].<br>
 
 ## Git GUIs ##
