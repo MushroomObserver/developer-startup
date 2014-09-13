@@ -1,6 +1,6 @@
 # admin-workflow #
 
-Initial very rough thoughts on what admin should do after receiving a Pull Request for a developer's feature branch.  I have not checked these for accuracy (do the commands accomplish what I say?), and I'm i the dark on best practices.
+Initial very rough thoughts on what admin should do after receiving a Pull Request for a developer's feature branch.  I have not checked these for accuracy (do the commands accomplish what I say?), and I'm in the dark on best practices.
 
 ## Notify other admins that you are handling the request? ##
 Perhaps notify everyone (other admins, the developer, all subscribers) by commenting on the Pull Request
@@ -8,13 +8,13 @@ Perhaps notify everyone (other admins, the developer, all subscribers) by commen
 ## Initial review in [GitHub][] ##
 Using the links in the Pull-Request email:
 - Is the change desirable?  If not, comment on the request.
-- Eyeball the diffs.  Is the code reasonable -- Does it look like it will work? Is the quality reasonable?
+- Eyeball the diffsto see if the code is reasonable: Does it look like it will work? Is the quality reasonable?
 
 ## Review the changes on your local machine ##
 (Nathan floated the idea that each admin should have two local MO repos:  (1) one for your own development work (and where you act like any other developer), (2) one for admin work (like checking and merging other developer's work).)
 
 ### Get the changes ###
-- If you haven't done it already, add the developer's personal [GitHub][] repo as a remote of your local repo. Then get the developer's repo.  Create a feature branch and switch to it.  Use a [Git GUI][] or:
+- If you haven't done it already, add the developer's personal [GitHub][] repo as a remote of your local repo and get the developer's repo.  Then create a local feature branch and switch to it. Use a [Git GUI][] or:
 ```
 git remote add <your name for the remote> https://github.com/<DeveloperGitUserName>/mushroom-observer.git
 git fetch <remote> 
@@ -26,33 +26,15 @@ git remote add JoeCohen https://github.com/JoeCohen/mushroom-observer.git
 git fetch JoeCohen
 git -b myfix JoeCohen/myfix
 ```
-I'm unsure of the best way to do proceed.  Maybe start with:
-
-#### But should we first ensure everything is in sync and can be merged??? ####
-- Synchronize your local machine, to the [Official MO Repo][]. (The following assumes that  the branch you're combining with is "master".) Use a [Git GUI][] or:
-```
-git checkout master
-git fetch origin
-git merge origin/master
-```
-And if the master changed, make sure the developer's feature branch is in sync and can be merged.  Use a [Git GUI][] or
-```
-git checkout <developer's master>
-git merge origin/master
-git merge <developer's feature branch>
-```
-Is that last line right?
-
 ### Experiment with the changes ###
-
-git checkout <developer's feature branch>
 
 - run the MO test suite
 - See if the change works as advertised
 - Look for obvious bad side effects
 
 ## Add the changes to the [Official MO Repo][] ##
-I'm again unsure of the best practice.  To be safe, it's probably best to again sync to the [Official MO Repo][]. If it changed, need to make sure we're still compatible.  if everything's okay, merge the developer's work and push it to the [Official MO Repo][].  Use a [Git GUI][] or ```
+I'm again unsure of the best practice.  To be safe, it's probably best to  sync to the [Official MO Repo][]. If it changed, need to make sure we're still compatible.  If everything's okay, merge the developer's work and push it to the [Official MO Repo][]. (If there are incompatibilties, either (a) the admin can fix them and then push to the [Official MO Repo][], or (b) ask the developer to fix them.) Use a [Git GUI][] or 
+```
 git checkout master
 git fetch origin
 git merge origin/master
@@ -62,10 +44,10 @@ git push orgin/master
 Do we need to do anything in [Github][] or [Pivotal Tracker][]?
 
 # References #
-[Git workflow][]
-[Integration-Manager Workflow][]
-[Maintaining a Project][]
-[Using pull requests][]
+- [Git workflow][]
+- [Integration-Manager Workflow][]
+- [Maintaining a Project][]
+- [Using pull requests][]
 
 - - -
 [comment]: # (The following are link reference definitions)
