@@ -60,7 +60,7 @@ Consider subscribing/joining to follow the project more closely
 - Join the [MO Developers Google Group][] for discussion of development and operations of Mushroom Observer (http://mushroomobserver.org)
 - Follow and use the [MO project issue tracker][]
 - Watch the [Official MO Repo][]. This will notify you about code updates and Pull Requests, so that you can comment on them and test them. For information on testing others' pull requests, see [Pull Requests by Others][]
-- Watch the [[MO developer-startup repo][]
+- Watch the [MO developer-startup repo][]
 
 - - -
 # Notes #
@@ -87,9 +87,10 @@ One way to get a copy and test other developers' Pull Requests is by following t
 - - -
 [comment]: # (The following are link reference definitions)
 [Create a user in the new instance of MO]: /README.md#create-a-user-in-the-new-instance-of-mo)
-[Experiment with the Changes]: /admin-workflow.md#experiment-with-the-changes[Git GUI]: /developer-workflow.md#git-guis/
+[Experiment with the Changes]: /admin-workflow.md#experiment-with-the-changes
 [Forking Workflow]: https://www.atlassian.com/git/workflows#!workflow-forking
 [Get the Changes]: /developer-workflow/admin-workflow.md#get-the-changes
+[Git GUI]: /developer-workflow.md#git-guis/
 [Github]: https://github.com/
 [GitHub GUI]: https://central.github.com/mac/latest
 [Initial Database]: /developer-workflow.md#intial-databse/ 
@@ -100,6 +101,7 @@ One way to get a copy and test other developers' Pull Requests is by following t
 [MO project issue tracker]: https://www.pivotaltracker.com/n/projects/224629
 [Official MO Repo]: https://github.com/MushroomObserver/mushroom-observer
 [Pivotal Tracker]: https://www.pivotaltracker.com/
+[Pull Requests by Others]: /developer-workflow.md#pull-requests-by-others
 [PuTTY]: http://www.chiark.greenend.org.uk/~sgtatham/putty/
 [README.md]: /README.md
 [SourceTree]: http://www.sourcetreeapp.com
