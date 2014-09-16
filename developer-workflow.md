@@ -1,7 +1,7 @@
 # developer-workflow #
 This file describes the development workflow for the Mushroom Observer project.  We use a distributed workflow, known as "Integration-Manager" or "forking" workflow. See [Workflow][] below. 
 
-This file assumes that you followed the directions in [README.md][] through [Create a user in the new instance of MO][] including setting up the VM by running `mo-dev /vagrant`.
+This file assumes that you followed the directions in [README.md][] through [Create a user in the new instance of MO][] including setting up the MO development environment by running `mo-dev /vagrant`.
 
 ## Configure Github and Git ##
 - On [Github][], fork (create your own copy of) the [Official MO Repo][]. <br>
@@ -54,6 +54,14 @@ Use a [Git GUI][] or on your local machine  <br>
 - Choose origin repo "master" as the destination branch. 
 - For more information see [Using pull requests][].
 
+## Other ##
+### Follow MO development ###
+Consider subscribing/joining to follow the project more closely
+- Join the [MO Developers Google Group][] for discussion of development and operations of Mushroom Observer (http://mushroomobserver.org)
+- Follow and use the [MO project issue tracker][]
+- Watch the [Official MO Repo][]. This will notify you about code updates and Pull Requests, so that you can comment on them and test them. For information on testing others' pull requests, see [Pull Requests by Others][]
+- Watch the [[MO developer-startup repo][]
+
 - - -
 # Notes #
 ## Workflow ##
@@ -71,19 +79,27 @@ We use "integration-manager" or "forking" workflow.<br>
 For more information, see [Integration-Manager Workflow][] and [Forking Workflow][]; _cf._ [What's the Workflow][].
 
 ## Git GUIs ##
-Some developers primarily (or exclusively) use a Git GUI -- as opposed to typing Git commands at the terminal. Two free GUIs that have been found useful on the Mac are: [GitHub GUI][] and [SourceTree][].
+Some developers primarily (or exclusively) use a Git GUI -- as opposed to typing Git commands at the terminal. Two free GUIs that have been found useful on the Mac are: [GitHub GUI][] and [SourceTree][]. 
+
+## Pull Requests by Others ##
+One way to get a copy and test other developers' Pull Requests is by following the instructions in [Get the Changes][] and [Experiment with the Changes][] (both in the admin-workflow.md file in this repository.)
 
 - - -
 [comment]: # (The following are link reference definitions)
 [Create a user in the new instance of MO]: /README.md#create-a-user-in-the-new-instance-of-mo)
+[Experiment with the Changes]: /admin-workflow.md#experiment-with-the-changes[Git GUI]: /developer-workflow.md#git-guis/
 [Forking Workflow]: https://www.atlassian.com/git/workflows#!workflow-forking
-[Git GUI]: /developer-workflow.md#git-guis/
+[Get the Changes]: /developer-workflow/admin-workflow.md#get-the-changes
 [Github]: https://github.com/
 [GitHub GUI]: https://central.github.com/mac/latest
 [Initial Database]: /developer-workflow.md#intial-databse/ 
 [Installing Ruby]: /developer-workflow.md#installing-ruby/ 
 [Integration-Manager Workflow]: http://git-scm.com/book/en/Distributed-Git-Distributed-Workflows#Integration-Manager-Workflow
+[MO Developers Google Group]: https://groups.google.com/forum/?fromgroups=#!forum/mo-developers
+[MO developer-startup repo]: https://github.com/MushroomObserver/developer-startup
+[MO project issue tracker]: https://www.pivotaltracker.com/n/projects/224629
 [Official MO Repo]: https://github.com/MushroomObserver/mushroom-observer
+[Pivotal Tracker]: https://www.pivotaltracker.com/
 [PuTTY]: http://www.chiark.greenend.org.uk/~sgtatham/putty/
 [README.md]: /README.md
 [SourceTree]: http://www.sourcetreeapp.com
