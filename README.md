@@ -11,6 +11,8 @@ on Macintoshes as well as PCs running either Windows or Ubuntu.  This
 system does require a reasonably powerful computer probably purchased
 in the last 3 years.
 
+[![CodePolice][5]][6]
+
 Creating working Mushroom Observer development environment
 --------------------------
 Install VirtualBox: https://www.virtualbox.org/
