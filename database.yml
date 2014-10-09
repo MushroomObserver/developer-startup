@@ -1,0 +1,8 @@
+production:
+  adapter:  mysql2
+  database: mo_production
+  host:     db.mushroomobserver.org
+  username: mo
+  password: <password>
+  socket:   /var/run/mysqld/mysqld.sock
+  encoding: utf8
