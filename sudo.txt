@@ -1,0 +1,2 @@
+%mo ALL = NOPASSWD: /bin/su mo
+%mo ALL = NOPASSWD: /bin/su - mo

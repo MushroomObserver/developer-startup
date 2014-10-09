@@ -1,0 +1,119 @@
+#!/bin/bash
+
+# Add SSH key if needed
+# Create Digital Ocean box with new SSH key
+# ssh root@IP_ADDR
+# apt-get update
+# apt-get upgrade -y
+# apt-get -y install git
+# git clone https://github.com/MushroomObserver/developer-startup.git
+
+useradd -m -s /bin/bash mo
+passwd -l mo
+cat sudo.txt >> /etc/sudoers
+
+for user in `\ls users`; do
+    useradd -m -s /bin/bash -G mo,sudo $user;
+    mkdir /home/$user/.ssh;
+    cp users/$user /home/$user/.ssh/authorized_keys;
+    chmod 600 /home/$user/.ssh/authorized_keys;
+    chmod 700 /home/$user/.ssh;
+    chown -R $user:$user /home/$user/.ssh;
+    cp bash_aliases /home/$user/.bash_aliases;
+done
+
+passwd -l root
+echo '  PermitRootLogin no' >> /etc/ssh/sshd_config
+apt-get install -y build-essential man telnet wget curl vim emacs \
+	iptables mlocate lynx
+
+# Configure firewall. (22=ssh, 80=http, 25=smtp, 3306=mysql, 53=dns)
+iptables -F
+iptables -P INPUT ACCEPT
+iptables -P OUTPUT ACCEPT
+iptables -P FORWARD ACCEPT
+iptables -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+iptables -A INPUT -i lo -j ACCEPT
+iptables -A INPUT -p icmp -j ACCEPT
+iptables -A INPUT -m state --state NEW -p tcp --dport 22   -j ACCEPT
+iptables -A INPUT -m state --state NEW -p tcp --dport 80   -j ACCEPT
+iptables -A INPUT -m state --state NEW -p tcp --dport 25   -j ACCEPT
+iptables -A INPUT -m state --state NEW -p tcp --dport 3306 -j ACCEPT
+iptables -A INPUT -m state --state NEW -p tcp --dport 53   -j ACCEPT
+iptables -A INPUT -m state --state NEW -p udp --dport 53   -j ACCEPT
+iptables -A INPUT   -j REJECT --reject-with icmp-host-prohibited
+iptables -A FORWARD -j REJECT --reject-with icmp-host-prohibited
+iptables-save > /etc/firewall.conf
+chmod 600 /etc/firewall.conf
+echo 'iptables-restore < /etc/firewall.conf' >> /etc/rc.local
+
+apt-get install -y mysql-server mysql-client libmysqlclient-dev \
+	libcurl4-openssl-dev libssl-dev git nginx libyaml-dev \
+        imagemagick libmagickcore-dev libmagickwand-dev libjpeg-dev
+
+# Install rvm and ruby.
+curl -sSL https://get.rvm.io | bash -s stable --ruby=1.9.3
+gpasswd -a mo rvm
+echo "gem: --no-document" > /etc/gemrc
+echo "gem: --no-document" > /root/.gemrc
+echo "gem: --no-document" > /home/mo/.gemrc
+echo "source /usr/local/rvm/scripts/rvm" >> /root/.bashrc
+echo "source /usr/local/rvm/scripts/rvm" >> /home/mo/.bashrc
+
+# Create directory for rails app.
+mkdir /var/web
+mkdir /var/web/mo
+chown mo:mo /var/web/mo
+chmod 750 /var/web/mo
+ln -s mo /var/web/mushroom-observer
+
+# Make sure nginx user has access to rails directories.
+usermod -a -G mo www-data
+
+# Install and configure rails apps.
+cd /var/web/mushroom-observer
+git clone https://github.com/MushroomObserver/mushroom-observer .
+mkdir log log/old tmp public/images/{thumb,320,640,960,1280,orig}
+ln -s images public/local_images
+chown -R mo:mo .
+cp config/etc/bash_aliases.sh /home/mo/.bash_aliases
+chown mo:mo /home/mo/.bash_aliases
+
+cp /var/web/mushroom-observer/config/etc/nginx.conf /etc/nginx/
+service nginx restart
+rm /usr/share/nginx/html/index.html    # (there's *got* to be a better way!)
+
+# Install our programs for resizing and rotating JPEG images.
+gcc /var/web/mushroom-observer/script/jpegresize.c -ljpeg -lm -O2 -o /usr/local/bin/jpegresize
+gcc /var/web/mushroom-observer/script/jpegexiforient.c -o /usr/local/bin/jpegexiforient
+cp /var/web/mushroom-observer/script/exifautotran /usr/local/bin/exifautotran
+chmod 755 /usr/local/bin/exifautotran
+cp /var/web/mushroom-observer/script/unicorn /etc/init.d/unicorn
+chmod 755 /etc/init.d/unicorn
+update-rc.d unicorn defaults
+
+# mo> vi config/consts-site.rb
+#   MushroomObserver::Application.configure do
+#     config.action_mailer.smtp_settings[:password] = "xxx"
+#     config.pivotal_enabled = true
+#     config.pivotal_token = "xxx"
+#     config.image_sources[:cdmr].delete(:write)
+#   end
+# mo> vi config/database.yml
+#   # Replace with this:
+#   production:
+#     adapter:  mysql2
+#     database: mo_production
+#     host:     db.mushroomobserver.org
+#     username: mo
+#     password: xxx
+#     socket:   /var/run/mysqld/mysqld.sock
+#     encoding: utf8
+# # Ping the database to make sure everything's working right.
+# mo> mysqladmin --protocol=tcp -u mo -p'$DB_PASSWORD' --host=db.mushroomobserver.org ping
+
+# # Install gems.
+# mo> bundle install
+
+# # Configure nginx.
+# mo> exit
