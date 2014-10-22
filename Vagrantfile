@@ -47,5 +47,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.box = "mo-31"
     config.vm.box_url = "http://images.digitalmycology.com/mo-31.box"
     config.vm.network "forwarded_port", guest: 3000, host: 3000
+    config.vm.provider "virtualbox" do |vb|
+      # Use VBoxManage to customize the VM. For example to change memory:
+      vb.customize ["modifyvm", :id, "--memory", "2048"]
+    end
   end
 end
