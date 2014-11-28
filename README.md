@@ -51,6 +51,9 @@ You have been successful if the final output line is:
 
     vagrant@vagrant-ubuntu-trusty-64:~$ 
 
+(If you are using ssh to connect with github, you'll need to copy your
+private key into /home/vagrant/.ssh/id_rsa before proceeding.)
+
 Setup the new VM by running:
 
     $ mo-dev /vagrant
