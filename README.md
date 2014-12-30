@@ -31,7 +31,8 @@ Go into the resulting directory:
     % cd developer-startup
 
 If you have bash installed (true by default on Linux and MacOSX),
-run the startup script:
+run the startup script.  It is also important to make sure that you have the bundler package installed.
+On Ubuntu linux, this can be done by typing ```sudo apt-get bundler``` in the terminal:
 
     % ./startup
 
