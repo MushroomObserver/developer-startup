@@ -13,7 +13,7 @@ in the last 3 years.
 
 If you're interested in contributing your code to MO, please also read
 [developer-workflow.md][]. Administrators/Managers should also have a look at
-[admin-workflow.md]: /admin-workflow.md.
+[admin-workflow.md][].
 
 [![CodePolice][5]][6]
 
@@ -61,7 +61,7 @@ private key into /home/vagrant/.ssh/id_rsa before proceeding.)
 
 Setup the new VM by running:
 
-vagrant@vagrant-ubuntu-trusty-64:~$ `mo-dev /vagrant`
+`vagrant@vagrant-ubuntu-trusty-64:~$ mo-dev /vagrant`
 
 You can actually use any directory on the VM you want.  The advantage of
 using /vagrant is that the MO source code will be available both on the
