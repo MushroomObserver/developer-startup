@@ -11,6 +11,9 @@ on Macintoshes as well as PCs running either Windows or Ubuntu.  This
 system does require a reasonably powerful computer probably purchased
 in the last 3 years.
 
+If you're interested in contributing your code to MO, please also read
+/developer-workflow.md
+
 [![CodePolice][5]][6]
 
 Creating working Mushroom Observer development environment
@@ -50,14 +53,14 @@ you need to give to Putty.
 
 You have been successful if the final output line is:
 
-    vagrant@vagrant-ubuntu-trusty-64:~$ 
+    vagrant@vagrant-ubuntu-trusty-64:~$
 
 (If you are using ssh to connect with github, you'll need to copy your
 private key into /home/vagrant/.ssh/id_rsa before proceeding.)
 
 Setup the new VM by running:
 
-    $ mo-dev /vagrant
+    vagrant@vagrant-ubuntu-trusty-64:~$ `mo-dev /vagrant`
 
 You can actually use any directory on the VM you want.  The advantage of
 using /vagrant is that the MO source code will be available both on the
@@ -117,6 +120,11 @@ Have fun!  (Note the initial database, developer-startup/init.sql,
 just has the admin user and the language stuff.  It probably makes
 sense to add some observations, names and images for testing, but I
 haven't gotten to it yet.)
+
+Contributing to MO code development
+-----------------------------------
+To contribute to MO code development, please follow the suggestions in
+/developer-workflow.md
 
 Resetting your VM
 -----------------
