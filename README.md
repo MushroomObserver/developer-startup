@@ -11,6 +11,10 @@ on Macintoshes as well as PCs running either Windows or Ubuntu.  This
 system does require a reasonably powerful computer probably purchased
 in the last 3 years.
 
+If you're interested in contributing your code to MO, please also read
+[developer-workflow.md][]. Administrators/Managers should also have a look at
+[admin-workflow.md][].
+
 [![CodePolice][5]][6]
 
 Creating working Mushroom Observer development environment
@@ -50,14 +54,14 @@ you need to give to Putty.
 
 You have been successful if the final output line is:
 
-    vagrant@vagrant-ubuntu-trusty-64:~$ 
+    vagrant@vagrant-ubuntu-trusty-64:~$
 
 (If you are using ssh to connect with github, you'll need to copy your
 private key into /home/vagrant/.ssh/id_rsa before proceeding.)
 
 Setup the new VM by running:
 
-    $ mo-dev /vagrant
+`vagrant@vagrant-ubuntu-trusty-64:~$ mo-dev /vagrant`
 
 You can actually use any directory on the VM you want.  The advantage of
 using /vagrant is that the MO source code will be available both on the
@@ -118,6 +122,11 @@ just has the admin user and the language stuff.  It probably makes
 sense to add some observations, names and images for testing, but I
 haven't gotten to it yet.)
 
+Contributing to MO code development
+-----------------------------------
+To contribute to MO code development, please follow the suggestions in
+[developer-workflow.md][].
+
 Resetting your VM
 -----------------
 If something goes wrong or you simply want to start over from scratch,
@@ -148,3 +157,8 @@ This will create a package.box file in the developer-startup
 directory.  To allow others to use it, this should get uploaded
 to http://images.digitalmycology.com and the Vagrantfile should
 be updated to reference the new box and checked in.
+
+- - -
+[comment]: # (The following are link reference definitions)
+[admin-workflow.md]: /admin-workflow.md
+[developer-workflow.md]: /developer-workflow.md/
