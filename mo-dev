@@ -27,7 +27,10 @@ if [ ! -d mushroom-observer ]; then
 fi
 
 if [ -f mushroom-observer/.ruby-version ]; then
-    rvm install `cat mushroom-observer/.ruby-version`
+    if ! [[ `which ruby` =~ `cat mushroom-observer/.ruby-version` ]]; then
+        echo "Installing ruby version " `cat mushroom-observer/.ruby-version`
+        rvm install `cat mushroom-observer/.ruby-version`
+    fi
 fi
 
 cd mushroom-observer
