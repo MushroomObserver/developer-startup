@@ -12,7 +12,8 @@ system does require a reasonably powerful computer probably purchased
 in the last 3 years.
 
 If you're interested in contributing your code to MO, please also read
-/developer-workflow.md
+[developer-workflow.md][]. Administrators/Managers should also have a look at
+[admin-workflow.md]: /admin-workflow.md.
 
 [![CodePolice][5]][6]
 
@@ -60,7 +61,7 @@ private key into /home/vagrant/.ssh/id_rsa before proceeding.)
 
 Setup the new VM by running:
 
-    vagrant@vagrant-ubuntu-trusty-64:~$ `mo-dev /vagrant`
+vagrant@vagrant-ubuntu-trusty-64:~$ `mo-dev /vagrant`
 
 You can actually use any directory on the VM you want.  The advantage of
 using /vagrant is that the MO source code will be available both on the
@@ -124,7 +125,7 @@ haven't gotten to it yet.)
 Contributing to MO code development
 -----------------------------------
 To contribute to MO code development, please follow the suggestions in
-/developer-workflow.md
+[developer-workflow.md][].
 
 Resetting your VM
 -----------------
@@ -156,3 +157,8 @@ This will create a package.box file in the developer-startup
 directory.  To allow others to use it, this should get uploaded
 to http://images.digitalmycology.com and the Vagrantfile should
 be updated to reference the new box and checked in.
+
+- - -
+[comment]: # (The following are link reference definitions)
+[admin-workflow.md]: /admin-workflow.md
+[developer-workflow.md]: /developer-workflow.md/
