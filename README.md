@@ -34,9 +34,10 @@ Go into the resulting directory:
 
     % cd developer-startup
 
-If you have bash installed (true by default on Linux and MacOSX),
-run the startup script.  It is also important to make sure that you have the bundler package installed.
-On Ubuntu linux, this can be done by typing ```sudo apt-get bundler``` in the terminal:
+If you have bash installed (true by default on Linux and MacOSX), run
+the startup script.  It is also important to make sure that you have
+the bundler package installed.  On Ubuntu linux, this can be done by
+typing ```sudo apt-get bundler``` in the terminal:
 
     % ./startup
 
@@ -151,7 +152,7 @@ that is equivalent to what you get after you run ./startup.
 For those maintaining the Mushroom Observer VM, once you finish the
 ./build script, you can create a new version of the box with:
 
-    % vagrant package
+    % vagrant package clean
 
 This will create a package.box file in the developer-startup
 directory.  To allow others to use it, this should get uploaded
