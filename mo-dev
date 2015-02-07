@@ -2,6 +2,7 @@
 
 dir=$1
 new_rvm=
+run_rake_db_seen=
 
 if [ ! $dir ]; then
     echo "Usage: mo-dev <dir>"
@@ -42,6 +43,7 @@ mysql -u mo -pmo mo_development -e ''
 if [ ! $? -eq 0 ]; then
     mysql -u root -proot < db/initialize.sql
     mysql -u mo -pmo mo_development < db/vagrant/init.sql
+    run_rake_db_seed=1
     echo Created and populated mo_development database
 else
     echo mo_development exists
@@ -92,6 +94,9 @@ fi
 git pull
 bundle install
 rake db:migrate
+if [ $run_rake_db_seed ]; then
+    rake db:seed
+fi
 rake lang:update
 if [ $new_rvm ]; then
     echo "RVM installed.  Run: source /home/vagrant/.rvm/scripts/rvm"
