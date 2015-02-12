@@ -33,10 +33,11 @@ Go into the resulting directory:
 
 Linux and MacOSXL: If you have bash installed (true by default), run the startup script.  Please note: It is also important to make sure that you have the bundler package installed. On some Linux distributions including Ubuntu you may have to type```sudo apt-get install bundler``` in the terminal before running the script below.
 
-Mac and Linux users run the following command: 
+Mac and Linux: run the following command: 
     `% ./startup`
+Wait for a while...
 
-On Windows: Download Ruby for Windows at http://rubyinstaller.org/.  When installing make sure that you check "Add Ruby executables to your PATH", it is not checked by default.  You must also install the DevKit for windows which can also be downloaded from the same page. At this point you should have installed Ruby and Devkit. Helpful instructions for install DevKit can be found here: http://stackoverflow.com/a/8463500/1424115
+Windows: Download Ruby for Windows at http://rubyinstaller.org/.  When installing make sure that you check "Add Ruby executables to your PATH", it is not checked by default.  You must also install the DevKit for windows which can also be downloaded from the same page. At this point you should have installed Ruby and Devkit. Helpful instructions for install DevKit can be found here: http://stackoverflow.com/a/8463500/1424115
 
 Run the following commands in the /developer-startup directory.
 
@@ -46,10 +47,9 @@ Note: if you receive the following error `SSL_connect returned=1 errno=0 state=S
 
 At this point you should have bundler installed.
 
-
-
-Windows users run the following command:
+  Run the following command:
   `C:\developer-startup>bundle install`
+  `C:\developer-startup>vagrant up`
 
 Wait for a while...
 
@@ -57,7 +57,7 @@ Login to your new VM:
 
     % vagrant ssh
 
-On Windows machines this may require installing an ssh client like
+On Windows machines this will require installing an ssh client like
 Putty.  Attempting to run 'vagrant ssh' will give you the parameters
 you need to give to Putty.
 
