@@ -71,6 +71,9 @@ private key into /home/vagrant/.ssh/id_rsa before proceeding.)
 Setup the new VM by running:
 
     $ mo-dev /vagrant
+    
+*Gotcha for Windows users.  If you see this error `/bin/bash^M: bad interpreter: No such file or directory`
+it means that the line endings of the file have been formatted for windows when you cloned the developer-startup repository.  To fix this, use a program like Notepad++ to convert the mo-dev file to "Unix/Linux EOL (Line Endings)".
 
 You can actually use any directory on the VM you want.  The advantage of
 using /vagrant is that the MO source code will be available both on the
