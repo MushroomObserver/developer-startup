@@ -28,20 +28,36 @@ GitHub GUI can be helpful, https://central.github.com/mac/latest)
 
 Get the developer-startup Git project:
 
-    % git clone https://github.com/MushroomObserver/developer-startup.git
+    git clone https://github.com/MushroomObserver/developer-startup.git
+    
 
 Go into the resulting directory:
 
-    % cd developer-startup
+    cd developer-startup
 
-If you have bash installed (true by default on Linux and MacOSX), run
-the startup script.  It is also important to make sure that you have
-the [Bundler][] package installed.  On Ubuntu linux, this can be done by
-typing `sudo apt-get bundler` in the terminal:
+Linux and MacOSXL: If you have bash installed (true by default), run the
+startup script.  Please note: It is also important to make sure that you have
+the bundler package installed.  On some Linux distributions including Ubuntu
+you may have to type```sudo apt-get install bundler``` in the terminal before
+running the script below. 
 
-    % ./startup
+Mac and Linux: run the following command: 
+    `% ./startup`
+Wait for a while...
 
-Otherwise, just run the commands in ./startup from any command-line tool.
+Windows: Download Ruby for Windows at http://rubyinstaller.org/.  When installing make sure that you check "Add Ruby executables to your PATH", it is not checked by default.  You must also install the DevKit for windows which can also be downloaded from the same page. At this point you should have installed Ruby and Devkit. Helpful instructions for install DevKit can be found here: http://stackoverflow.com/a/8463500/1424115
+
+Run the following commands in the /developer-startup directory.
+
+`C:/developer-startup> gem install bundler`
+
+Note: if you receive the following error `SSL_connect returned=1 errno=0 state=SSLv3 read server certificate B: certificate verify failed` please visit https://gist.github.com/luislavena/f064211759ee0f806c88 and follow the instructions to resolve the issue, it is an easy fix.
+
+At this point you should have bundler installed.
+
+  Run the following command:
+  `C:\developer-startup>bundle install`
+  `C:\developer-startup>vagrant up`
 
 Wait for a while...
 
@@ -62,7 +78,13 @@ private key into /home/vagrant/.ssh/id_rsa before proceeding.)
 
 Setup the new VM by running:
 
-    vagrant@vagrant-ubuntu-trusty-64:~$ mo-dev /vagrant
+    $ mo-dev /vagrant
+    
+*Gotcha for Windows users.  If you see this error `/bin/bash^M: bad interpreter:
+No such file or directory` it means that the line endings of the file have been
+formatted for windows when you cloned the developer-startup repository.  To fix
+this, use a program like Notepad++ to convert the mo-dev file to "Unix/Linux EOL
+(Line Endings)".
 
 (You can actually use any directory on the VM you want.  The advantage of
 using /vagrant is that the MO source code will be available both on the
