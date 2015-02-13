@@ -5,7 +5,7 @@ Welcome to the Mushroom Observer Developer Startup system!  The
 purpose of this system is to help software developers setup an
 environment where they can contribute to the Mushroom Observer code
 base.  The basic idea is to setup a virtual machine (VM) on your
-personal machine that is configured to serve a test version of the
+personal ("host) machine that is configured to serve a test version of the
 Mushroom Observer website and to access the code.  It has been tested
 on Macintoshes as well as PCs running either Windows or Ubuntu.  This
 system does require a reasonably powerful computer probably purchased
@@ -36,8 +36,8 @@ Go into the resulting directory:
 
 If you have bash installed (true by default on Linux and MacOSX), run
 the startup script.  It is also important to make sure that you have
-the bundler package installed.  On Ubuntu linux, this can be done by
-typing ```sudo apt-get bundler``` in the terminal:
+the [Bundler][] package installed.  On Ubuntu linux, this can be done by
+typing `sudo apt-get bundler` in the terminal:
 
     % ./startup
 
@@ -50,8 +50,8 @@ Login to your new VM:
     % vagrant ssh
 
 On Windows machines this may require installing an ssh client like
-Putty.  Attempting to run 'vagrant ssh' will give you the parameters
-you need to give to Putty.
+[PuTTY][].  Attempting to run `vagrant ssh` will give you the parameters
+you need to give to [PuTTY][].
 
 You have been successful if the final output line is:
 
@@ -62,14 +62,22 @@ private key into /home/vagrant/.ssh/id_rsa before proceeding.)
 
 Setup the new VM by running:
 
-`vagrant@vagrant-ubuntu-trusty-64:~$ mo-dev /vagrant`
+    vagrant@vagrant-ubuntu-trusty-64:~$ mo-dev /vagrant
 
-You can actually use any directory on the VM you want.  The advantage of
+(You can actually use any directory on the VM you want.  The advantage of
 using /vagrant is that the MO source code will be available both on the
 VM and on the host machine in the same directory as the Vagrantfile.
-This can be handy if you are use to an editor on the host machine.
-However, it usually makes the tests run more slowly on the VM.  The rest
-of this document assumes that you used /vagrant when calling mo-dev.
+This is handy if you want to edit  MO files on your host machine with your
+normal editor. However, it usually makes the tests run more slowly on the VM.
+The rest of this document assumes that you used /vagrant when calling mo-dev.)
+
+Look at the last line displayed by mo-dev /vagrant. If it is
+
+    RVM installed.  Run: source /home/vagrant/.rvm/scripts/rvm
+
+then setup [RVM][] (and get the correct Ruby version) by running
+
+    vagrant@vagrant-ubuntu-trusty-64:~$ source /home/vagrant/.rvm/scripts/rvm
 
 Assuming all of that was successful, you now have a running virtual
 machine with the MO source code installed, an instance of MySQL and
@@ -95,12 +103,12 @@ your lang files are up to date.
 
 Start web server
 ----------------
-Go to VM ('vagrant ssh' or through Putty)
+Go to VM (`vagrant ssh` or through [PuTTY][])
 
     $ cd /vagrant/mushroom-observer
     $ rails server
 
-Go to http://localhost:3000 in a browser on the host machine (note:
+Go to http://localhost:3000 in a browser on the host machine. (Note:
 one developer reports that port-forwarding required use of port 5656
 instead of 3000)
 
@@ -109,7 +117,7 @@ Create a user in the new instance of MO
 Go to http://localhost:3000/account/signup and create a new user in
 your regular browser
 
-Go to VM ('vagrant ssh' or through Putty):
+Go to VM (`vagrant ssh` or through [PuTTY][]):
 
     $ grep verify /vagrant/mushroom-observer/log/development.log
 
@@ -162,4 +170,7 @@ be updated to reference the new box and checked in.
 - - -
 [comment]: # (The following are link reference definitions)
 [admin-workflow.md]: /admin-workflow.md
+[Bundler]: http://bundler.io/
 [developer-workflow.md]: /developer-workflow.md/
+[PuTTY]: http://www.putty.org/
+[RVM]: https://rvm.io/
