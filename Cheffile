@@ -3,8 +3,7 @@ site "http://community.opscode.com/api/v1"
 cookbook "mysql"
 
 cookbook 'apt'
-cookbook 'git', 
-  git: 'https://github.com/fnichol/chef-git.git'
+cookbook 'git'
 cookbook 'build-essential'
 
 cookbook 'build-essential'

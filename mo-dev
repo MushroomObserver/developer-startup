@@ -1,6 +1,8 @@
 #!/bin/bash
 
 dir=$1
+new_rvm=
+run_rake_db_seen=
 
 if [ ! $dir ]; then
     echo "Usage: mo-dev <dir>"
@@ -9,8 +11,10 @@ fi
 
 if [ ! -d /home/vagrant/.rvm ]; then
     echo Installing RVM
+    gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
     curl -L https://get.rvm.io | bash -s stable
     source /home/vagrant/.rvm/scripts/rvm
+    new_rvm=1
     sudo gem install bundler
 else
     echo RVM installed
@@ -27,7 +31,10 @@ if [ ! -d mushroom-observer ]; then
 fi
 
 if [ -f mushroom-observer/.ruby-version ]; then
-    rvm install `cat mushroom-observer/.ruby-version`
+    if ! [[ `which ruby` =~ `cat mushroom-observer/.ruby-version` ]]; then
+        echo "Installing ruby version " `cat mushroom-observer/.ruby-version`
+        rvm install `cat mushroom-observer/.ruby-version`
+    fi
 fi
 
 cd mushroom-observer
@@ -36,6 +43,7 @@ mysql -u mo -pmo mo_development -e ''
 if [ ! $? -eq 0 ]; then
     mysql -u root -proot < db/initialize.sql
     mysql -u mo -pmo mo_development < db/vagrant/init.sql
+    run_rake_db_seed=1
     echo Created and populated mo_development database
 else
     echo mo_development exists
@@ -86,4 +94,10 @@ fi
 git pull
 bundle install
 rake db:migrate
+if [ $run_rake_db_seed ]; then
+    rake db:seed
+fi
 rake lang:update
+if [ $new_rvm ]; then
+    echo "RVM installed.  Run: source /home/vagrant/.rvm/scripts/rvm"
+fi
