@@ -148,7 +148,7 @@ usernames/passwords mo/mo or root/root.
 
 To run the tests in the new environment
 ---------------------------------------
-Go to the VM ('vagrant ssh' or through Putty)
+Go to VM (`vagrant ssh` or through [PuTTY][])
 
     $ cd /vagrant/mushroom-observer
     $ rake
