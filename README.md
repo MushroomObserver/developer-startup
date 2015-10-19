@@ -45,7 +45,7 @@ you may have to type```sudo apt-get install bundler``` in the terminal before
 running the script below.
  
     `% ./startup`
-Wait for a while...
+> Wait for a while...
 
 #### Windows ####
 > Download Ruby for Windows at http://rubyinstaller.org/.  When installing make sure that you check "Add Ruby executables to your PATH", it is not checked by default.  
@@ -100,7 +100,7 @@ normal editor. However, it usually makes the tests run more slowly on the VM.
 The rest of this document assumes that you used /vagrant when calling mo-dev.)
 
 #### Fix bundle-related error ####
-if running mo-dev /vagrant causes errors similar to:
+If running mo-dev /vagrant causes errors similar to:
 ```
 /usr/lib/ruby/1.9.1/rubygems/dependency.rb:247:in `to_specs': Could not find bundler (>= 0) amongst [bundler-unload-1.0.2, executable-hooks-1.3.2, gem-wrappers-1.2.7, rubygems-bundler-1.4.4, rvm-1.11.3.9] (Gem::LoadError)
 from /usr/lib/ruby/1.9.1/rubygems/dependency.rb:256:in `to_spec'
@@ -110,7 +110,7 @@ rake aborted!
 cannot load such file -- bundler/setup
 ...
 ```
-Then fis things by the following procedure:
+Then fix things by the following procedure:
 On the VM:
 ```
 vagrant@vagrant-ubuntu-trusty-64:~$ exit
