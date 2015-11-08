@@ -17,52 +17,70 @@ If you're interested in contributing your code to MO, please also read
 
 [![CodePolice][5]][6]
 
-Creating working Mushroom Observer development environment
---------------------------
+## Creating working Mushroom Observer development environment ##
+
+### Install development software on your local machine ###
+
 Install VirtualBox: https://www.virtualbox.org/
-[Windows 10 Users: make sure that Hyper-V is not installed as a 'Windows Feature' on your machine as it breaks virtualbox]
+[Windows 10 Users: make sure that Hyper-V is not installed as a
+'Windows Feature' on your machine as it breaks virtualbox]
 
 Install Vagrant: https://www.vagrantup.com/downloads.html
 
 Install git: http://git-scm.com/downloads (on my Mac I've found the
 GitHub GUI can be helpful, https://central.github.com/mac/latest)
 
+### Clone the project ###
 Get the developer-startup Git project:
 
     git clone https://github.com/MushroomObserver/developer-startup.git
     
-
+### Run the startup script (after insuring that bundler is intalled) ###
 Go into the resulting directory:
 
     cd developer-startup
 
-Linux and MacOSXL: If you have bash installed (true by default), run the
+What you do next depends on your local machine's operating system:
+
+#### Linux and MacOSXL ####
+>If you have bash installed (true by default), run the
 startup script.  Please note: It is also important to make sure that you have
 the bundler package installed.  On some Linux distributions including Ubuntu
 you may have to type```sudo apt-get install bundler``` in the terminal before
 running the script below.
  
-
-Mac and Linux: run the following command: 
     `% ./startup`
-Wait for a while...
+> Wait for a while...
 
-Windows: Download Ruby for Windows at http://rubyinstaller.org/.  When installing make sure that you check "Add Ruby executables to your PATH", it is not checked by default.  You must also install the DevKit for windows which can also be downloaded from the same page. At this point you should have installed Ruby and Devkit. Helpful instructions for install DevKit can be found here: http://stackoverflow.com/a/8463500/1424115
-
-
-Run the following commands in the /developer-startup directory.
+#### Windows ####
+> Download Ruby for Windows at http://rubyinstaller.org/.  When
+>installing make sure that you check "Add Ruby executables to your
+>PATH", it is not checked by default.  You must also install the
+>DevKit for windows which can also be downloaded from the same
+>page. At this point you should have installed Ruby and
+>Devkit. Helpful instructions for install DevKit can be found here:
+>http://stackoverflow.com/a/8463500/1424115 Install Bundler In the
+>/developer-startup directory.
 
 `C:/developer-startup> gem install bundler`
 
-Note: if you receive the following error `SSL_connect returned=1 errno=0 state=SSLv3 read server certificate B: certificate verify failed` please visit https://gist.github.com/luislavena/f064211759ee0f806c88 and follow the instructions to resolve the issue, it is an easy fix.
+>Note: if you receive the following error
 
-At this point you should have bundler installed.
+`SSL_connect returned=1 errno=0 state=SSLv3 read server certificate B: certificate verify failed`
 
-  Run the following command:
+>please visit
+>https://gist.github.com/luislavena/f064211759ee0f806c88 and follow
+>the instructions to resolve the issue, it is an easy fix.
+
+> At this point you should have bundler installed.
+
+> Run the following command:
   `C:\developer-startup>bundle install`
   `C:\developer-startup>vagrant up`
 
-Wait for a while...
+> Wait for a while...
+
+### Setup your Virtual Machine ###
 
 Login to your new VM:
 
@@ -83,11 +101,14 @@ Setup the new VM by running:
 
     $ mo-dev /vagrant
     
-*Gotcha for Windows users.  If you see this error `/bin/bash^M: bad interpreter:
-No such file or directory` it means that the line endings of the file have been
-formatted for windows when you cloned the developer-startup repository.  To fix
-this, use a program like Notepad++ to convert the mo-dev file to "Unix/Linux EOL
-(Line Endings)".
+*Gotcha for Windows users.  If you see this error
+
+`/bin/bash: bad interpreter: No such file or directory`
+
+it means that the line endings of the file have been formatted for
+windows when you cloned the developer-startup repository.  To fix
+this, use a program like Notepad++ to convert the mo-dev file to
+"Unix/Linux EOL (Line Endings)".
 
 (You can actually use any directory on the VM you want.  The advantage of
 using /vagrant is that the MO source code will be available both on the
@@ -95,6 +116,36 @@ VM and on the host machine in the same directory as the Vagrantfile.
 This is handy if you want to edit  MO files on your host machine with your
 normal editor. However, it usually makes the tests run more slowly on the VM.
 The rest of this document assumes that you used /vagrant when calling mo-dev.)
+
+#### Fix bundle-related error ####
+If running mo-dev /vagrant causes errors similar to:
+```
+/usr/lib/ruby/1.9.1/rubygems/dependency.rb:247:in `to_specs': Could not find bundler (>= 0) amongst [bundler-unload-1.0.2, executable-hooks-1.3.2, gem-wrappers-1.2.7, rubygems-bundler-1.4.4, rvm-1.11.3.9] (Gem::LoadError)
+from /usr/lib/ruby/1.9.1/rubygems/dependency.rb:256:in `to_spec'
+from /usr/lib/ruby/1.9.1/rubygems.rb:1231:in `gem'
+from /usr/local/bin/bundle:22:in `<main>'
+rake aborted!
+cannot load such file -- bundler/setup
+...
+```
+Then fix things by the following procedure:
+On the VM:
+```
+vagrant@vagrant-ubuntu-trusty-64:~$ exit
+```
+Then on your local machine:
+```
+~/developer-startup $ vagrant halt
+~/developer-startup $ vagrant up
+~/developer-startup $ vagrant ssh
+```
+Then on the VM
+```
+vagrant@vagrant-ubuntu-trusty-64:~$ gem install bundle
+vagrant@vagrant-ubuntu-trusty-64:~$ mo-dev /vagrant
+```
+
+#### Ensure RVM is installed on the VM ####
 
 Look at the last line displayed by mo-dev /vagrant. If it is
 
@@ -104,6 +155,7 @@ then setup [RVM][] (and get the correct Ruby version) by running
 
     vagrant@vagrant-ubuntu-trusty-64:~$ source /home/vagrant/.rvm/scripts/rvm
 
+### Using MO on the VM ###
 Assuming all of that was successful, you now have a running virtual
 machine with the MO source code installed, an instance of MySQL and
 all the goodies to successfully run all the tests and startup a local
