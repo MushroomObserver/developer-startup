@@ -22,7 +22,9 @@ If you're interested in contributing your code to MO, please also read
 From a clean Mac to running the tests:
 
 Install VirtualBox: https://www.virtualbox.org/
+
 Install Vagrant: https://www.vagrantup.com/downloads.html
+
 Install git: http://git-scm.com/downloads
 
 In a Terminal shell:
