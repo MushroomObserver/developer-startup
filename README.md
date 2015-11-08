@@ -20,6 +20,7 @@ If you're interested in contributing your code to MO, please also read
 Creating working Mushroom Observer development environment
 --------------------------
 Install VirtualBox: https://www.virtualbox.org/
+[Windows 10 Users: make sure that Hyper-V is not installed as a 'Windows Feature' on your machine as it breaks virtualbox]
 
 Install Vagrant: https://www.vagrantup.com/downloads.html
 
@@ -39,13 +40,15 @@ Linux and MacOSXL: If you have bash installed (true by default), run the
 startup script.  Please note: It is also important to make sure that you have
 the bundler package installed.  On some Linux distributions including Ubuntu
 you may have to type```sudo apt-get install bundler``` in the terminal before
-running the script below. 
+running the script below.
+ 
 
 Mac and Linux: run the following command: 
     `% ./startup`
 Wait for a while...
 
 Windows: Download Ruby for Windows at http://rubyinstaller.org/.  When installing make sure that you check "Add Ruby executables to your PATH", it is not checked by default.  You must also install the DevKit for windows which can also be downloaded from the same page. At this point you should have installed Ruby and Devkit. Helpful instructions for install DevKit can be found here: http://stackoverflow.com/a/8463500/1424115
+
 
 Run the following commands in the /developer-startup directory.
 
