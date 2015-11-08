@@ -17,7 +17,30 @@ If you're interested in contributing your code to MO, please also read
 
 ## Creating working Mushroom Observer development environment ##
 
-### Install development software on your local machine ###
+### TL;DR ###
+
+From a clean Mac to running the tests:
+
+Install VirtualBox: https://www.virtualbox.org/
+Install Vagrant: https://www.vagrantup.com/downloads.html
+Install git: http://git-scm.com/downloads
+
+In a Terminal shell:
+
+    git clone https://github.com/MushroomObserver/developer-startup.git
+    cd developer-startup
+    ./startup
+    vagrant ssh
+    mo-dev /vagrant
+    source /home/vagrant/.rvm/scripts/rvm
+    cd /vagrant/mushroom-observer
+    rake
+
+That should be it.  If something did not work, then see below for a
+more detailed walk through which addresses the issues that have been
+reported.
+
+### Install development tools on your local machine ###
 
 Install VirtualBox: https://www.virtualbox.org/ (Windows 10 Users:
 make sure that Hyper-V is not installed as a 'Windows Feature' on your
@@ -76,6 +99,7 @@ running the script below.
 > Run the following command:
 
 `C:\developer-startup>bundle install`
+
 `C:\developer-startup>vagrant up`
 
 > Wait for a while...
