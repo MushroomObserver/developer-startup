@@ -15,20 +15,18 @@ If you're interested in contributing your code to MO, please also read
 [developer-workflow.md][]. Administrators/Managers should also have a look at
 [admin-workflow.md][].
 
-[![CodePolice][5]][6]
-
 ## Creating working Mushroom Observer development environment ##
 
 ### Install development software on your local machine ###
 
-Install VirtualBox: https://www.virtualbox.org/
-[Windows 10 Users: make sure that Hyper-V is not installed as a
-'Windows Feature' on your machine as it breaks virtualbox]
+Install VirtualBox: https://www.virtualbox.org/ (Windows 10 Users:
+make sure that Hyper-V is not installed as a 'Windows Feature' on your
+machine as it breaks virtualbox)
 
 Install Vagrant: https://www.vagrantup.com/downloads.html
 
-Install git: http://git-scm.com/downloads (on my Mac I've found the
-GitHub GUI can be helpful, https://central.github.com/mac/latest)
+Install git: http://git-scm.com/downloads (some Mac users have found
+the GitHub GUI to be helpful, https://central.github.com/mac/latest)
 
 ### Clone the project ###
 Get the developer-startup Git project:
@@ -59,8 +57,9 @@ running the script below.
 >DevKit for windows which can also be downloaded from the same
 >page. At this point you should have installed Ruby and
 >Devkit. Helpful instructions for install DevKit can be found here:
->http://stackoverflow.com/a/8463500/1424115 Install Bundler In the
->/developer-startup directory.
+>http://stackoverflow.com/a/8463500/1424115
+
+> Install Bundler in the /developer-startup directory.
 
 `C:/developer-startup> gem install bundler`
 
@@ -75,8 +74,9 @@ running the script below.
 > At this point you should have bundler installed.
 
 > Run the following command:
-  `C:\developer-startup>bundle install`
-  `C:\developer-startup>vagrant up`
+
+`C:\developer-startup>bundle install`
+`C:\developer-startup>vagrant up`
 
 > Wait for a while...
 
@@ -94,10 +94,25 @@ You have been successful if the final output line is:
 
     vagrant@vagrant-ubuntu-trusty-64:~$
 
-(If you are using ssh to connect with github, you'll need to copy your
-private key into /home/vagrant/.ssh/id_rsa before proceeding.)
+#### Setting up ssh access to GitHub (optional) ####
 
-Setup the new VM by running:
+If you are using ssh to connect with github, you'll need a private key
+is ~/.ssh on the VM whose public key is registered with github. You
+can either generate a new key pair with:
+
+    $ ssh-keygen -f /home/vagrant/.ssh/id_rsa -N ''
+
+and accepting all the defaults. You then need to add ~/.ssh/id_rsa.pub
+to your SSH Keys in your github settings.  You can also reuse an
+existing private key by copying it to the developer-startup directory
+on the host machine. Assuming the key is called id_rsa, on the VM run:
+
+    $ mkdir ~/.ssh
+    $ chmod 700 ~/.ssh
+    $ cp /vagrant/id_rsa ~/.ssh
+    $ chmod 600 ~/.ssh/id_rsa
+
+#### Setup the new VM ####
 
     $ mo-dev /vagrant
     
@@ -110,15 +125,20 @@ windows when you cloned the developer-startup repository.  To fix
 this, use a program like Notepad++ to convert the mo-dev file to
 "Unix/Linux EOL (Line Endings)".
 
-(You can actually use any directory on the VM you want.  The advantage of
+Note: You can give mo-dev any directory on the VM you want.  The advantage of
 using /vagrant is that the MO source code will be available both on the
 VM and on the host machine in the same directory as the Vagrantfile.
-This is handy if you want to edit  MO files on your host machine with your
+This is handy if you want to edit MO files on your host machine with your
 normal editor. However, it usually makes the tests run more slowly on the VM.
-The rest of this document assumes that you used /vagrant when calling mo-dev.)
+Another common option is to just use:
+
+    $ mo-dev .
+
+and use Linux editors such as vi or emacs.  The rest of this document
+assumes that you used /vagrant when calling mo-dev.
 
 #### Fix bundle-related error ####
-If running mo-dev /vagrant causes errors similar to:
+If running 'mo-dev /vagrant' causes errors similar to:
 ```
 /usr/lib/ruby/1.9.1/rubygems/dependency.rb:247:in `to_specs': Could not find bundler (>= 0) amongst [bundler-unload-1.0.2, executable-hooks-1.3.2, gem-wrappers-1.2.7, rubygems-bundler-1.4.4, rvm-1.11.3.9] (Gem::LoadError)
 from /usr/lib/ruby/1.9.1/rubygems/dependency.rb:256:in `to_spec'
