@@ -34,6 +34,17 @@ for example, `git checkout -b myfixes`
 ### Edit code ###
 Your local machine's developer-startup directory has a 'mushroom-observer' sub-directory.  This is a 'shared folder' which mirrors /vagrant/mushroom-observer on the VM.  You can change code on one machine and it will appear on the other.
 
+#### Switching Between Branches With Different Schemas ####
+
+  Sometimes it becomes necessary to switch between branches having different schemas after you have created data for one branch.  You can use the following procedure:
+  - Before switching, clean the VM.  On the VM: <br/>
+  `script/clean_dev_vm` <br/>
+  This cleans out all sorts of auto-generated files and other cruft from the development VM and drops the databases. 
+  - Switch branches using a [Git GUI][] or `git checkout <other branch>`
+  - Run mo-dev again.  On the VM: <br/>
+  `vagrant@vagrant-ubuntu-trusty-64:~$ mo-dev /vagrant` <br/>
+  and you're good to go. 
+
 ### Commit your changes to your personal machine ###
 Work on your branch, e.g. _myfixes_.  Make commits using a [Git GUI][] or Git terminal commands on your local machine.  
 
