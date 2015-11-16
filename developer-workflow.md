@@ -1,12 +1,12 @@
 # developer-workflow #
-This file describes the development workflow for the Mushroom Observer project.  We use a distributed workflow, known as "Integration-Manager" or "forking" workflow. See [Workflow][] below. 
+This file describes the development workflow for the Mushroom Observer project.  We use a distributed workflow, known as "Integration-Manager" or "forking" workflow. See [Workflow][] below.
 
 This file assumes that you followed the directions in [README.md][] through [Create a user in the new instance of MO][] including setting up the MO development environment by running `mo-dev /vagrant`.
 
 ## Preliminaries ##
 - Sign up for the [MO project issue tracker][].
 - Sign up for [Github][].
-- We recommend setting up SSH access to [Github][]. See [Generating SSH Keys][] 
+- We recommend setting up SSH access to [Github][]. See [Generating SSH Keys][]
 
 ## Configure Github and Git ##
 - On [Github][], fork (create your own copy of) the [Official MO Repo][]. <br>
@@ -18,7 +18,7 @@ This file assumes that you followed the directions in [README.md][] through [Cre
 ## The Development Cycle ##
 ### Sync with the Official MO Repo ###
 Synchronize your local machine, the VM, and your personal [Github][] to the [Official MO Repo][]. Use a [Git GUI][] or on your local machine:
-````
+```
 git checkout master
 git fetch origin
 git merge origin/master
@@ -39,14 +39,32 @@ Your local machine's developer-startup directory has a 'mushroom-observer' sub-d
   Sometimes it becomes necessary to switch between branches having different schemas after you have created data for one branch.  You can use the following procedure:
   - Before switching, clean the VM.  On the VM: <br/>
   `script/clean_dev_vm` <br/>
-  This cleans out all sorts of auto-generated files and other cruft from the development VM and drops the databases. 
+  This cleans out all sorts of auto-generated files and other cruft from the development VM and drops the databases.
   - Switch branches using a [Git GUI][] or `git checkout <other branch>`
   - Run mo-dev again.  On the VM: <br/>
   `vagrant@vagrant-ubuntu-trusty-64:~$ mo-dev /vagrant` <br/>
-  and you're good to go. 
+  and you're good to go.
+
+#### Loading a Snapshot of the Live Database (optional) ####
+We periodically create a snapshot of the live database. You can optionally load this to your development VM:
+- download the snapshot from http://images.mushroomobserver.org/clean.sql
+- copy (or move) the downloaded clean.sql to the mushroom-observer directory
+- Kill any running version of the server on your VM (usually control-C).
+Now on the VM:
+```
+$ mysql -u root -proot
+mysql> drop database mo_development;
+mysql> create database mo_development;
+mysql> quit
+$ mysql -u root -proot mo_development < clean.sql
+$ rake db:migrate
+$ rake lang:update
+$ rails s
+```
+Finally, delete clean.sql
 
 ### Commit your changes to your personal machine ###
-Work on your branch, e.g. _myfixes_.  Make commits using a [Git GUI][] or Git terminal commands on your local machine.  
+Work on your branch, e.g. _myfixes_.  Make commits using a [Git GUI][] or Git terminal commands on your local machine.
 
 When you are done with all your changes and are ready to contribute them to the Project, make sure they are all committed locally. Use a [Git GUI][] or on your local machine: <br>
 `git commit -a -m "insert commit message"` <br>
@@ -65,10 +83,10 @@ Use a [Git GUI][] or on your local machine  <br>
 `git push personal myfixes` <br>
 
 #### Create a Pull Request ####
-- Go to your personal [Github][] repository and click on "Pull Request". 
+- Go to your personal [Github][] repository and click on "Pull Request".
 - Switch to your feature branch
 - Choose your feature branch in your personal [Github][] repo as the source branch
-- Choose origin repo "master" as the destination branch. 
+- Choose origin repo "master" as the destination branch.
 - For more information see [Using pull requests][].
 
 ## Other ##
@@ -82,7 +100,7 @@ Consider subscribing/joining to follow the project more closely
 - - -
 # Notes #
 ## Workflow ##
-![Integration-Manager-Workflow-Diagram](http://git-scm.com/figures/18333fig0502-tn.png)  
+![Integration-Manager-Workflow-Diagram](http://git-scm.com/figures/18333fig0502-tn.png)
 We use "integration-manager" or "forking" workflow.<br>
 - Each developer:
   - Clones the official MO repository to the developer's local machine;
@@ -96,7 +114,7 @@ We use "integration-manager" or "forking" workflow.<br>
 For more information, see [Integration-Manager Workflow][] and [Forking Workflow][]; _cf._ [What's the Workflow][].
 
 ## Git GUIs ##
-Some developers primarily (or exclusively) use a Git GUI -- as opposed to typing Git commands at the terminal. Two free GUIs that have been found useful on the Mac are: [GitHub GUI][] and [SourceTree][]. 
+Some developers primarily (or exclusively) use a Git GUI -- as opposed to typing Git commands at the terminal. Two free GUIs that have been found useful on the Mac are: [GitHub GUI][] and [SourceTree][].
 
 ## Pull Requests by Others ##
 One way to get a copy and test other developers' Pull Requests is by following the instructions in [Get the Changes][] and [Experiment with the Changes][] (both in the admin-workflow.md file in this repository.)
@@ -111,8 +129,8 @@ One way to get a copy and test other developers' Pull Requests is by following t
 [Git GUI]: /developer-workflow.md#git-guis/
 [Github]: https://github.com/
 [GitHub GUI]: https://central.github.com/mac/latest
-[Initial Database]: /developer-workflow.md#intial-databse/ 
-[Installing Ruby]: /developer-workflow.md#installing-ruby/ 
+[Initial Database]: /developer-workflow.md#intial-databse/
+[Installing Ruby]: /developer-workflow.md#installing-ruby/
 [Integration-Manager Workflow]: http://git-scm.com/book/en/Distributed-Git-Distributed-Workflows#Integration-Manager-Workflow
 [MO Developers Google Group]: https://groups.google.com/forum/?fromgroups=#!forum/mo-developers
 [MO developer-startup repo]: https://github.com/MushroomObserver/developer-startup
