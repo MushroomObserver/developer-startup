@@ -57,7 +57,7 @@ the GitHub GUI to be helpful, https://central.github.com/mac/latest)
 Get the developer-startup Git project:
 
     git clone https://github.com/MushroomObserver/developer-startup.git
-    
+
 ### Run the startup script (after insuring that bundler is intalled) ###
 Go into the resulting directory:
 
@@ -71,7 +71,7 @@ startup script.  Please note: It is also important to make sure that you have
 the bundler package installed.  On some Linux distributions including Ubuntu
 you may have to type```sudo apt-get install bundler``` in the terminal before
 running the script below.
- 
+
     `% ./startup`
 > Wait for a while...
 
@@ -141,7 +141,7 @@ on the host machine. Assuming the key is called id_rsa, on the VM run:
 #### Setup the new VM ####
 
     $ mo-dev /vagrant
-    
+
 *Gotcha for Windows users.  If you see this error
 
 `/bin/bash: bad interpreter: No such file or directory`
@@ -229,7 +229,7 @@ Start web server
 Go to VM (`vagrant ssh` or through [PuTTY][])
 
     $ cd /vagrant/mushroom-observer
-    $ rails server
+    $ rails server -b 0.0.0.0
 
 Go to http://localhost:3000 in a browser on the host machine. (Note:
 one developer reports that port-forwarding required use of port 5656
