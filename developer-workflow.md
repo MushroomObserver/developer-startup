@@ -59,7 +59,8 @@ mysql> quit
 $ mysql -u root -proot mo_development < clean.sql
 $ rake db:migrate
 $ rake lang:update
-$ rails s
+$ rails server -b 0.0.0.0
+
 ```
 Finally, delete clean.sql
 
