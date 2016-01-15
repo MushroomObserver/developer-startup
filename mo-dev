@@ -22,7 +22,7 @@ if [ ! -d /home/vagrant/.rvm ]; then
     curl -L https://get.rvm.io | bash -s stable
     source /home/vagrant/.rvm/scripts/rvm
     new_rvm=1
-    sudo gem install bundle
+    sudo gem install bundle --no-rdoc --no-ri
 else
     echo RVM installed
 fi
@@ -50,7 +50,7 @@ fi
 
 if ! [[ `gem list` =~ "bundle " ]]; then
     echo "Installing bundler"
-    gem install bundle
+    gem install bundle --no-rdoc --no-ri
 else
     echo "Bundler already installed"
 fi
