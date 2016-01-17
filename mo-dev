@@ -9,16 +9,25 @@ if [ ! $dir ]; then
     exit
 fi
 
+if ! [[ `dpkg -l` =~ libgmp.-dev ]]; then
+    echo Installing libgmp
+    sudo apt-get install -y libgmp3-dev
+else
+    echo libgmp already installed
+fi
+
 if [ ! -d /home/vagrant/.rvm ]; then
     echo Installing RVM
     gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
     curl -L https://get.rvm.io | bash -s stable
     source /home/vagrant/.rvm/scripts/rvm
     new_rvm=1
-    sudo gem install bundler
+    sudo gem install bundle --no-rdoc --no-ri
 else
     echo RVM installed
 fi
+
+source ~/.rvm/scripts/rvm
 
 cd $dir
 if [ ! $? -eq 0 ]; then
@@ -30,14 +39,21 @@ if [ ! -d mushroom-observer ]; then
     git clone https://github.com/MushroomObserver/mushroom-observer.git
 fi
 
-if [ -f mushroom-observer/.ruby-version ]; then
-    if ! [[ `which ruby` =~ `cat mushroom-observer/.ruby-version` ]]; then
-        echo "Installing ruby version " `cat mushroom-observer/.ruby-version`
-        rvm install `cat mushroom-observer/.ruby-version`
+cd mushroom-observer
+
+if [ -f .ruby-version ]; then
+    if ! [[ `ruby --version` =~ `cat .ruby-version` ]]; then
+        echo "Installing ruby version " `cat .ruby-version`
+        rvm install `cat .ruby-version`
     fi
 fi
 
-cd mushroom-observer
+if ! [[ `gem list` =~ "bundle " ]]; then
+    echo "Installing bundler"
+    gem install bundle --no-rdoc --no-ri
+else
+    echo "Bundler already installed"
+fi
 
 mysql -u mo -pmo mo_development -e ''
 if [ ! $? -eq 0 ]; then

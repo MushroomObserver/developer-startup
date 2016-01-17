@@ -38,8 +38,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
   else
     config.vm.define "mo", primary: true do |mo|
-      mo.vm.box = "mo-32"
-      mo.vm.box_url = "http://images.digitalmycology.com/mo-32.box"
+      mo.vm.box = "mo-40-1"
+      mo.vm.box_url = "http://images.mushroomobserver.org/mo-40-1.box"
       mo.vm.network "forwarded_port", guest: 3000, host: 3000
       mo.vm.provider "virtualbox" do |vb|
         # Use VBoxManage to customize the VM. For example to change memory:
