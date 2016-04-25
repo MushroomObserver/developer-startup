@@ -55,7 +55,7 @@ Now on the VM:
 $ gunzip -c checkpoint_stripped.gz | mysql -u mo -pmo mo_development
 $ rake db:migrate
 $ rake lang:update
-$ rails server -b 0.0.0.0
+$ moserver
 
 ```
 Finally, delete clean.sql
