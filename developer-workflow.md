@@ -60,6 +60,8 @@ $ rails server -b 0.0.0.0
 ```
 Finally, delete clean.sql
 
+In this cleaned snapshot, all passwords have been reset to "password".
+
 ### Commit your changes to your personal machine ###
 Work on your branch, e.g. _myfixes_.  Make commits using a [Git GUI][] or Git terminal commands on your local machine.
 
