@@ -84,6 +84,7 @@ Use a [Git GUI][] or on your local machine  <br>
 - Switch to your feature branch
 - Choose your feature branch in your personal [Github][] repo as the source branch
 - Choose origin repo "master" as the destination branch.
+- Check the "Allow edits from maintainers" checkbox. See [Improving collaboration with forks][]
 - For more information see [Using pull requests][].
 
 ## Other ##
@@ -127,6 +128,7 @@ One way to get a copy and test other developers' Pull Requests is by following t
 [Github]: https://github.com/
 [GitHub GUI]: https://central.github.com/mac/latest
 [Initial Database]: /developer-workflow.md#intial-databse/
+[Improving collaboration with forks]: https://github.com/blog/2247-improving-collaboration-with-forks
 [Installing Ruby]: /developer-workflow.md#installing-ruby/
 [Integration-Manager Workflow]: http://git-scm.com/book/en/Distributed-Git-Distributed-Workflows#Integration-Manager-Workflow
 [MO Developers Google Group]: https://groups.google.com/forum/?fromgroups=#!forum/mo-developers
