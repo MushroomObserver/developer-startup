@@ -48,17 +48,15 @@ Your local machine's developer-startup directory has a 'mushroom-observer' sub-d
 #### Loading a Snapshot of the Live Database (optional) ####
 We periodically create a snapshot of the live database. You can optionally load this to your development VM:
 - download the snapshot from http://images.mushroomobserver.org/checkpoint_stripped.gz
-- copy (or move) the downloaded clean.sql to the mushroom-observer directory
+- copy (or move) the downloaded .gz file to the mushroom-observer directory
 - Kill any running version of the server on your VM (usually control-C).
-Now on the VM:
+- On the VM in /vagrant/mushroom_observer:
 ```
-$ gunzip -c checkpoint_stripped.gz | mysql -u mo -pmo mo_development
-$ rake db:migrate
-$ rake lang:update
-$ moserver
-
+gunzip -c checkpoint_stripped.gz | mysql -u mo -pmo mo_development
+rake db:migrate
+rake lang:update
 ```
-Finally, delete clean.sql
+Finally, delete checkpoint_stripped.gz and clean.sql from the mushroom-observer directory.
 
 In this cleaned snapshot, all passwords have been reset to "password".
 
