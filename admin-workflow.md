@@ -39,7 +39,7 @@ git checkout master
 git fetch origin
 git merge origin/master
 git merge <developer's feature branch>
-git push orgin/master
+git push origin
 ```
 Do we need to do anything in [Github][] or [Pivotal Tracker][]?
 
