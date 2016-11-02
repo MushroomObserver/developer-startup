@@ -229,6 +229,13 @@ Start web server
 Go to VM (`vagrant ssh` or through [PuTTY][])
 
     $ cd /vagrant/mushroom-observer
+
+Start the Rails server on the VM
+
+    $ moserver
+
+or
+
     $ rails server -b 0.0.0.0
 
 Go to http://localhost:3000 in a browser on the host machine. (Note:

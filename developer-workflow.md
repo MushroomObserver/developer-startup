@@ -48,17 +48,17 @@ Your local machine's developer-startup directory has a 'mushroom-observer' sub-d
 #### Loading a Snapshot of the Live Database (optional) ####
 We periodically create a snapshot of the live database. You can optionally load this to your development VM:
 - download the snapshot from http://images.mushroomobserver.org/checkpoint_stripped.gz
-- copy (or move) the downloaded clean.sql to the mushroom-observer directory
+- copy (or move) the downloaded .gz file to the mushroom-observer directory
 - Kill any running version of the server on your VM (usually control-C).
-Now on the VM:
+- On the VM in /vagrant/mushroom_observer:
 ```
-$ gunzip -c checkpoint_stripped.gz | mysql -u mo -pmo mo_development
-$ rake db:migrate
-$ rake lang:update
-$ rails server -b 0.0.0.0
+gunzip -c checkpoint_stripped.gz | mysql -u mo -pmo mo_development
+rake db:migrate
+rake lang:update
+```
+Finally, delete checkpoint_stripped.gz and clean.sql from the mushroom-observer directory.
 
-```
-Finally, delete clean.sql
+In this cleaned snapshot, all passwords have been reset to "password".
 
 ### Commit your changes to your personal machine ###
 Work on your branch, e.g. _myfixes_.  Make commits using a [Git GUI][] or Git terminal commands on your local machine.
@@ -84,6 +84,7 @@ Use a [Git GUI][] or on your local machine  <br>
 - Switch to your feature branch
 - Choose your feature branch in your personal [Github][] repo as the source branch
 - Choose origin repo "master" as the destination branch.
+- Check the "Allow edits from maintainers" checkbox. See [Improving collaboration with forks][]
 - For more information see [Using pull requests][].
 
 ## Other ##
@@ -127,6 +128,7 @@ One way to get a copy and test other developers' Pull Requests is by following t
 [Github]: https://github.com/
 [GitHub GUI]: https://central.github.com/mac/latest
 [Initial Database]: /developer-workflow.md#intial-databse/
+[Improving collaboration with forks]: https://github.com/blog/2247-improving-collaboration-with-forks
 [Installing Ruby]: /developer-workflow.md#installing-ruby/
 [Integration-Manager Workflow]: http://git-scm.com/book/en/Distributed-Git-Distributed-Workflows#Integration-Manager-Workflow
 [MO Developers Google Group]: https://groups.google.com/forum/?fromgroups=#!forum/mo-developers
