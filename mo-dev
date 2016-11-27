@@ -107,6 +107,13 @@ else
     echo exifautotran exists
 fi
 
+if [ ! -f /usr/bin/exiftool ]; then
+    sudo apt-get install -y libimage-exiftool-perl
+    echo Installed exiftool
+else
+    echo exiftool exists
+fi
+
 git pull
 bundle install
 rake db:migrate
