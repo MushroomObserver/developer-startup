@@ -92,6 +92,7 @@ Use a [Git GUI][] or on your local machine  <br>
 Consider subscribing/joining to follow the project more closely
 - Join the [MO Developers Google Group][] for discussion of development and operations of MO.
 - Watch the [Official MO Repo][]. This will notify you about code updates and Pull Requests, so that you can comment on them and test them. For information on testing others' pull requests, see [Pull Requests by Others][]
+- Join the [MO Slack team][]. This is often the most useful way to communicate with other active developers.
 - Watch the [MO developer-startup repo][]
 - Bookmark the [MO persistent Goggle+ Hangout][] and use it to connect with other developers.
 
@@ -135,6 +136,7 @@ One way to get a copy and test other developers' Pull Requests is by following t
 [MO developer-startup repo]: https://github.com/MushroomObserver/developer-startup
 [MO persistent Goggle+ Hangout]: https://plus.google.com/hangouts/_/calendar/bXVzaHJvb20ucG9ldEBnbWFpbC5jb20.bs6hddfvfrkh7hh5345okcs9hs?authuser=0
 [MO project issue tracker]: https://www.pivotaltracker.com/n/projects/224629
+[MO Slack team]: https://mushroomobserver.slack.com/
 [Official MO Repo]: https://github.com/MushroomObserver/mushroom-observer
 [Pivotal Tracker]: https://www.pivotaltracker.com/
 [Pull Requests by Others]: /developer-workflow.md#pull-requests-by-others
