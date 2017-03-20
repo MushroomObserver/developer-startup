@@ -119,7 +119,7 @@ One way to get a copy and test other developers' Pull Requests is by following t
 
 - - -
 [comment]: # (The following are link reference definitions)
-[Create a user in the new instance of MO]: /README.md#create-a-user-in-the-new-instance-of-mo)
+[Create a user in the new instance of MO]: /README.md#create-a-user-in-the-new-instance-of-mo
 [Experiment with the Changes]: /admin-workflow.md#experiment-with-the-changes
 [Forking Workflow]: https://www.atlassian.com/git/workflows#!workflow-forking
 [Generating SSH Keys]: https://help.github.com/articles/generating-ssh-keys
