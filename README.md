@@ -1,7 +1,8 @@
 developer-startup
 =================
 
-Welcome to the Mushroom Observer Developer Startup system!  The purpose of this system is to help software developers setup an
+Welcome to the Mushroom Observer Developer Startup system!  
+The purpose of this system is to help software developers setup an
 environment where they can contribute to the Mushroom Observer code
 base.  The basic idea is to setup a virtual machine (VM) on your
 personal ("host) machine that is configured to serve a test version of the
@@ -204,7 +205,7 @@ Go to the VM ('vagrant ssh' or through Putty)
 
     $ cd /vagrant/mushroom-observer
     $ rake
-a
+    
 Note if the VM has been inactive for a while or you know additional
 changes have been added to the source code repository, you may want
 to re-run mo-dev using the directory containing the mushroom-observer
