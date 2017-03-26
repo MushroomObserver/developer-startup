@@ -1,8 +1,8 @@
 developer-startup
 =================
 
-Welcome to the Mushroom Observer Developer Startup system!  The
-purpose of this system is to help software developers setup an
+Welcome to the Mushroom Observer Developer Startup system!  
+The purpose of this system is to help software developers setup an
 environment where they can contribute to the Mushroom Observer code
 base.  The basic idea is to setup a virtual machine (VM) on your
 personal ("host) machine that is configured to serve a test version of the
@@ -11,15 +11,15 @@ on Macintoshes as well as PCs running either Windows or Ubuntu.  This
 system does require a reasonably powerful computer probably purchased
 in the last 3 years.
 
-If you're interested in contributing your code to MO, please also read
-[developer-workflow.md][]. Administrators/Managers should also have a look at
-[admin-workflow.md][].
+If you're interested in contributing your code to MO, please also read [developer-workflow.md][]. Administrators/Managers should also have a look at [admin-workflow.md][].
 
 ## Creating working Mushroom Observer development environment ##
 
 ### TL;DR ###
 
 From a clean Mac to running the tests:
+
+
 
 Install VirtualBox: https://www.virtualbox.org/
 
@@ -53,6 +53,9 @@ Install Vagrant: https://www.vagrantup.com/downloads.html
 Install git: http://git-scm.com/downloads (some Mac users have found
 the GitHub GUI to be helpful, https://central.github.com/mac/latest)
 
+If you are using Windows, it will be very helpful to select the option in the git installer to add
+the Unix tools to the Windows path.  This will make accessing the virtual box via SSH much easier.
+
 ### Clone the project ###
 Get the developer-startup Git project:
 
@@ -76,31 +79,8 @@ running the script below.
 > Wait for a while...
 
 #### Windows ####
-> Download Ruby for Windows at http://rubyinstaller.org/.  When
->installing make sure that you check "Add Ruby executables to your
->PATH", it is not checked by default.  You must also install the
->DevKit for windows which can also be downloaded from the same
->page. At this point you should have installed Ruby and
->Devkit. Helpful instructions for install DevKit can be found here:
->http://stackoverflow.com/a/8463500/1424115
-
-> Install Bundler in the /developer-startup directory.
-
-`C:/developer-startup> gem install bundler`
-
->Note: if you receive the following error
-
-`SSL_connect returned=1 errno=0 state=SSLv3 read server certificate B: certificate verify failed`
-
->please visit
->https://gist.github.com/luislavena/f064211759ee0f806c88 and follow
->the instructions to resolve the issue, it is an easy fix.
-
-> At this point you should have bundler installed.
 
 > Run the following command:
-
-`C:\developer-startup>bundle install`
 
 `C:\developer-startup>vagrant up`
 
@@ -114,7 +94,8 @@ Login to your new VM:
 
 On Windows machines this may require installing an ssh client like
 [PuTTY][].  Attempting to run `vagrant ssh` will give you the parameters
-you need to give to [PuTTY][].
+you need to give to [PuTTY][]. Note: if you have Git installed with the Unix tools
+you will not need to install [PuTTY][].
 
 You have been successful if the final output line is:
 
@@ -142,7 +123,7 @@ on the host machine. Assuming the key is called id_rsa, on the VM run:
 
     $ mo-dev /vagrant
 
-*Gotcha for Windows users.  If you see this error
+*Gotcha for Windows users.  If you see this error:
 
 `/bin/bash: bad interpreter: No such file or directory`
 
@@ -162,6 +143,14 @@ Another common option is to just use:
 
 and use Linux editors such as vi or emacs.  The rest of this document
 assumes that you used /vagrant when calling mo-dev.
+
+*Another Gotcha for Windows users:
+
+You may need to update the the "guest additions" on the VM in order for 'folder sharing'
+to work.  If you are unable to see any files in the /vagrant directory on the VM, then run
+this command on your host.
+
+    > vagrant plugins update vbguest
 
 #### Fix bundle-related error ####
 If running 'mo-dev /vagrant' causes errors similar to:
@@ -216,7 +205,7 @@ Go to the VM ('vagrant ssh' or through Putty)
 
     $ cd /vagrant/mushroom-observer
     $ rake
-
+    
 Note if the VM has been inactive for a while or you know additional
 changes have been added to the source code repository, you may want
 to re-run mo-dev using the directory containing the mushroom-observer
