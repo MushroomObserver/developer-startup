@@ -47,22 +47,18 @@ Your local machine's developer-startup directory has a 'mushroom-observer' sub-d
 
 #### Loading a Snapshot of the Live Database (optional) ####
 We periodically create a snapshot of the live database. You can optionally load this to your development VM:
-- download the snapshot from http://images.mushroomobserver.org/clean.sql
-- copy (or move) the downloaded clean.sql to the mushroom-observer directory
+- download the snapshot from http://images.mushroomobserver.org/checkpoint_stripped.gz
+- copy (or move) the downloaded .gz file to the mushroom-observer directory
 - Kill any running version of the server on your VM (usually control-C).
-Now on the VM:
+- On the VM in /vagrant/mushroom_observer:
 ```
-$ mysql -u root -proot
-mysql> drop database mo_development;
-mysql> create database mo_development;
-mysql> quit
-$ mysql -u root -proot mo_development < clean.sql
-$ rake db:migrate
-$ rake lang:update
-$ rails server -b 0.0.0.0
+gunzip -c checkpoint_stripped.gz | mysql -u mo -pmo mo_development
+rake db:migrate
+rake lang:update
+```
+Finally, delete checkpoint_stripped.gz and clean.sql from the mushroom-observer directory.
 
-```
-Finally, delete clean.sql
+In this cleaned snapshot, all passwords have been reset to "password".
 
 ### Commit your changes to your personal machine ###
 Work on your branch, e.g. _myfixes_.  Make commits using a [Git GUI][] or Git terminal commands on your local machine.
@@ -88,6 +84,7 @@ Use a [Git GUI][] or on your local machine  <br>
 - Switch to your feature branch
 - Choose your feature branch in your personal [Github][] repo as the source branch
 - Choose origin repo "master" as the destination branch.
+- Check the "Allow edits from maintainers" checkbox. See [Improving collaboration with forks][]
 - For more information see [Using pull requests][].
 
 ## Other ##
@@ -95,6 +92,7 @@ Use a [Git GUI][] or on your local machine  <br>
 Consider subscribing/joining to follow the project more closely
 - Join the [MO Developers Google Group][] for discussion of development and operations of MO.
 - Watch the [Official MO Repo][]. This will notify you about code updates and Pull Requests, so that you can comment on them and test them. For information on testing others' pull requests, see [Pull Requests by Others][]
+- Join the [MO Slack team][]. This is often the most useful way to communicate with other active developers.
 - Watch the [MO developer-startup repo][]
 - Bookmark the [MO persistent Goggle+ Hangout][] and use it to connect with other developers.
 
@@ -122,7 +120,7 @@ One way to get a copy and test other developers' Pull Requests is by following t
 
 - - -
 [comment]: # (The following are link reference definitions)
-[Create a user in the new instance of MO]: /README.md#create-a-user-in-the-new-instance-of-mo)
+[Create a user in the new instance of MO]: /README.md#create-a-user-in-the-new-instance-of-mo
 [Experiment with the Changes]: /admin-workflow.md#experiment-with-the-changes
 [Forking Workflow]: https://www.atlassian.com/git/workflows#!workflow-forking
 [Generating SSH Keys]: https://help.github.com/articles/generating-ssh-keys
@@ -131,12 +129,14 @@ One way to get a copy and test other developers' Pull Requests is by following t
 [Github]: https://github.com/
 [GitHub GUI]: https://central.github.com/mac/latest
 [Initial Database]: /developer-workflow.md#intial-databse/
+[Improving collaboration with forks]: https://github.com/blog/2247-improving-collaboration-with-forks
 [Installing Ruby]: /developer-workflow.md#installing-ruby/
 [Integration-Manager Workflow]: http://git-scm.com/book/en/Distributed-Git-Distributed-Workflows#Integration-Manager-Workflow
 [MO Developers Google Group]: https://groups.google.com/forum/?fromgroups=#!forum/mo-developers
 [MO developer-startup repo]: https://github.com/MushroomObserver/developer-startup
 [MO persistent Goggle+ Hangout]: https://plus.google.com/hangouts/_/calendar/bXVzaHJvb20ucG9ldEBnbWFpbC5jb20.bs6hddfvfrkh7hh5345okcs9hs?authuser=0
 [MO project issue tracker]: https://www.pivotaltracker.com/n/projects/224629
+[MO Slack team]: https://mushroomobserver.slack.com/
 [Official MO Repo]: https://github.com/MushroomObserver/mushroom-observer
 [Pivotal Tracker]: https://www.pivotaltracker.com/
 [Pull Requests by Others]: /developer-workflow.md#pull-requests-by-others
