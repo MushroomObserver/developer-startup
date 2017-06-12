@@ -60,6 +60,25 @@ Finally, delete checkpoint_stripped.gz and clean.sql from the mushroom-observer 
 
 In this cleaned snapshot, all passwords have been reset to "password".
 
+#### Snapshot migration error, table already exists ####
+Under some conditions migrating after you've loaded the snapshot will cause an error like the following. This can happen with the first migration, or many migrations later if you switch branches.
+```ruby
+= 20170423010922 CreateArticles: migrating ===================================
+-- create_table(:articles)
+rake aborted!
+StandardError: An error has occurred, all later migrations canceled:
+
+Mysql2::Error: Table 'articles' already exists: CREATE TABLE `articles` (`id` int(11) auto_increment PRIMARY KEY, `title` varchar(255), `body` text, `user_id` int(11), `rss_log_id` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+```
+The solution is to drop the offending table. An easy way to do this is via the mysql interpreter.
+```
+$ mysql -u mo -pmo
+mysql> use mo_development;
+mysql> drop table articles;
+mysql> exit
+```
+(For a longer discussion, see [Pivotal Story #147019977][].)
+
 ### Commit your changes to your personal machine ###
 Work on your branch, e.g. _myfixes_.  Make commits using a [Git GUI][] or Git terminal commands on your local machine.
 
@@ -139,6 +158,7 @@ One way to get a copy and test other developers' Pull Requests is by following t
 [MO Slack team]: https://mushroomobserver.slack.com/
 [Official MO Repo]: https://github.com/MushroomObserver/mushroom-observer
 [Pivotal Tracker]: https://www.pivotaltracker.com/
+[Pivotal Story #147019977]: https://www.pivotaltracker.com/story/show/147019977
 [Pull Requests by Others]: /developer-workflow.md#pull-requests-by-others
 [PuTTY]: http://www.chiark.greenend.org.uk/~sgtatham/putty/
 [README.md]: /README.md
