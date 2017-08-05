@@ -41,9 +41,11 @@ Your local machine's developer-startup directory has a 'mushroom-observer' sub-d
   `script/clean_dev_vm` <br/>
   This cleans out all sorts of auto-generated files and other cruft from the development VM and drops the databases.
   - Switch branches using a [Git GUI][] or `git checkout <other branch>`
-  - Run mo-dev again.  On the VM: <br/>
-  `vagrant@vagrant-ubuntu-trusty-64:~$ mo-dev /vagrant` <br/>
-  and you're good to go.
+  - Run mo-dev again in the root directory of the VM.  On the VM: <br/>
+  `cd ~; mo-dev /vagrant` <br/>
+  - Switch back to the mushroom-observer directory.  On the VM: <br/>
+   `cd /vagrant/mushroom-observer/` <br/>
+ - and you're good to go.
 
 #### Loading a Snapshot of the Live Database (optional) ####
 We periodically create a snapshot of the live database. You can optionally load this to your development VM:
