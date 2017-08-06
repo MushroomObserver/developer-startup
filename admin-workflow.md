@@ -1,4 +1,4 @@
-# admin-workflow #
+# ADMIN-WORKFLOW #
 
 Initial thoughts on what admin should do after receiving a Pull Request for a developer's feature branch.  I have not checked these for accuracy (do the commands accomplish what I say?), and I'm in the dark on best practices.
 
@@ -54,12 +54,12 @@ Do we need to do anything in [Github][] or [Pivotal Tracker][]?
 [Create a user in the new instance of MO]: /README.md#create-a-user-in-the-new-instance-of-mo)
 [Forking Workflow]: https://www.atlassian.com/git/workflows#!workflow-forking
 [Git fetch and merge]: http://longair.net/blog/2009/04/16/git-fetch-and-merge/
-[Git GUI]: /developer-workflow.md#git-guis/
+[Git GUI]: /DEVELOPER-WORKFLOW.md#git-guis/
 [Git workflow]: https://sandofsky.com/blog/git-workflow.html
 [Github]: https://github.com/
 [GitHub GUI]: https://central.github.com/mac/latest
-[Initial Database]: /developer-workflow.md#intial-databse/ 
-[Installing Ruby]: /developer-workflow.md#installing-ruby/ 
+[Initial Database]: /DEVELOPER-WORKFLOW.md#intial-databse/ 
+[Installing Ruby]: /DEVELOPER-WORKFLOW.md#installing-ruby/ 
 [Integration-Manager Workflow]: http://git-scm.com/book/en/Distributed-Git-Distributed-Workflows#Integration-Manager-Workflow
 [Official MO Repo]: https://github.com/MushroomObserver/mushroom-observer
 [Maintaining a Project]: http://git-scm.com/book/en/Distributed-Git-Maintaining-a-Project
@@ -69,6 +69,6 @@ Do we need to do anything in [Github][] or [Pivotal Tracker][]?
 [SourceTree]: http://www.sourcetreeapp.com
 [Using pull requests]: https://help.github.com/articles/using-pull-requests
 [What's the Workflow]: http://stackoverflow.com/questions/20956154/whats-the-workflow-to-contribute-to-an-open-source-project-using-git-pull-reque
-[Workflow]: /developer-workflow.md#workflow/
+[Workflow]: /DEVELOPER-WORKFLOW.md#workflow/
 
   

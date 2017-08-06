@@ -11,7 +11,7 @@ on Macintoshes as well as PCs running either Windows or Ubuntu.  This
 system does require a reasonably powerful computer probably purchased
 in the last 3 years.
 
-If you're interested in contributing your code to MO, please also read [developer-workflow.md][]. Administrators/Managers should also have a look at [admin-workflow.md][].
+If you're interested in contributing your code to MO, please also read [DEVELOPER-WORKFLOW.md][]. Administrators/Managers should also have a look at [ADMIN-WORKFLOW.md][].
 
 ## Creating working Mushroom Observer development environment ##
 
@@ -253,7 +253,7 @@ haven't gotten to it yet.)
 Contributing to MO code development
 -----------------------------------
 To contribute to MO code development, please follow the suggestions in
-[developer-workflow.md][].
+[DEVELOPER-WORKFLOW.md][].
 
 Resetting your VM
 -----------------
@@ -288,8 +288,8 @@ be updated to reference the new box and checked in.
 
 - - -
 [comment]: # (The following are link reference definitions)
-[admin-workflow.md]: /admin-workflow.md
+[ADMIN-WORKFLOW.md]: /ADMIN-WORKFLOW.md
 [Bundler]: http://bundler.io/
-[developer-workflow.md]: /developer-workflow.md/
+[DEVELOPER-WORKFLOW.md]: /DEVELOPER-WORKFLOW.md/
 [PuTTY]: http://www.putty.org/
 [RVM]: https://rvm.io/

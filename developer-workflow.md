@@ -1,4 +1,4 @@
-# developer-workflow #
+# DEVELOPER-WORKFLOW #
 This file describes the development workflow for the Mushroom Observer project.  We use a distributed workflow, known as "Integration-Manager" or "forking" workflow. See [Workflow][] below.
 
 This file assumes that you followed the directions in [README.md][] through [Create a user in the new instance of MO][] including setting up the MO development environment by running `mo-dev /vagrant`.
@@ -137,21 +137,21 @@ For more information, see [Integration-Manager Workflow][] and [Forking Workflow
 Some developers primarily (or exclusively) use a Git GUI -- as opposed to typing Git commands at the terminal. Two free GUIs that have been found useful on the Mac are: [GitHub GUI][] and [SourceTree][].
 
 ## Pull Requests by Others ##
-One way to get a copy and test other developers' Pull Requests is by following the instructions in [Get the Changes][] and [Experiment with the Changes][] (both in the admin-workflow.md file in this repository.)
+One way to get a copy and test other developers' Pull Requests is by following the instructions in [Get the Changes][] and [Experiment with the Changes][] (both in the ADMIN-WORKFLOW.md file in this repository.)
 
 - - -
 [comment]: # (The following are link reference definitions)
 [Create a user in the new instance of MO]: /README.md#create-a-user-in-the-new-instance-of-mo
-[Experiment with the Changes]: /admin-workflow.md#experiment-with-the-changes
+[Experiment with the Changes]: /ADMIN-WORKFLOW.md#experiment-with-the-changes
 [Forking Workflow]: https://www.atlassian.com/git/workflows#!workflow-forking
 [Generating SSH Keys]: https://help.github.com/articles/generating-ssh-keys
-[Get the Changes]: /admin-workflow.md#get-the-changes
-[Git GUI]: /developer-workflow.md#git-guis/
+[Get the Changes]: /ADMIN-WORKFLOW.md#get-the-changes
+[Git GUI]: /DEVELOPER-WORKFLOW.md#git-guis/
 [Github]: https://github.com/
 [GitHub GUI]: https://central.github.com/mac/latest
-[Initial Database]: /developer-workflow.md#intial-databse/
+[Initial Database]: /DEVELOPER-WORKFLOW.md#intial-databse/
 [Improving collaboration with forks]: https://github.com/blog/2247-improving-collaboration-with-forks
-[Installing Ruby]: /developer-workflow.md#installing-ruby/
+[Installing Ruby]: /DEVELOPER-WORKFLOW.md#installing-ruby/
 [Integration-Manager Workflow]: http://git-scm.com/book/en/Distributed-Git-Distributed-Workflows#Integration-Manager-Workflow
 [MO Developers Google Group]: https://groups.google.com/forum/?fromgroups=#!forum/mo-developers
 [MO developer-startup repo]: https://github.com/MushroomObserver/developer-startup
@@ -161,10 +161,10 @@ One way to get a copy and test other developers' Pull Requests is by following t
 [Official MO Repo]: https://github.com/MushroomObserver/mushroom-observer
 [Pivotal Tracker]: https://www.pivotaltracker.com/
 [Pivotal Story #147019977]: https://www.pivotaltracker.com/story/show/147019977
-[Pull Requests by Others]: /developer-workflow.md#pull-requests-by-others
+[Pull Requests by Others]: /DEVELOPER-WORKFLOW.md#pull-requests-by-others
 [PuTTY]: http://www.chiark.greenend.org.uk/~sgtatham/putty/
 [README.md]: /README.md
 [SourceTree]: http://www.sourcetreeapp.com
 [Using pull requests]: https://help.github.com/articles/using-pull-requests
 [What's the Workflow]: http://stackoverflow.com/questions/20956154/whats-the-workflow-to-contribute-to-an-open-source-project-using-git-pull-reque
-[Workflow]: /developer-workflow.md#workflow/
+[Workflow]: /DEVELOPER-WORKFLOW.md#workflow/
