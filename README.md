@@ -36,6 +36,10 @@ In a Terminal shell:
     mo-dev /vagrant
     source /home/vagrant/.rvm/scripts/rvm
     cd /vagrant/mushroom-observer
+    rake db:schema:load
+    rake db:fixtures:load
+    rake lang:update
+    rake lang:export:el
     rake
 
 That should be it.  If something did not work, then see below for a
@@ -220,10 +224,6 @@ Go to VM (`vagrant ssh` or through [PuTTY][])
     $ cd /vagrant/mushroom-observer
 
 Start the Rails server on the VM
-
-    $ moserver
-
-or
 
     $ rails server -b 0.0.0.0
 
