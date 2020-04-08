@@ -100,13 +100,17 @@ Use a [Git GUI][] or on your local machine  <br>
 `git checkout myfixes` <br>
 `git push personal myfixes` <br>
 
-#### Create a Pull Request ####
+#### Create a Pull Request (PR) ####
 - Go to your personal [Github][] repository and click on "Pull Request".
 - Switch to your feature branch
 - Choose your feature branch in your personal [Github][] repo as the source branch
 - Choose origin repo "master" as the destination branch.
 - Check the "Allow edits from maintainers" checkbox. See [Improving collaboration with forks][]
-- For more information see [Using pull requests][].
+- In the PR description please: 
+  - Say what problem/feature the PR addesses, including a link to to any Pivotal story or MO Developers disussion; 
+  - Include a manual testing script; and 
+  - Mention any unusual aspects of the code.
+- For more information about PRs, see [Using pull requests][].
 
 ## Other ##
 ### Follow MO development ###
