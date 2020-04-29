@@ -86,6 +86,7 @@ Work on your branch, e.g. _myfixes_.  Make commits using a [Git GUI][] or Git te
 
 When you are done with all your changes and are ready to contribute them to the Project, make sure they are all committed locally. Use a [Git GUI][] or on your local machine: <br>
 `git commit -a -m "insert commit message"` <br>
+For some ideas about writing commit messages, see [How to Write a Git Commit Message][]
 
 ### Contribute your changes to the MO Project ###
 #### Re-sync with the [Official MO Repo][] ###
@@ -153,6 +154,7 @@ One way to get a copy and test other developers' Pull Requests is by following t
 [Git GUI]: /DEVELOPER-WORKFLOW.md#git-guis/
 [Github]: https://github.com/
 [GitHub GUI]: https://central.github.com/mac/latest
+[How to Write a Git Commit Message]: https://chris.beams.io/posts/git-commit/
 [Initial Database]: /DEVELOPER-WORKFLOW.md#intial-databse/
 [Improving collaboration with forks]: https://github.com/blog/2247-improving-collaboration-with-forks
 [Installing Ruby]: /DEVELOPER-WORKFLOW.md#installing-ruby/
