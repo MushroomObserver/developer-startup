@@ -250,10 +250,11 @@ just has the admin user and the language stuff.  It probably makes
 sense to add some observations, names and images for testing, but I
 haven't gotten to it yet.)
 
-Contributing to MO code development
------------------------------------
+# Next: Contribute to MO code development
+
 To contribute to MO code development, please follow the suggestions in
 [DEVELOPER-WORKFLOW.md][].
+-----------------------------------
 
 Resetting your VM
 -----------------
