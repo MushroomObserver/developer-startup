@@ -30,6 +30,7 @@ Vagrant.configure("2") do |config|
         debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password root'
         apt-get -y install mysql-server
         apt-get -y install libmysqlclient-dev
+        sed "s/\\[mysqld\\]/[mysqld]\\nsql-mode = ''/" -i'' /etc/mysql/mysql.conf.d/mysqld.cnf
         ln -fs /vagrant/mo-dev /usr/local/bin/mo-dev
         apt-get -y install git build-essential wget curl vim emacs \
           imagemagick libmagickcore-dev libmagickwand-dev libjpeg-dev
