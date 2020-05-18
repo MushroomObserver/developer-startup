@@ -37,6 +37,11 @@ In a Terminal shell:
     source /home/vagrant/.rvm/scripts/rvm
     cd /vagrant/mushroom-observer
     rails test
+    bin/rails db:environment:set RAILS_ENV=development
+    rails db:schema:load
+    rails db:fixtures:load
+    rails lang:update
+    rails server -b 0.0.0.0
 
 That should be it.  If something did not work, then see below for a
 more detailed walk through which addresses the issues that have been
