@@ -32,7 +32,7 @@ Vagrant.configure("2") do |config|
         apt-get -y install libmysqlclient-dev
         sed "s/\\[mysqld\\]/[mysqld]\\nsql-mode = ''/" -i'' /etc/mysql/mysql.conf.d/mysqld.cnf
         ln -fs /vagrant/mo-dev /usr/local/bin/mo-dev
-        apt-get -y install git build-essential wget curl vim emacs \
+        apt-get -y install git build-essential wget curl vim \
           imagemagick libmagickcore-dev libmagickwand-dev libjpeg-dev
       SHELL
     end
