@@ -31,16 +31,12 @@ In a Terminal shell:
 
     git clone https://github.com/MushroomObserver/developer-startup.git
     cd developer-startup
-    ./startup
+    vagrant up
     vagrant ssh
     mo-dev /vagrant
     source /home/vagrant/.rvm/scripts/rvm
     cd /vagrant/mushroom-observer
-    rake db:schema:load
-    rake db:fixtures:load
-    rake lang:update
-    rake lang:export:el
-    rake
+    rails test
 
 That should be it.  If something did not work, then see below for a
 more detailed walk through which addresses the issues that have been
@@ -79,7 +75,7 @@ the bundler package installed.  On some Linux distributions including Ubuntu
 you may have to type```sudo apt-get install bundler``` in the terminal before
 running the script below.
 
-    `% ./startup`
+    `% vagrant up`
 > Wait for a while...
 
 #### Windows ####
@@ -103,7 +99,7 @@ you will not need to install [PuTTY][].
 
 You have been successful if the final output line is:
 
-    vagrant@vagrant-ubuntu-trusty-64:~$
+    vagrant@vagrant:~$
 
 #### Setting up ssh access to GitHub (optional) ####
 
@@ -120,7 +116,7 @@ on the host machine. Assuming the key is called id_rsa, on the VM run:
 
     $ mkdir ~/.ssh
     $ chmod 700 ~/.ssh
-    $ cp /vagrant/id_rsa ~/.ssh
+    $ mv /vagrant/id_rsa ~/.ssh
     $ chmod 600 ~/.ssh/id_rsa
 
 #### Setup the new VM ####
@@ -170,7 +166,7 @@ cannot load such file -- bundler/setup
 Then fix things by the following procedure:
 On the VM:
 ```
-vagrant@vagrant-ubuntu-trusty-64:~$ exit
+vagrant@vagrant:~$ exit
 ```
 Then on your local machine:
 ```
@@ -180,8 +176,8 @@ Then on your local machine:
 ```
 Then on the VM
 ```
-vagrant@vagrant-ubuntu-trusty-64:~$ gem install bundle
-vagrant@vagrant-ubuntu-trusty-64:~$ mo-dev /vagrant
+vagrant@vagrant:~$ gem install bundle
+vagrant@vagrant:~$ mo-dev /vagrant
 ```
 
 #### Ensure RVM is installed on the VM ####
@@ -192,7 +188,7 @@ Look at the last line displayed by mo-dev /vagrant. If it is
 
 then setup [RVM][] (and get the correct Ruby version) by running
 
-    vagrant@vagrant-ubuntu-trusty-64:~$ source /home/vagrant/.rvm/scripts/rvm
+    vagrant@vagrant:~$ source /home/vagrant/.rvm/scripts/rvm
 
 ### Using MO on the VM ###
 Assuming all of that was successful, you now have a running virtual
@@ -208,7 +204,7 @@ To run the tests in the new environment
 Go to the VM ('vagrant ssh' or through Putty)
 
     $ cd /vagrant/mushroom-observer
-    $ rake
+    $ rails test
     
 Note if the VM has been inactive for a while or you know additional
 changes have been added to the source code repository, you may want
@@ -262,9 +258,9 @@ on the host machine run:
 
     % vagrant destroy
     % rm -rf mushroom-observer
-    % ./startup
+    % vagrant up
 
-and continue as above after the original ./startup.
+and continue as above after the original vagrant up.
 
 Rebuilding the Vagrant box from scratch
 ---------------------------------------
