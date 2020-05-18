@@ -22,7 +22,7 @@ if [ ! -d /home/vagrant/.rvm ]; then
     curl -L https://get.rvm.io | bash -s stable
     source /home/vagrant/.rvm/scripts/rvm
     new_rvm=1
-    sudo gem install bundle --no-rdoc --no-ri
+    sudo gem install bundle
 else
     echo RVM installed
 fi
@@ -48,9 +48,11 @@ if [ -f .ruby-version ]; then
     fi
 fi
 
+ruby --version
+
 if ! [[ `gem list` =~ "bundle " ]]; then
     echo "Installing bundler"
-    gem install bundle --no-rdoc --no-ri
+    gem install bundle
 else
     echo "Bundler already installed"
 fi
@@ -90,13 +92,6 @@ if [ ! -f /usr/local/bin/jpegresize ]; then
     echo Created and installed jpegresize executable
 else
     echo jpegresize exists
-fi
-
-if [ ! -f /usr/local/bin/jpegexiforient ]; then
-    sudo gcc script/jpegexiforient.c -o /usr/local/bin/jpegexiforient
-    echo Created and installed jpegexiforient executable
-else
-    echo jpegexiforient exists
 fi
 
 if [ ! -f /usr/local/bin/exifautotran ]; then
