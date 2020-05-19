@@ -55,8 +55,8 @@ We periodically create a snapshot of the live database. You can optionally load 
 - On the VM in /vagrant/mushroom_observer:
 ```
 gunzip -c checkpoint_stripped.gz | mysql -u mo -pmo mo_development
-rake db:migrate
-rake lang:update
+rails db:migrate
+rails lang:update
 ```
 Finally, delete checkpoint_stripped.gz and clean.sql from the mushroom-observer directory.
 
@@ -107,9 +107,9 @@ Use a [Git GUI][] or on your local machine  <br>
 - Choose your feature branch in your personal [Github][] repo as the source branch
 - Choose origin repo "master" as the destination branch.
 - Check the "Allow edits from maintainers" checkbox. See [Improving collaboration with forks][]
-- In the PR description please: 
-  - Say what problem/feature the PR addesses, including a link to to any Pivotal story or MO Developers disussion; 
-  - Include a manual testing script; and 
+- In the PR description please:
+  - Say what problem/feature the PR addesses, including a link to to any Pivotal story or MO Developers disussion;
+  - Include a manual testing script; and
   - Mention any unusual aspects of the code.
 - For more information about PRs, see [Using pull requests][].
 
