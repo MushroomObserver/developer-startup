@@ -22,7 +22,6 @@ if [ ! -d /home/vagrant/.rvm ]; then
     curl -L https://get.rvm.io | bash -s stable
     source /home/vagrant/.rvm/scripts/rvm
     new_rvm=1
-    sudo gem install bundle
 else
     echo RVM installed
 fi
