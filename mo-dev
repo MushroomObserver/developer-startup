@@ -2,7 +2,7 @@
 
 dir=$1
 new_rvm=
-run_rake_db_seen=
+new_db=
 
 if [ ! $dir ]; then
     echo "Usage: mo-dev <dir>"
@@ -20,7 +20,6 @@ if [ ! -d /home/vagrant/.rvm ]; then
     echo Installing RVM
     gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
     curl -L https://get.rvm.io | bash -s stable
-    source /home/vagrant/.rvm/scripts/rvm
     new_rvm=1
 else
     echo RVM installed
@@ -47,8 +46,6 @@ if [ -f .ruby-version ]; then
     fi
 fi
 
-ruby --version
-
 if ! [[ `gem list` =~ "bundle " ]]; then
     echo "Installing bundler"
     gem install bundle
@@ -60,7 +57,7 @@ mysql -u mo -pmo mo_development -e ''
 if [ ! $? -eq 0 ]; then
     mysql -u root -proot < db/initialize.sql
     mysql -u mo -pmo mo_development < db/vagrant/init.sql
-    run_rake_db_seed=1
+    new_db=1
     echo Created and populated mo_development database
 else
     echo mo_development exists
@@ -110,11 +107,15 @@ fi
 
 git pull
 bundle install
-rake db:migrate
-if [ $run_rake_db_seed ]; then
-    rake db:seed
+if [ $new_db ]; then
+    bin/rails db:environment:set RAILS_ENV=development
+    rails db:schema:load
+    rails db:seed
+    rails db:fixtures:load
+else
+    rails db:migrate
 fi
-rake lang:update
+rails lang:update
 if [ $new_rvm ]; then
     echo "RVM installed.  Run: source /home/vagrant/.rvm/scripts/rvm"
 fi
