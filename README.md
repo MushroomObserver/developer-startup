@@ -270,22 +270,53 @@ and continue as above after the original vagrant up.
 Rebuilding the Vagrant box from scratch
 ---------------------------------------
 If for some reason the VM created using the ./startup does not work or
-it gets outdated for some reason.  You can build a new VM from scratch
-using the ./build script.  Most of the files in developer-startup are
-there solely to support this rebuild process.
+it gets outdated and you wish to refresh it, you can build a new VM
+from scratch.  First, you may want to update the base box in the
+Vagrantfile.  Once you have the base box you want, run:
 
-Once the ./build script completes you should have a fresh clean VM
-that is equivalent to what you get after you run ./startup.
+    % vagrant up clean
 
-For those maintaining the Mushroom Observer VM, once you finish the
-./build script, you can create a new version of the box with:
+For those maintaining the Mushroom Observer VM, once this finishes,
+you should connect to the VM using:
+
+    % vagrant ssh clean
+
+and update the installed operating system with:
+
+    % sudo apt -y upgrade
+
+This may enter a screen part way through that is attempting to update
+the disk drivers ("grub").  However, it's not clear that this is
+relevant in the VM context and I was not able to figure out how to
+try it out.  As result, I simply went through the screens using
+tabs and returns to skip this step.
+
+Once the upgrade is done, I recommend install RVM and the current
+version of Ruby as the vargrant user.  See the mo-dev script for the
+commands needed to do this.  Ideally this would just be handled in
+the Vagrantfile, but I haven't spent the time to figure out how to
+do this consistently.
+
+Once the VM is setup, you should create a new version of the box with:
 
     % vagrant package clean
 
 This will create a package.box file in the developer-startup
-directory.  To allow others to use it, this should get uploaded
-to http://images.digitalmycology.com and the Vagrantfile should
-be updated to reference the new box and checked in.
+directory.  To allow others to use it, this should get uploaded to
+http://images.mushroomobserver.org and placed in the web root
+directory under a distinct name.  Finally, the Vagrantfile should be
+updated to reference the new box and checked in.
+
+Other develops should now be able to get the upgraded box by simply
+updating their local developer-startup repo and running:
+
+    % vagrant destroy
+    % vagrant up
+
+They may also want to get rid of any old boxes by running:
+
+    % vagrant box list
+    % vagrant box [boxname] remove
 
 - - -
 [comment]: # (The following are link reference definitions)
