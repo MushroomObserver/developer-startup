@@ -72,7 +72,7 @@ fi
 
 if [ ! -f config/gmaps_api_key.yml ]; then
     cp config/gmaps_api_key.yml-template config/gmaps_api_key.yml
-    echo Copied config/gmaps_api_key.yml-template
+    echo Copied config/gmaps_api_key.yml
 else
     echo gmaps_api_key.yml exists
 fi

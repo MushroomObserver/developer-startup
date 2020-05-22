@@ -55,8 +55,8 @@ We periodically create a snapshot of the live database. You can optionally load 
 - On the VM in /vagrant/mushroom_observer:
 ```
 gunzip -c checkpoint_stripped.gz | mysql -u mo -pmo mo_development
-rake db:migrate
-rake lang:update
+rails db:migrate
+rails lang:update
 ```
 Finally, delete checkpoint_stripped.gz and clean.sql from the mushroom-observer directory.
 
@@ -86,6 +86,7 @@ Work on your branch, e.g. _myfixes_.  Make commits using a [Git GUI][] or Git te
 
 When you are done with all your changes and are ready to contribute them to the Project, make sure they are all committed locally. Use a [Git GUI][] or on your local machine: <br>
 `git commit -a -m "insert commit message"` <br>
+For some ideas about writing commit messages, see [How to Write a Git Commit Message][]
 
 ### Contribute your changes to the MO Project ###
 #### Re-sync with the [Official MO Repo][] ###
@@ -106,9 +107,9 @@ Use a [Git GUI][] or on your local machine  <br>
 - Choose your feature branch in your personal [Github][] repo as the source branch
 - Choose origin repo "master" as the destination branch.
 - Check the "Allow edits from maintainers" checkbox. See [Improving collaboration with forks][]
-- In the PR description please: 
-  - Say what problem/feature the PR addesses, including a link to to any Pivotal story or MO Developers disussion; 
-  - Include a manual testing script; and 
+- In the PR description please:
+  - Say what problem/feature the PR addesses, including a link to to any Pivotal story or MO Developers disussion;
+  - Include a manual testing script; and
   - Mention any unusual aspects of the code.
 - For more information about PRs, see [Using pull requests][].
 
@@ -153,6 +154,7 @@ One way to get a copy and test other developers' Pull Requests is by following t
 [Git GUI]: /DEVELOPER-WORKFLOW.md#git-guis/
 [Github]: https://github.com/
 [GitHub GUI]: https://central.github.com/mac/latest
+[How to Write a Git Commit Message]: https://chris.beams.io/posts/git-commit/
 [Initial Database]: /DEVELOPER-WORKFLOW.md#intial-databse/
 [Improving collaboration with forks]: https://github.com/blog/2247-improving-collaboration-with-forks
 [Installing Ruby]: /DEVELOPER-WORKFLOW.md#installing-ruby/
