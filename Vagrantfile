@@ -52,7 +52,7 @@ Vagrant.configure("2") do |config|
     end
   else
     config.vm.define "mo", primary: true do |mo|
-      mo.vm.box = "mo-bionic-beaver"
+      mo.vm.box = "mo-bionic"
       mo.vm.box_url = "http://images.mushroomobserver.org/mo-bionic.box"
       mo.vm.network "forwarded_port", guest: 3000, host: 3000
       mo.vm.provider "virtualbox" do |vb|
