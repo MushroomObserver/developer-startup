@@ -277,27 +277,6 @@ Vagrantfile.  Once you have the base box you want, run:
 
     % vagrant up clean
 
-For those maintaining the Mushroom Observer VM, once this finishes,
-you should connect to the VM using:
-
-    % vagrant ssh clean
-
-and update the installed operating system with:
-
-    % sudo apt -y upgrade
-
-This may enter a screen part way through that is attempting to update
-the disk drivers ("grub").  However, it's not clear that this is
-relevant in the VM context and I was not able to figure out how to
-try it out.  As result, I simply went through the screens using
-tabs and returns to skip this step.
-
-Once the upgrade is done, I recommend install RVM and the current
-version of Ruby as the vargrant user.  See the mo-dev script for the
-commands needed to do this.  Ideally this would just be handled in
-the Vagrantfile, but I haven't spent the time to figure out how to
-do this consistently.
-
 Once the VM is setup, you should create a new version of the box with:
 
     % vagrant package clean
@@ -308,7 +287,7 @@ http://images.mushroomobserver.org and placed in the web root
 directory under a distinct name.  Finally, the Vagrantfile should be
 updated to reference the new box and checked in.
 
-Other develops should now be able to get the upgraded box by simply
+Other developers should now be able to get the upgraded box by simply
 updating their local developer-startup repo and running:
 
     % vagrant destroy
