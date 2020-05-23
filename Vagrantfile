@@ -26,6 +26,7 @@ Vagrant.configure("2") do |config|
       clean.vm.provision :shell, inline: <<-SHELL
         update-locale LANG=en_US.UTF-8
         apt-get -y update
+        DEBIAN_FRONTEND=noninteractive apt-get -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" dist-upgrade
         debconf-set-selections <<< 'mysql-server mysql-server/root_password password root'
         debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password root'
         apt-get -y install mysql-server
@@ -33,13 +34,26 @@ Vagrant.configure("2") do |config|
         sed "s/\\[mysqld\\]/[mysqld]\\nsql-mode = ''/" -i'' /etc/mysql/mysql.conf.d/mysqld.cnf
         ln -fs /vagrant/mo-dev /usr/local/bin/mo-dev
         apt-get -y install git build-essential wget curl vim ruby \
-          imagemagick libmagickcore-dev libmagickwand-dev libjpeg-dev
+          imagemagick libmagickcore-dev libmagickwand-dev libjpeg-dev \
+          libgmp3-dev
       SHELL
+
+      clean.vm.provision :shell, privileged: false, inline: <<-SHELL
+        gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+        curl -L https://get.rvm.io | bash -s stable
+        source ~/.rvm/scripts/rvm
+        rvm install 2.6.6
+      SHELL
+
+      clean.trigger.after [:provision] do |t|
+        t.name = "Reboot after provisioning"
+        t.run = { :inline => "vagrant reload clean" }
+      end
     end
   else
     config.vm.define "mo", primary: true do |mo|
       mo.vm.box = "mo-bionic-beaver"
-      mo.vm.box_url = "http://images.mushroomobserver.org/mo-bionic-beaver.box"
+      mo.vm.box_url = "http://images.mushroomobserver.org/mo-bionic.box"
       mo.vm.network "forwarded_port", guest: 3000, host: 3000
       mo.vm.provider "virtualbox" do |vb|
         # Use VBoxManage to customize the VM. For example to change memory:
