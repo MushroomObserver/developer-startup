@@ -36,10 +36,8 @@ In a Terminal shell:
     vagrant up
     vagrant ssh
     mo-dev /vagrant
-    source /home/vagrant/.rvm/scripts/rvm
     cd /vagrant/mushroom-observer
     rails test
-    bin/rails db:environment:set RAILS_ENV=development
     rails db:schema:load
     rails db:fixtures:load
     rails lang:update
@@ -73,26 +71,7 @@ Get the developer-startup Git project:
 Go into the resulting directory:
 
     cd developer-startup
-
-What you do next depends on your local machine's operating system:
-
-#### Linux and MacOSXL ####
->If you have bash installed (true by default), run the
-startup script.  Please note: It is also important to make sure that you have
-the bundler package installed.  On some Linux distributions including Ubuntu
-you may have to type```sudo apt-get install bundler``` in the terminal before
-running the script below.
-
-    `% vagrant up`
-> Wait for a while...
-
-#### Windows ####
-
-> Run the following command:
-
-`C:\developer-startup>vagrant up`
-
-> Wait for a while...
+    vagrant up
 
 ### Setup your Virtual Machine ###
 
@@ -160,44 +139,6 @@ this command on your host.
 
     > vagrant plugins update vbguest
 
-#### Fix bundle-related error ####
-If running 'mo-dev /vagrant' causes errors similar to:
-```
-/usr/lib/ruby/1.9.1/rubygems/dependency.rb:247:in `to_specs': Could not find bundler (>= 0) amongst [bundler-unload-1.0.2, executable-hooks-1.3.2, gem-wrappers-1.2.7, rubygems-bundler-1.4.4, rvm-1.11.3.9] (Gem::LoadError)
-from /usr/lib/ruby/1.9.1/rubygems/dependency.rb:256:in `to_spec'
-from /usr/lib/ruby/1.9.1/rubygems.rb:1231:in `gem'
-from /usr/local/bin/bundle:22:in `<main>'
-rake aborted!
-cannot load such file -- bundler/setup
-...
-```
-Then fix things by the following procedure:
-On the VM:
-```
-vagrant@vagrant:~$ exit
-```
-Then on your local machine:
-```
-~/developer-startup $ vagrant halt
-~/developer-startup $ vagrant up
-~/developer-startup $ vagrant ssh
-```
-Then on the VM
-```
-vagrant@vagrant:~$ gem install bundle
-vagrant@vagrant:~$ mo-dev /vagrant
-```
-
-#### Ensure RVM is installed on the VM ####
-
-Look at the last line displayed by mo-dev /vagrant. If it is
-
-    RVM installed.  Run: source /home/vagrant/.rvm/scripts/rvm
-
-then setup [RVM][] (and get the correct Ruby version) by running
-
-    vagrant@vagrant:~$ source /home/vagrant/.rvm/scripts/rvm
-
 ### Using MO on the VM ###
 Assuming all of that was successful, you now have a running virtual
 machine with the MO source code installed, an instance of MySQL and
@@ -226,6 +167,9 @@ Start web server
 Go to VM (`vagrant ssh` or through [PuTTY][])
 
     $ cd /vagrant/mushroom-observer
+    $ rails db:schema:load
+    $ rails db:fixtures:load
+    $ rails lang:update
 
 Start the Rails server on the VM
 
@@ -251,7 +195,7 @@ Go to verification URL in your browser
 
 Have fun!  (Note the initial database, developer-startup/init.sql,
 just has the admin user and the language stuff.  It probably makes
-sense to add some observations, names and images for testing, but I
+sense to add some observations, names and images for testing, but we
 haven't gotten to it yet.)
 
 # Next: Contribute to MO code development

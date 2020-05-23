@@ -1,7 +1,6 @@
 #!/bin/bash
 
 dir=$1
-new_rvm=
 new_db=
 
 if [ ! $dir ]; then
@@ -103,8 +102,4 @@ if [ $new_db ]; then
     rails db:fixtures:load
 else
     rails db:migrate
-fi
-rails lang:update
-if [ $new_rvm ]; then
-    echo "RVM installed.  Run: source /home/vagrant/.rvm/scripts/rvm"
 fi
