@@ -1,17 +1,19 @@
 developer-startup
 =================
 
-Welcome to the Mushroom Observer Developer Startup system!  
-The purpose of this system is to help software developers setup an
+Welcome to the Mushroom Observer Developer Startup system!  The
+purpose of this system is to help software developers setup an
 environment where they can contribute to the Mushroom Observer code
 base.  The basic idea is to setup a virtual machine (VM) on your
-personal ("host) machine that is configured to serve a test version of the
-Mushroom Observer website and to access the code.  It has been tested
-on Macintoshes as well as PCs running either Windows or Ubuntu.  This
-system does require a reasonably powerful computer probably purchased
-in the last 3 years.
+personal ("host") machine that is configured to serve a test version
+of the Mushroom Observer website and to access the code.  It has been
+tested on Macintoshes as well as PCs running either Windows or Ubuntu.
+This system does require a reasonably powerful computer probably
+purchased in the last 3 years.
 
-If you're interested in contributing your code to MO, please also read [DEVELOPER-WORKFLOW.md][]. Administrators/Managers should also have a look at [ADMIN-WORKFLOW.md][].
+If you're interested in contributing your code to MO, please also read
+[DEVELOPER-WORKFLOW.md][]. Administrators/Managers should also have a
+look at [ADMIN-WORKFLOW.md][].
 
 ## Creating working Mushroom Observer development environment ##
 
@@ -58,8 +60,9 @@ Install Vagrant: https://www.vagrantup.com/downloads.html
 Install git: http://git-scm.com/downloads (some Mac users have found
 the GitHub GUI to be helpful, https://central.github.com/mac/latest)
 
-If you are using Windows, it will be very helpful to select the option in the git installer to add
-the Unix tools to the Windows path.  This will make accessing the virtual box via SSH much easier.
+If you are using Windows, it will be very helpful to select the option
+in the git installer to add the Unix tools to the Windows path.  This
+will make accessing the virtual box via SSH much easier.
 
 ### Clone the project ###
 Get the developer-startup Git project:
