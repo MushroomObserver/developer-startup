@@ -98,7 +98,6 @@ bundle install
 if [ $new_db ]; then
     bin/rails db:environment:set RAILS_ENV=development
     rails db:schema:load
-    rails db:seed
     rails db:fixtures:load
 else
     rails db:migrate
