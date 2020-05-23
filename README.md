@@ -1,17 +1,19 @@
 developer-startup
 =================
 
-Welcome to the Mushroom Observer Developer Startup system!  
-The purpose of this system is to help software developers setup an
+Welcome to the Mushroom Observer Developer Startup system!  The
+purpose of this system is to help software developers setup an
 environment where they can contribute to the Mushroom Observer code
 base.  The basic idea is to setup a virtual machine (VM) on your
-personal ("host) machine that is configured to serve a test version of the
-Mushroom Observer website and to access the code.  It has been tested
-on Macintoshes as well as PCs running either Windows or Ubuntu.  This
-system does require a reasonably powerful computer probably purchased
-in the last 3 years.
+personal ("host") machine that is configured to serve a test version
+of the Mushroom Observer website and to access the code.  It has been
+tested on Macintoshes as well as PCs running either Windows or Ubuntu.
+This system does require a reasonably powerful computer probably
+purchased in the last 3 years.
 
-If you're interested in contributing your code to MO, please also read [DEVELOPER-WORKFLOW.md][]. Administrators/Managers should also have a look at [ADMIN-WORKFLOW.md][].
+If you're interested in contributing your code to MO, please also read
+[DEVELOPER-WORKFLOW.md][]. Administrators/Managers should also have a
+look at [ADMIN-WORKFLOW.md][].
 
 ## Creating working Mushroom Observer development environment ##
 
@@ -31,16 +33,15 @@ In a Terminal shell:
 
     git clone https://github.com/MushroomObserver/developer-startup.git
     cd developer-startup
-    ./startup
+    vagrant up
     vagrant ssh
     mo-dev /vagrant
-    source /home/vagrant/.rvm/scripts/rvm
     cd /vagrant/mushroom-observer
-    rake db:schema:load
-    rake db:fixtures:load
-    rake lang:update
-    rake lang:export:el
-    rake
+    rails test
+    rails db:schema:load
+    rails db:fixtures:load
+    rails lang:update
+    rails server -b 0.0.0.0
 
 That should be it.  If something did not work, then see below for a
 more detailed walk through which addresses the issues that have been
@@ -57,8 +58,9 @@ Install Vagrant: https://www.vagrantup.com/downloads.html
 Install git: http://git-scm.com/downloads (some Mac users have found
 the GitHub GUI to be helpful, https://central.github.com/mac/latest)
 
-If you are using Windows, it will be very helpful to select the option in the git installer to add
-the Unix tools to the Windows path.  This will make accessing the virtual box via SSH much easier.
+If you are using Windows, it will be very helpful to select the option
+in the git installer to add the Unix tools to the Windows path.  This
+will make accessing the virtual box via SSH much easier.
 
 ### Clone the project ###
 Get the developer-startup Git project:
@@ -69,26 +71,7 @@ Get the developer-startup Git project:
 Go into the resulting directory:
 
     cd developer-startup
-
-What you do next depends on your local machine's operating system:
-
-#### Linux and MacOSXL ####
->If you have bash installed (true by default), run the
-startup script.  Please note: It is also important to make sure that you have
-the bundler package installed.  On some Linux distributions including Ubuntu
-you may have to type```sudo apt-get install bundler``` in the terminal before
-running the script below.
-
-    `% ./startup`
-> Wait for a while...
-
-#### Windows ####
-
-> Run the following command:
-
-`C:\developer-startup>vagrant up`
-
-> Wait for a while...
+    vagrant up
 
 ### Setup your Virtual Machine ###
 
@@ -103,7 +86,7 @@ you will not need to install [PuTTY][].
 
 You have been successful if the final output line is:
 
-    vagrant@vagrant-ubuntu-trusty-64:~$
+    vagrant@vagrant:~$
 
 #### Setting up ssh access to GitHub (optional) ####
 
@@ -120,7 +103,7 @@ on the host machine. Assuming the key is called id_rsa, on the VM run:
 
     $ mkdir ~/.ssh
     $ chmod 700 ~/.ssh
-    $ cp /vagrant/id_rsa ~/.ssh
+    $ mv /vagrant/id_rsa ~/.ssh
     $ chmod 600 ~/.ssh/id_rsa
 
 #### Setup the new VM ####
@@ -156,44 +139,6 @@ this command on your host.
 
     > vagrant plugins update vbguest
 
-#### Fix bundle-related error ####
-If running 'mo-dev /vagrant' causes errors similar to:
-```
-/usr/lib/ruby/1.9.1/rubygems/dependency.rb:247:in `to_specs': Could not find bundler (>= 0) amongst [bundler-unload-1.0.2, executable-hooks-1.3.2, gem-wrappers-1.2.7, rubygems-bundler-1.4.4, rvm-1.11.3.9] (Gem::LoadError)
-from /usr/lib/ruby/1.9.1/rubygems/dependency.rb:256:in `to_spec'
-from /usr/lib/ruby/1.9.1/rubygems.rb:1231:in `gem'
-from /usr/local/bin/bundle:22:in `<main>'
-rake aborted!
-cannot load such file -- bundler/setup
-...
-```
-Then fix things by the following procedure:
-On the VM:
-```
-vagrant@vagrant-ubuntu-trusty-64:~$ exit
-```
-Then on your local machine:
-```
-~/developer-startup $ vagrant halt
-~/developer-startup $ vagrant up
-~/developer-startup $ vagrant ssh
-```
-Then on the VM
-```
-vagrant@vagrant-ubuntu-trusty-64:~$ gem install bundle
-vagrant@vagrant-ubuntu-trusty-64:~$ mo-dev /vagrant
-```
-
-#### Ensure RVM is installed on the VM ####
-
-Look at the last line displayed by mo-dev /vagrant. If it is
-
-    RVM installed.  Run: source /home/vagrant/.rvm/scripts/rvm
-
-then setup [RVM][] (and get the correct Ruby version) by running
-
-    vagrant@vagrant-ubuntu-trusty-64:~$ source /home/vagrant/.rvm/scripts/rvm
-
 ### Using MO on the VM ###
 Assuming all of that was successful, you now have a running virtual
 machine with the MO source code installed, an instance of MySQL and
@@ -208,7 +153,7 @@ To run the tests in the new environment
 Go to the VM ('vagrant ssh' or through Putty)
 
     $ cd /vagrant/mushroom-observer
-    $ rake
+    $ rails test
     
 Note if the VM has been inactive for a while or you know additional
 changes have been added to the source code repository, you may want
@@ -222,6 +167,9 @@ Start web server
 Go to VM (`vagrant ssh` or through [PuTTY][])
 
     $ cd /vagrant/mushroom-observer
+    $ rails db:schema:load
+    $ rails db:fixtures:load
+    $ rails lang:update
 
 Start the Rails server on the VM
 
@@ -247,7 +195,7 @@ Go to verification URL in your browser
 
 Have fun!  (Note the initial database, developer-startup/init.sql,
 just has the admin user and the language stuff.  It probably makes
-sense to add some observations, names and images for testing, but I
+sense to add some observations, names and images for testing, but we
 haven't gotten to it yet.)
 
 # Next: Contribute to MO code development
@@ -263,29 +211,39 @@ on the host machine run:
 
     % vagrant destroy
     % rm -rf mushroom-observer
-    % ./startup
+    % vagrant up
 
-and continue as above after the original ./startup.
+and continue as above after the original vagrant up.
 
 Rebuilding the Vagrant box from scratch
 ---------------------------------------
 If for some reason the VM created using the ./startup does not work or
-it gets outdated for some reason.  You can build a new VM from scratch
-using the ./build script.  Most of the files in developer-startup are
-there solely to support this rebuild process.
+it gets outdated and you wish to refresh it, you can build a new VM
+from scratch.  First, you may want to update the base box in the
+Vagrantfile.  Once you have the base box you want, run:
 
-Once the ./build script completes you should have a fresh clean VM
-that is equivalent to what you get after you run ./startup.
+    % vagrant up clean
 
-For those maintaining the Mushroom Observer VM, once you finish the
-./build script, you can create a new version of the box with:
+Once the VM is setup, you should create a new version of the box with:
 
     % vagrant package clean
 
 This will create a package.box file in the developer-startup
-directory.  To allow others to use it, this should get uploaded
-to http://images.digitalmycology.com and the Vagrantfile should
-be updated to reference the new box and checked in.
+directory.  To allow others to use it, this should get uploaded to
+http://images.mushroomobserver.org and placed in the web root
+directory under a distinct name.  Finally, the Vagrantfile should be
+updated to reference the new box and checked in.
+
+Other developers should now be able to get the upgraded box by simply
+updating their local developer-startup repo and running:
+
+    % vagrant destroy
+    % vagrant up
+
+They may also want to get rid of any old boxes by running:
+
+    % vagrant box list
+    % vagrant box [boxname] remove
 
 - - -
 [comment]: # (The following are link reference definitions)

@@ -1,5 +1,0 @@
-#!/bin/bash
-
-bundle install
-librarian-chef install
-vagrant up clean
