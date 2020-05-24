@@ -6,10 +6,16 @@ purpose of this system is to help software developers setup an
 environment where they can contribute to the Mushroom Observer code
 base.  The basic idea is to setup a virtual machine (VM) on your
 personal ("host") machine that is configured to serve a test version
-of the Mushroom Observer website and to access the code.  It has been
-tested on Macintoshes as well as PCs running either Windows or Ubuntu.
+of the Mushroom Observer website and to access the code. 
 This system does require a reasonably powerful computer probably
 purchased in the last 3 years.
+
+>  :warning: The system has been tested with macOS, but we haven't yet
+suceeded in setting it up with Windows. **Before trying a Windows
+install, please get in touch with us so that we can help
+work through the problems.** (The notes below about Windows relate to 
+older versions of the Developer System; they may be irrelevant to the 
+current version.)
 
 If you're interested in contributing your code to MO, please also read
 [DEVELOPER-WORKFLOW.md][]. Administrators/Managers should also have a
