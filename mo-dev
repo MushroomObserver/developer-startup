@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Last changed May 30, 2020
+
 dir=$1
 new_db=
 
