@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Change for protected-status-test
+# Another change
 
 dir=$1
 new_db=
