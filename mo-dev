@@ -34,16 +34,6 @@ else
     echo "Bundler already installed"
 fi
 
-mysql -u mo -pmo mo_development -e ''
-if [ ! $? -eq 0 ]; then
-    mysql -u root -proot < db/initialize.sql
-    mysql -u mo -pmo mo_development < db/vagrant/init.sql
-    new_db=1
-    echo Created and populated mo_development database
-else
-    echo mo_development exists
-fi
-
 if [ ! -f config/database.yml ]; then
     cp db/vagrant/database.yml config
     echo Copied config/database.yml
@@ -95,10 +85,15 @@ fi
 
 git pull
 bundle install
-if [ $new_db ]; then
+
+mysql -u mo -pmo mo_development -e ''
+if [ ! $? -eq 0 ]; then
+    mysql -u root -proot < db/initialize.sql
     bin/rails db:environment:set RAILS_ENV=development
     rails db:schema:load
     rails db:fixtures:load
+    echo Created and populated mo_development database
 else
     rails db:migrate
+    echo Ran migrations on the mo_development database
 fi
