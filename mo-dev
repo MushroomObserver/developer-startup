@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Another change
+# Trying again
 
 dir=$1
 new_db=
