@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Yet another pre-commit hook test
+# With pre-commit hook executable
 
 dir=$1
 new_db=
