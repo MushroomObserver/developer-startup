@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# Yet another trivial comment
-
 dir=$1
 new_db=
 
