@@ -43,10 +43,8 @@ In a Terminal shell:
     vagrant ssh
     mo-dev /vagrant
     cd /vagrant/mushroom-observer
-    rails test
-    rails db:schema:load
-    rails db:fixtures:load
     rails lang:update
+    rails test
     rails server -b 0.0.0.0
 
 That should be it.  If something did not work, then see below for a
