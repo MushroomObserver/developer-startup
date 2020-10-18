@@ -6,15 +6,15 @@
 # backwards compatibility). Please don't change it unless you know what
 # you're doing.
 Vagrant.configure("2") do |config|
-  if ARGV[1] == "clean"
-    config.vm.define "clean" do |clean|
+  if ARGV[1] == "clean-focal"
+    config.vm.define "clean-focal" do |clean|
       # The most common configuration options are documented and commented below.
       # For a complete reference, please see the online documentation at
       # https://docs.vagrantup.com.
 
       # Every Vagrant development environment requires a box. You can search for
       # boxes at https://vagrantcloud.com/search.
-      config.vm.box = "hashicorp/bionic64"
+      config.vm.box = "ubuntu/focal64"
 
       clean.vm.provider "virtualbox" do |vb|
         # Use VBoxManage to customize the VM. For example to change memory:
@@ -51,9 +51,9 @@ Vagrant.configure("2") do |config|
       end
     end
   else
-    config.vm.define "mo", primary: true do |mo|
-      mo.vm.box = "mo-bionic"
-      mo.vm.box_url = "http://images.mushroomobserver.org/mo-bionic.box"
+    config.vm.define "mo-focal", primary: true do |mo|
+      mo.vm.box = "mo-focal"
+      mo.vm.box_url = "http://images.mushroomobserver.org/mo-focal.box"
       mo.vm.network "forwarded_port", guest: 3000, host: 3000
       mo.vm.provider "virtualbox" do |vb|
         # Use VBoxManage to customize the VM. For example to change memory:
