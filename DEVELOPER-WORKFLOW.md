@@ -54,7 +54,7 @@ We periodically create a snapshot of the live database. You can optionally load 
 - Kill any running version of the server on your VM (usually control-C).
 - On the VM in /vagrant/mushroom_observer:
 ```sh
-mysql -u root -p < db/initialize.sql`
+mysql -u root -p < db/initialize.sql
 ```
 When asked for the password, use `root`
 Warning: The next line can take a long time to execute. 
