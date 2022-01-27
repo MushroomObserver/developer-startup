@@ -145,12 +145,12 @@ this command on your host.
     
 #### Update your local mo_development database ####
 
-If you'd like to use a more recent copy of the live database (with passwords stripped) locally, download a zipped database file (usually something like `checkpoint_stripped.gz`, produced periodically by MO developers) and place it in the directory `/developer-startup` on your local machine (wherever that was created in the steps above). Then, after `vagrant up`, execute the following commands from within the Vagrant box:
+The default database on developer-startup is very minimal. If you'd like to use a more recent copy of the live database locally, you'll need to request a zipped database file from MO developers. Download that `checkpoint_stripped.gz` and place it in your  `/developer-startup` directory on your local machine. Then, after bringing `vagrant up`, execute the following commands from within the Vagrant box:
 
     $ cd /vagrant
     $ ls
 
-Be sure `checkpoint_stripped.gz` is listed in the directory! Then:
+Be sure `checkpoint_stripped.gz` is listed in the directory. Then:
 
     $ gunzip -c checkpoint_stripped.gz | mysql -u mo -pmo mo_development
 
