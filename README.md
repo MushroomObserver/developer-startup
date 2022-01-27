@@ -142,6 +142,17 @@ to work.  If you are unable to see any files in the /vagrant directory on the VM
 this command on your host.
 
     > vagrant plugins update vbguest
+    
+#### Update your local mo_development database ####
+
+If you'd like to use a more recent copy of the live database (with passwords stripped) locally, download a zipped database file (usually something like `checkpoint_stripped.gz`, produced periodically by MO developers) and place it in the directory `/developer-startup` on your local machine (wherever that was created in the steps above). Then, after `vagrant up`, execute the following commands from within the Vagrant box:
+
+    $ cd /vagrant
+    $ ls
+
+Be sure `checkpoint_stripped.gz` is listed in the directory! Then:
+
+    $ gunzip -c checkpoint_stripped.gz | mysql -u mo -pmo mo_development
 
 ### Using MO on the VM ###
 Assuming all of that was successful, you now have a running virtual
