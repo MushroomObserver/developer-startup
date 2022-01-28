@@ -247,7 +247,7 @@ updating their local developer-startup repo and running:
 They may also want to get rid of any old boxes by running:
 
     % vagrant box list
-    % vagrant box [boxname] remove
+    % vagrant box remove [boxname] 
 
 - - -
 [comment]: # (The following are link reference definitions)
