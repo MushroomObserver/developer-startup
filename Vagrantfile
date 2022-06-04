@@ -56,7 +56,7 @@ Vagrant.configure("2") do |config|
     version_date = "2022-06-04"
     config.vm.define "mo-focal-#{version_date}", primary: true do |mo|
       mo.vm.box = "mo-focal-#{version_date}"
-      mo.vm.box_url = "http://images.mushroomobserver.org/mo-focal-#{version_date}.box"
+      mo.vm.box_url = "https://images.mushroomobserver.org/mo-focal-#{version_date}.box"
       mo.vm.network "forwarded_port", guest: 3000, host: 3000
       mo.vm.provider "virtualbox" do |vb|
         # Use VBoxManage to customize the VM. For example to change memory:
