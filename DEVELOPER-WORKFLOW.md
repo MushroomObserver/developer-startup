@@ -53,7 +53,13 @@ We periodically create a snapshot of the live database. You can optionally load 
 - copy (or move) the downloaded .gz file to the mushroom-observer directory
 - Kill any running version of the server on your VM (usually control-C).
 - On the VM in /vagrant/mushroom_observer:
+```sh
+mysql -u root -p < db/initialize.sql
 ```
+When asked for the password, use `root`
+Warning: The next line can take a long time to execute. 
+(20 minutes on my machine. JDC)
+```sh
 gunzip -c checkpoint_stripped.gz | mysql -u mo -pmo mo_development
 rails db:migrate
 rails lang:update
