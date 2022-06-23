@@ -47,46 +47,6 @@ Your local machine's developer-startup directory has a 'mushroom-observer' sub-d
    `cd /vagrant/mushroom-observer/` <br/>
  - and you're good to go.
 
-#### Loading a Snapshot of the Live Database (optional) ####
-We periodically create a snapshot of the live database. You can optionally load this to your development VM:
-- download the snapshot from http://images.mushroomobserver.org/checkpoint_stripped.gz
-- copy (or move) the downloaded .gz file to the mushroom-observer directory
-- Kill any running version of the server on your VM (usually control-C).
-- On the VM in /vagrant/mushroom_observer:
-```sh
-mysql -u root -p < db/initialize.sql
-```
-When asked for the password, use `root`
-Warning: The next line can take a long time to execute. 
-(20 minutes on my machine. JDC)
-```sh
-gunzip -c checkpoint_stripped.gz | mysql -u mo -pmo mo_development
-rails db:migrate
-rails lang:update
-```
-Finally, delete checkpoint_stripped.gz and clean.sql from the mushroom-observer directory.
-
-In this cleaned snapshot, all passwords have been reset to "password".
-
-#### Snapshot migration error, table already exists ####
-Under some conditions migrating after you've loaded the snapshot will cause an error like the following. This can happen with the first migration, or many migrations later if you switch branches.
-```ruby
-= 20170423010922 CreateArticles: migrating ===================================
--- create_table(:articles)
-rake aborted!
-StandardError: An error has occurred, all later migrations canceled:
-
-Mysql2::Error: Table 'articles' already exists: CREATE TABLE `articles` (`id` int(11) auto_increment PRIMARY KEY, `title` varchar(255), `body` text, `user_id` int(11), `rss_log_id` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
-```
-The solution is to drop the offending table. An easy way to do this is via the mysql interpreter.
-```
-$ mysql -u mo -pmo
-mysql> use mo_development;
-mysql> drop table articles;
-mysql> exit
-```
-(For a longer discussion, see [Pivotal Story #147019977][].)
-
 ### Commit your changes to your personal machine ###
 Work on your branch, e.g. _myfixes_.  Make commits using a [Git GUI][] or Git terminal commands on your local machine.
 
@@ -118,6 +78,47 @@ Use a [Git GUI][] or on your local machine  <br>
   - Include a manual testing script; and
   - Mention any unusual aspects of the code.
 - For more information about PRs, see [Using pull requests][].
+
+## Loading a Snapshot of the Live Database (optional) ##
+We periodically create a snapshot of the live database. You can optionally load this to your development VM:
+- download the snapshot from http://images.mushroomobserver.org/checkpoint_stripped.gz
+- copy (or move) the downloaded .gz file to the mushroom-observer directory
+- Kill any running version of the server on your VM (usually control-C).
+- On the VM in /vagrant/mushroom_observer:
+```sh
+rake db:drop
+mysql -u root -p < db/initialize.sql
+```
+When asked for the password, use `root`. <br/>
+Warning: The next line can take a long time to execute. 
+(It used to take 20 minutes on my machine. JDC)
+```sh
+gunzip -c checkpoint_stripped.gz | mysql -u mo -pmo mo_development
+rails db:migrate
+rails lang:update
+```
+Finally, delete checkpoint_stripped.gz and clean.sql from the mushroom-observer directory.
+
+In this cleaned snapshot, all passwords have been reset to "password".
+
+#### Snapshot migration error, table already exists ####
+Under some conditions migrating after you've loaded the snapshot will cause an error like the following. This can happen with the first migration, or many migrations later if you switch branches.
+```ruby
+= 20170423010922 CreateArticles: migrating ===================================
+-- create_table(:articles)
+rake aborted!
+StandardError: An error has occurred, all later migrations canceled:
+
+Mysql2::Error: Table 'articles' already exists: CREATE TABLE `articles` (`id` int(11) auto_increment PRIMARY KEY, `title` varchar(255), `body` text, `user_id` int(11), `rss_log_id` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+```
+The solution is to drop the offending table. An easy way to do this is via the mysql interpreter.
+```
+$ mysql -u mo -pmo
+mysql> use mo_development;
+mysql> drop table articles;
+mysql> exit
+```
+(For a longer discussion, see [Pivotal Story #147019977][].)
 
 ## Other ##
 ### Follow MO development ###
