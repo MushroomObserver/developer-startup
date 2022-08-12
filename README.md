@@ -77,6 +77,8 @@ Go into the resulting directory:
     cd developer-startup
     vagrant up
 
+*Gotcha: You might get an error message about virtual box not being able to start virtual machines. This means you have to enable virtualization support on your computers BIOS, which is accessed during your computers power-on process. 
+
 ### Setup your Virtual Machine ###
 
 Login to your new VM:
