@@ -39,13 +39,23 @@ Vagrant.configure("2") do |config|
       SHELL
 
       clean.vm.provision :shell, privileged: false, inline: <<-SHELL
-        gpg2 --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+        # # These may be less secure than keyservers, but at least they load.
+        curl -sSL https://rvm.io/mpapis.asc | gpg --import -
+        curl -sSL https://rvm.io/pkuczynski.asc | gpg --import -
+        # Trust them keys
+        echo 409B6B1796C275462A1703113804BB82D39DC0E3:6: | gpg --import-ownertrust # mpapis@gmail.com
+        echo 7D2BAF1CF37B13E2069D6956105BD0E739499BDB:6: | gpg --import-ownertrust # piotr.kuczynski@gmail.com
+
+        # This reliably fails!
+        # gpg2 --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+
         curl -L https://get.rvm.io | bash -s stable
         source ~/.rvm/scripts/rvm
-        rvm install 2.7.6
-        rvm install 3.0.4
         rvm install 3.1.2
       SHELL
+
+      # Add Firefox for selenium tests
+      config.vm.provision :shell, inline: "apt-get install -y firefox"
 
       clean.trigger.after [:provision] do |t|
         t.name = "Reboot after provisioning"
@@ -53,7 +63,7 @@ Vagrant.configure("2") do |config|
       end
     end
   else
-    version_date = "2022-06-04"
+    version_date = "2022-12-01"
     config.vm.define "mo-focal-#{version_date}", primary: true do |mo|
       mo.vm.box = "mo-focal-#{version_date}"
       mo.vm.box_url = "https://images.mushroomobserver.org/mo-focal-#{version_date}.box"
