@@ -35,14 +35,16 @@ Vagrant.configure("2") do |config|
         ln -fs /vagrant/mo-dev /usr/local/bin/mo-dev
         apt-get -y install git build-essential wget curl vim ruby \
           imagemagick libmagickcore-dev libmagickwand-dev libjpeg-dev \
-          libgmp3-dev
+          libgmp3-dev gnupg2
       SHELL
 
       clean.vm.provision :shell, privileged: false, inline: <<-SHELL
-        gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+        gpg2 --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
         curl -L https://get.rvm.io | bash -s stable
         source ~/.rvm/scripts/rvm
-        rvm install 2.6.6
+        rvm install 2.7.6
+        rvm install 3.0.4
+        rvm install 3.1.2
       SHELL
 
       clean.trigger.after [:provision] do |t|
@@ -51,9 +53,10 @@ Vagrant.configure("2") do |config|
       end
     end
   else
-    config.vm.define "mo-focal", primary: true do |mo|
-      mo.vm.box = "mo-focal"
-      mo.vm.box_url = "http://images.mushroomobserver.org/mo-focal.box"
+    version_date = "2022-06-04"
+    config.vm.define "mo-focal-#{version_date}", primary: true do |mo|
+      mo.vm.box = "mo-focal-#{version_date}"
+      mo.vm.box_url = "https://images.mushroomobserver.org/mo-focal-#{version_date}.box"
       mo.vm.network "forwarded_port", guest: 3000, host: 3000
       mo.vm.provider "virtualbox" do |vb|
         # Use VBoxManage to customize the VM. For example to change memory:

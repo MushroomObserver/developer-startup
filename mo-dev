@@ -27,12 +27,8 @@ if [ -f .ruby-version ]; then
     fi
 fi
 
-if ! [[ `gem list` =~ "bundle " ]]; then
-    echo "Installing bundler"
-    gem install bundle
-else
-    echo "Bundler already installed"
-fi
+echo "Ensure we have the latest bundler"
+gem install bundler
 
 if [ ! -f config/database.yml ]; then
     cp db/vagrant/database.yml config
@@ -97,3 +93,7 @@ else
     rails db:migrate
     echo Ran migrations on the mo_development database
 fi
+
+rails lang:update
+rm config/credentials.yml.enc
+EDITOR='echo "test_secret: magic" >> ' rails credentials:edit

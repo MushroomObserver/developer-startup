@@ -33,7 +33,7 @@ Install VirtualBox: https://www.virtualbox.org/
 
 Install Vagrant: https://www.vagrantup.com/downloads.html
 
-Install git: http://git-scm.com/downloads
+Install git: https://git-scm.com/downloads
 
 In a Terminal shell:
 
@@ -59,7 +59,7 @@ machine as it breaks virtualbox)
 
 Install Vagrant: https://www.vagrantup.com/downloads.html
 
-Install git: http://git-scm.com/downloads (some Mac users have found
+Install git: https://git-scm.com/downloads (some Mac users have found
 the GitHub GUI to be helpful, https://central.github.com/mac/latest)
 
 If you are using Windows, it will be very helpful to select the option
@@ -76,6 +76,8 @@ Go into the resulting directory:
 
     cd developer-startup
     vagrant up
+
+*Gotcha: You might get an error message about virtual box not being able to start virtual machines. This means you have to enable virtualization support on your computers BIOS, which is accessed during your computers power-on process. 
 
 ### Setup your Virtual Machine ###
 
@@ -245,7 +247,7 @@ Once the VM is setup, you should create a new version of the box with:
 
 This will create a package.box file in the developer-startup
 directory.  To allow others to use it, this should get uploaded to
-http://images.mushroomobserver.org and placed in the web root
+https://images.mushroomobserver.org and placed in the web root
 directory under a distinct name.  Finally, the Vagrantfile should be
 updated to reference the new box and checked in.
 
@@ -258,12 +260,12 @@ updating their local developer-startup repo and running:
 They may also want to get rid of any old boxes by running:
 
     % vagrant box list
-    % vagrant box [boxname] remove
+    % vagrant box remove [boxname] 
 
 - - -
 [comment]: # (The following are link reference definitions)
 [ADMIN-WORKFLOW.md]: /ADMIN-WORKFLOW.md
-[Bundler]: http://bundler.io/
+[Bundler]: https://bundler.io/
 [DEVELOPER-WORKFLOW.md]: /DEVELOPER-WORKFLOW.md/
-[PuTTY]: http://www.putty.org/
+[PuTTY]: https://www.putty.org/
 [RVM]: https://rvm.io/
