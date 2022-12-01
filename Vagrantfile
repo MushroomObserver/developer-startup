@@ -28,8 +28,8 @@ Vagrant.configure("2") do |config|
 
       clean.vm.network "forwarded_port", guest: 3000, host: 3000
 
-      # Silence warnings "dpkg-preconfigure: unable to re-open stdin"
-      # Must come before any `apt-get` calls
+      # Silence dpkg warnings "dpkg-preconfigure: unable to re-open stdin"
+      # Must come before any `apt-get` Also: Doesn't work!
       config.vm.provision :shell, inline: <<-SHELL
         update-locale LANG=en_US.UTF-8
         export DEBIAN_FRONTEND=noninteractive
@@ -38,8 +38,8 @@ Vagrant.configure("2") do |config|
       # Update repositories
       config.vm.provision :shell, inline: "apt-get -y update"
 
-      # Upgrade installed packages
-      config.vm.provision :shell, inline: "apt-get upgrade -y"
+      # Upgrade installed packages?
+      # config.vm.provision :shell, inline: "apt-get upgrade -y"
 
       # Add Debian and MySQL server
       clean.vm.provision :shell, inline: <<-SHELL
@@ -55,11 +55,13 @@ Vagrant.configure("2") do |config|
           libgmp3-dev
       SHELL
 
-      # Add public key for rvm and install rvm.
+      # Add public key for rvm and install rvm for multi-user
       clean.vm.provision :shell, privileged: false, inline: <<-SHELL
         # Note: rvm's listed keyservers (incl. MIT.edu) are extremely
         # unreliable. Hours of inexplicable failure to find the public keys.
-        # Pro tip - do not use keyservers at all! Grrrrrrrrrr. - AN 11/2022
+        # Some say use the ipv4 subdomain! Nope, doesn't work. Grr - AN 11/2022
+        # sudo gpg --keyserver hkp://ipv4.pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+
         # These may be less secure than keyservers, but at least they load.
         curl -sSL https://rvm.io/mpapis.asc | gpg --import -
         curl -sSL https://rvm.io/pkuczynski.asc | gpg --import -
@@ -67,27 +69,21 @@ Vagrant.configure("2") do |config|
         echo 409B6B1796C275462A1703113804BB82D39DC0E3:6: | gpg --import-ownertrust # mpapis@gmail.com
         echo 7D2BAF1CF37B13E2069D6956105BD0E739499BDB:6: | gpg --import-ownertrust # piotr.kuczynski@gmail.com
 
-        curl -sSL https://get.rvm.io | bash -s stable
-        source ~/.rvm/scripts/rvm
-
-        rvm use --default --install 3.1.2
-        # gem install bundler
-        # gem install railties
+        curl -sSL https://get.rvm.io | bash -s stable ; / source ~/.rvm/scripts/rvm
+        rvm install 3.1.2
         rvm cleanup all
       SHELL
 
-      # # Add Google Chrome repository and install
-      # config.vm.provision :shell, inline: <<-SHELL
-      #   wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub|sudo apt-key add -
-      #   sudo sh -c 'echo \"deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main\" > /etc/apt/sources.list.d/google.list'
-      #   # Add Google Chrome for selenium tests
-      #   sudo apt install -y google-chrome-stable
+      # Uncomment these to add Google Chrome's repository & chrome itself
+      # config.vm.provision :shell, inline: "wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub|sudo apt-key add -"
+      # config.vm.provision :shell, inline: "sudo sh -c 'echo \"deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main\" > /etc/apt/sources.list.d/google.list'"
+      # # Add Google Chrome for selenium tests
+      # config.vm.provision :shell, inline: "sudo apt install -y google-chrome-stable"
 
-      #   # This simpler way didn't work:
-      #   # wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -P ~/
-      #   # dpkg -i ~/google-chrome*.deb"
-      #   # apt-get install -f -y"
-      # SHELL
+      # NOTE: This simpler way to add Google Chrome didn't work:
+      # config.vm.provision :shell, inline: "wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -P ~/"
+      # config.vm.provision :shell, inline: "dpkg -i ~/google-chrome*.deb"
+      # config.vm.provision :shell, inline: "apt-get install -f -y"
 
       # Add Firefox for selenium. Slow: Do this last in case troubleshooting.
       config.vm.provision :shell, inline: "apt-get install -y firefox"
