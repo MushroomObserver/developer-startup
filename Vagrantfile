@@ -69,8 +69,10 @@ Vagrant.configure("2") do |config|
         echo 409B6B1796C275462A1703113804BB82D39DC0E3:6: | gpg --import-ownertrust # mpapis@gmail.com
         echo 7D2BAF1CF37B13E2069D6956105BD0E739499BDB:6: | gpg --import-ownertrust # piotr.kuczynski@gmail.com
 
-        curl -sSL https://get.rvm.io | bash -s stable ; / source ~/.rvm/scripts/rvm
+        curl -sSL https://get.rvm.io | bash -s stable
+        source $HOME/.rvm/scripts/rvm
         rvm install 3.1.2
+        shift
         rvm cleanup all
       SHELL
 
