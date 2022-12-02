@@ -84,7 +84,9 @@ Run:
 
     vagrant up
 
-This should bring up a version of the box with the new configuration. Now run:
+This should bring up a version of the box with the new configuration.
+
+Now run:
 
     vagrant ssh
 
@@ -109,5 +111,7 @@ If everything is green you great!
 
 If stuff fails now you have to figure out how to fix it.
 
-10) Don't forget to upload the new box to `images.mushroomobserver.org`
-and update `box_url` in the Vagrantfile.
+10) Don't forget to update `box_url` in the Vagrantfile, and upload the new box
+to `images.mushroomobserver.org`. (You will need an ssh account on that server.)
+
+    scp /path/to/your/mo-focal-2022-12-01.box youraccount@images.mushroomobserver.org:/data/images/mo
