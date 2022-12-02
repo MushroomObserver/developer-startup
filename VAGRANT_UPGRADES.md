@@ -66,8 +66,8 @@ In the current case I ran:
 This results in a file called `package.box`.
 
 Ultimately this should be uploaded to `images.mushroomobserver.org` and
-moved to the directory `/images/mo` with the right ownership (`mo:mo`) and
-permissions (`644`).
+moved to the directory `/data/images/mo` with the right ownership (`mo:mo`)
+and permissions (`644`).
 
 Before doing this you may want to test it locally by changing the
 mo.vm.box_url to refer to the local file.  Just remember to
