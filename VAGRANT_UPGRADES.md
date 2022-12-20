@@ -70,7 +70,7 @@ moved to the directory `/data/images/mo` with the right ownership (`mo:mo`)
 and permissions (`644`).
 
 Before doing this you may want to test it locally by changing the
-mo.vm.box_url to refer to the local file.  Just remember to
+`mo.vm.box_url` to refer to the local file.  Just remember to
 switch it back to the real URL after you have things working.
 
 In the current case I renamed `package.box` to `mo-focal-2022-06-04.box` and
