@@ -5,12 +5,12 @@ This attempts to document the steps in updating the MO Virtual
 Machine.  This is needed from time to time to upgrade the operating
 system, the version Ruby or various other core components of the VM.
 
-1) Update VirtualBox and Vagrant
+### 1) Update VirtualBox and Vagrant ###
 
 It's recommended that you always update to the latest version of
 [VirtualBox](https://www.virtualbox.org/wiki/Downloads) and [Vagrant](https://developer.hashicorp.com/vagrant/downloads) at the start of this process.
 
-2) Destroy or set aside any old boxes.
+### 2) Destroy or set aside any old boxes. ###
 
 I generally just destroy the current box with:
 
@@ -25,7 +25,7 @@ and could cause issues with:
 
     vagrant global-status
 
-4) Update the Vagrantfile
+### 4) Update the Vagrantfile ###
 
 For operating system upgrades, I generally go to the [Vagrant Boxes](https://app.vagrantup.com/boxes/search)
 search page on the HashiCorp website and search for the OS I'm looking
@@ -45,7 +45,7 @@ relying on cached copies of things, so make sure you clean out anything
 you can.  You can change `version_date` as a simple way to change the
 name of the default box.
 
-5) Build the "clean" box.
+### 5) Build the "clean" box. ###
 
 In the current case I ran:
 
@@ -57,7 +57,7 @@ for `config.vm.define`.
 Currently builds generate a few red warnings/errors related signatures and
 checksums, but everything seems to be working correctly.
 
-6) Create "clean" package.
+### 6) Create "clean" package. ###
 
 In the current case I ran:
 
@@ -78,7 +78,7 @@ updated the variable to point to:
 
     file:///home/nathan/src/developer-startup/mo-focal-2022-06-04.box
 
-7) Bring up the vagrant box.
+### 7) Bring up the vagrant box. ###
 
 Run:
 
@@ -92,7 +92,7 @@ Now run:
 
 This should connect you to the new box.
 
-8) Setup the local build environment.
+### 8) Setup the local build environment. ###
 
 Run:
 
@@ -101,7 +101,7 @@ Run:
 This will run bundler and the other bits needed to get the new box
 setup to actually run MO.
 
-9) Run the tests.
+### 9) Run the tests. ###
 
 Run:
 
@@ -111,7 +111,7 @@ If everything is green you great!
 
 If stuff fails now you have to figure out how to fix it.
 
-10) Don't forget to update `box_url` in the Vagrantfile, and upload the new box
-to `images.mushroomobserver.org`. (You will need an ssh account on that server.)
+### 10) Don't forget to update `box_url` in the Vagrantfile, and upload the new box
+to `images.mushroomobserver.org`. (You will need an ssh account on that server.) ###
 
     scp /path/to/your/mo-focal-2022-12-01.box youraccount@images.mushroomobserver.org:/data/images/mo
