@@ -38,12 +38,21 @@ That's it! Now, the Vagrant `Host` you just pasted and maybe renamed will be ava
 
 Thanks to [Andrés Lopez](https://medium.com/@lopezgand/connect-visual-studio-code-with-vagrant-in-your-local-machine-24903fb4a9de) for the tutorial.
 
-### Troubleshooting Rubocop ###
+### Running Rubocop in VS Code ###
 
-#### Problem: ####
+The Ruby-Rubocop extension can auto-correct and format code on save, and highlight suggested Rubocop changes.
+
+In VSCode
+- Click the extensions icon (on the LH side)
+- Install Ruby-Rubocop (and any other relevant extensions)
+- For Ruby-Rubocop (and other relevant extensions) click “Install in SSH: <host>”
+
+#### Troubleshooting Rubocop ####
+
+##### Problem: #####
     wrong ruby.rubocop.executePath
     
-#### Solution: ####
+##### Solution: #####
 Find gem path:
 ```
 $ bundle info rubocop
@@ -62,7 +71,7 @@ $ bundle info rubocop
 ```
         
 In VS Code, change ruby-rubocop extension settings. 
-- `command-,` Settings
+- `⌘,` Settings
 - click Extensions icon
 - select ruby-rubocop
 - in rh panel, select click gear icon, Extension Settings
