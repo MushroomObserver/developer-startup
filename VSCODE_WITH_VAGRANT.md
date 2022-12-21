@@ -38,7 +38,7 @@ That's it! Now, the Vagrant `Host` you just pasted and maybe renamed will be ava
 
 Thanks to [Andrés Lopez](https://medium.com/@lopezgand/connect-visual-studio-code-with-vagrant-in-your-local-machine-24903fb4a9de) for the tutorial.
 
-### Running Rubocop in VS Code ###
+## Running Rubocop in VS Code ##
 
 The Ruby-Rubocop extension can auto-correct and format code on save, and highlight suggested Rubocop changes.
 
