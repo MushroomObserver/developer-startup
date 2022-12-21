@@ -51,7 +51,7 @@ In VSCode
 
 ## Ruby-Rubocop Settings ##
 
-This tells Rubocop to run the version we're using in the `Gemfile`, and the config in `.rubocop.yml`.
+This tells Rubocop to run the version we're using in the `Gemfile`, and MO's Rubocop config in `.rubocop.yml`.
 
 In VS Code:
 - Click `⌘,` or go to Settings
