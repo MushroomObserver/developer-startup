@@ -56,14 +56,14 @@ In VSCode
 Find gem path:
 ```
 $ bundle info rubocop
-  * rubocop (1.31.1)
+  * rubocop (1.39.0)
 	Summary: Automatic Ruby code style checking tool.
 	Homepage: https://github.com/rubocop/rubocop
-	Documentation: https://docs.rubocop.org/rubocop/1.31/
+	Documentation: https://docs.rubocop.org/rubocop/1.39/
 	Source Code: https://github.com/rubocop/rubocop/
 	Changelog: https://github.com/rubocop/rubocop/blob/master/CHANGELOG.md
 	Bug Tracker: https://github.com/rubocop/rubocop/issues
-	Path: /home/vagrant/.rvm/gems/ruby-3.0.4/gems/rubocop-1.31.1
+	Path: /home/vagrant/.rvm/gems/ruby-3.1.2/gems/rubocop-1.39.0
 	Reverse Dependencies: 
 		rubocop-graphql (0.14.3) depends on rubocop (>= 0.87, < 2)
 		rubocop-performance (1.14.0) depends on rubocop (>= 1.7.0, < 2.0)
@@ -77,4 +77,4 @@ In VS Code, change ruby-rubocop extension settings.
 - in rh panel, select click gear icon, Extension Settings
 - Paste the execute path -- the above path + “/exe/” -- into Ruby > Rubocop: Execute Path
 
-Example: `/home/vagrant/.rvm/gems/ruby-3.1.2/gems/rubocop-1.31.1/exe/`
+Example: `/home/vagrant/.rvm/gems/ruby-3.1.2/gems/rubocop-1.39.0/exe/`
