@@ -42,7 +42,7 @@ Thanks to [Andrés Lopez](https://medium.com/@lopezgand/connect-visual-studio-co
 
 The Ruby-Rubocop extension can auto-correct and format code on save, and highlight suggested Rubocop changes.
 
-#### Install the VSCode Ruby-Rubocop extension ####
+## Install the VSCode Ruby-Rubocop extension ##
 
 In VSCode
 - Click the extensions icon (on the LH side)
