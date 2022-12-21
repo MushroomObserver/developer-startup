@@ -1,4 +1,4 @@
-Setting up VSCode to work on Vagrant
+Setting up VSCode to work with Vagrant
 =========================================================
 
 The trick is to set up VSCode to tunnel via SSH into the Vagrant box, so that you're working on the live code *running inside* the box. That way, your localhost will reflect the code you're editing.
