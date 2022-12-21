@@ -38,24 +38,40 @@ That's it! Now, the Vagrant `Host` you just pasted and maybe renamed will be ava
 
 Thanks to [Andrés Lopez](https://medium.com/@lopezgand/connect-visual-studio-code-with-vagrant-in-your-local-machine-24903fb4a9de) for the tutorial.
 
-## Running Rubocop in VS Code ##
+# Running Rubocop in VS Code #
 
 The Ruby-Rubocop extension can auto-correct and format code on save, and highlight suggested Rubocop changes.
+
+#### Install the VSCode Ruby-Rubocop extension ####
 
 In VSCode
 - Click the extensions icon (on the LH side)
 - Install Ruby-Rubocop (and any other relevant extensions)
 - For Ruby-Rubocop (and other relevant extensions) click “Install in SSH: <host>”
 
-#### Troubleshooting Rubocop ####
+## Ruby-Rubocop Settings ##
 
-##### Problem: #####
-    wrong ruby.rubocop.executePath
+This tells Rubocop to run the version we're using in the `Gemfile`, and the config in `.rubocop.yml`.
+
+In VS Code:
+- Click `⌘,` or go to Settings
+- click Extensions icon
+- select ruby-rubocop
+- in the right panel, select the click gear icon, Extension Settings
+
+### Set the file path to our Rubocop configuration YML ###
+	
+Since it's at the root:
+	`/.rubocop.yml` 
+
+### Set the `ruby.rubocop.executePath` ###
     
-##### Solution: #####
-Find gem path:
+Rubocop is constantly updated, so this needs to be the currently installed gem. In Terminal, from inside the vagrant box, you can find its path:
 ```
-$ bundle info rubocop
+vagrant@ubuntu-focal:/vagrant/mushroom-observer$ bundle info rubocop
+```
+This should return:
+```
   * rubocop (1.39.0)
 	Summary: Automatic Ruby code style checking tool.
 	Homepage: https://github.com/rubocop/rubocop
@@ -69,12 +85,6 @@ $ bundle info rubocop
 		rubocop-performance (1.14.0) depends on rubocop (>= 1.7.0, < 2.0)
 		rubocop-rails (2.14.2) depends on rubocop (>= 1.7.0, < 2.0)
 ```
-        
-In VS Code, change ruby-rubocop extension settings. 
-- `⌘,` Settings
-- click Extensions icon
-- select ruby-rubocop
-- in rh panel, select click gear icon, Extension Settings
-- Paste the execute path -- the above path + “/exe/” -- into Ruby > Rubocop: Execute Path
-
-Example: `/home/vagrant/.rvm/gems/ruby-3.1.2/gems/rubocop-1.39.0/exe/`
+What you need is the above "Path" plus `/exe/`
+									   
+	/home/vagrant/.rvm/gems/ruby-3.1.2/gems/rubocop-1.39.0/exe/
