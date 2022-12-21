@@ -63,16 +63,20 @@ In VS Code:
 	
 Since it's at the root:
 	
-	/.rubocop.yml 
-
+```
+/.rubocop.yml 
+```
+	
 ### Set the `ruby.rubocop.executePath` ###
     
 Rubocop is constantly updated, so this needs to be the path to the executable inside the currently installed gem. 
 	
 In Terminal, from inside the vagrant box, you can find the gem's path:
 
-        vagrant@ubuntu-focal:/vagrant/mushroom-observer$ bundle info rubocop
-
+```
+vagrant@ubuntu-focal:/vagrant/mushroom-observer$ bundle info rubocop
+```
+	
 This should return:
 ```
   * rubocop (1.39.0)
