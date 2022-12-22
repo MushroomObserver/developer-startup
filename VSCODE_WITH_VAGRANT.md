@@ -77,7 +77,7 @@ In Terminal, from inside the vagrant box, you can find the gem's path:
 vagrant@ubuntu-focal:/vagrant/mushroom-observer$ bundle info rubocop
 ```
 	
-This should return:
+This should return something like:
 ```
   * rubocop (1.39.0)
 	Summary: Automatic Ruby code style checking tool.
@@ -86,7 +86,7 @@ This should return:
 	Source Code: https://github.com/rubocop/rubocop/
 	Changelog: https://github.com/rubocop/rubocop/blob/master/CHANGELOG.md
 	Bug Tracker: https://github.com/rubocop/rubocop/issues
-	Path: /home/vagrant/.rvm/gems/ruby-3.1.2/gems/rubocop-1.39.0
+	Path: /home/vagrant/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/rubocop-1.39.0
 	Reverse Dependencies: 
 		rubocop-graphql (0.14.3) depends on rubocop (>= 0.87, < 2)
 		rubocop-performance (1.14.0) depends on rubocop (>= 1.7.0, < 2.0)
@@ -94,4 +94,4 @@ This should return:
 ```
 What you need is the above "Path" plus `/exe/`
 									   
-	/home/vagrant/.rvm/gems/ruby-3.1.2/gems/rubocop-1.39.0/exe/
+	/home/vagrant/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/rubocop-1.39.0/exe/
