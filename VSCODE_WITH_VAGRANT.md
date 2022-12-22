@@ -40,16 +40,16 @@ Thanks to [Andrés Lopez](https://medium.com/@lopezgand/connect-visual-studio-co
 
 # Running Rubocop in VS Code #
 
-The Ruby-Rubocop extension can auto-correct and format code on save, and highlight suggested Rubocop changes.
+The [Ruby-Rubocop-revived](https://marketplace.visualstudio.com/items?itemName=LoranKloeze.ruby-rubocop-revived) extension can auto-correct and format code on save, and highlight suggested Rubocop changes. (Note the original Ruby-Rubocop extension seems not to be maintained.)
 
-## Install the VSCode Ruby-Rubocop extension ##
+## Install the VSCode Ruby-Rubocop-revived extension ##
 
 In VSCode
 - Click the extensions icon (on the LH side)
-- Install Ruby-Rubocop (and any other relevant extensions)
-- For Ruby-Rubocop (and other relevant extensions) click “Install in SSH: <host>”
+- Install Ruby-Rubocop-revived (and any other relevant extensions)
+- For Ruby-Rubocop-revived (and other relevant extensions) click “Install in SSH: <host>”
 
-## Ruby-Rubocop Settings ##
+## Ruby-Rubocop-revived Settings ##
 
 This tells Rubocop to run the version we're using in the `Gemfile`, and MO's Rubocop config in `.rubocop.yml`.
 
