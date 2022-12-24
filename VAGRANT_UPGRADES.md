@@ -115,3 +115,18 @@ If stuff fails now you have to figure out how to fix it.
 to `images.mushroomobserver.org`. (You will need an ssh account on that server.) ###
 
     scp /path/to/your/mo-focal-2022-12-01.box youraccount@images.mushroomobserver.org:/data/images/mo
+
+You may have to first upload it to your own directory, if you don't have permissions for `/data/images/mo`.
+
+    scp /path/to/your/mo-focal-2022-12-01.box youraccount@images.mushroomobserver.org:~/
+    
+This may take a while. Then move your box to `/data/images/mo`
+
+    cd ~
+    sudo mv mo-focal-2022-12-21.box /data/images/mo/mo-focal-2022-12-21.box
+    
+And change the permissions and ownership, so others can download it:
+
+    cd /data/images/mo
+    sudo chown mo:mo mo-focal-2022-12-21.box
+    sudo chmod 644 mo-focal-2022-12-21.box
