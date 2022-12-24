@@ -4,18 +4,14 @@ developer-startup
 Welcome to the Mushroom Observer Developer Startup system!  The
 purpose of this system is to help software developers setup an
 environment where they can contribute to the Mushroom Observer code
-base.  The basic idea is to setup a virtual machine (VM) on your
+base. The basic idea is to setup a virtual machine (VM) on your
 personal ("host") machine that is configured to serve a test version
-of the Mushroom Observer website and to access the code. 
+of the Mushroom Observer website and to access the code.
 This system does require a reasonably powerful computer probably
 purchased in the last 3 years.
 
->  :warning: The system has been tested with macOS, but we haven't yet
-suceeded in setting it up with Windows. **Before trying a Windows
-install, please get in touch with us so that we can help
-work through the problems.** (The notes below about Windows relate to 
-older versions of the Developer System; they may be irrelevant to the 
-current version.)
+>  :warning: The development team is using macOS. **If you are using Windows some of the notes relate to older versions of the Developer System; they may be irrelevant to the
+current version or more recent versions of windows (example: ssh support is now built into most windows machines)
 
 If you're interested in contributing your code to MO, please also read
 [DEVELOPER-WORKFLOW.md][]. Administrators/Managers should also have a
@@ -25,8 +21,7 @@ look at [ADMIN-WORKFLOW.md][].
 
 ### TL;DR ###
 
-From a clean Mac to running the tests:
-
+From a clean Mac/PC to running the tests:
 
 
 Install VirtualBox: https://www.virtualbox.org/
@@ -41,21 +36,22 @@ In a Terminal shell:
     cd developer-startup
     vagrant up
     vagrant ssh
-    mo-dev /vagrant
+    mo-dev /vagrant https://github.com/MushroomObserver/mushroom-observer.git
     cd /vagrant/mushroom-observer
     rails lang:update
     rails test
     rails server -b 0.0.0.0
 
-That should be it.  If something did not work, then see below for a
+That should be it. If something did not work, then see below for a
 more detailed walk through which addresses the issues that have been
 reported.
 
+**If you want to clone from your own fork see [the notes on mo-dev command](#notes-on-mo-dev-command).**
+
 ### Install development tools on your local machine ###
 
-Install VirtualBox: https://www.virtualbox.org/ (Windows 10 Users:
-make sure that Hyper-V is not installed as a 'Windows Feature' on your
-machine as it breaks virtualbox)
+Install VirtualBox: https://www.virtualbox.org/ (Windows Users:
+If you have Hyper-v enabled, which will be the case if you also have Docker or WSL2 installed, you must use VirtualBox 6.1.4+, as previous versions will not work with Hyper-V enabled.)
 
 Install Vagrant: https://www.vagrantup.com/downloads.html
 
@@ -63,7 +59,7 @@ Install git: https://git-scm.com/downloads (some Mac users have found
 the GitHub GUI to be helpful, https://central.github.com/mac/latest)
 
 If you are using Windows, it will be very helpful to select the option
-in the git installer to add the Unix tools to the Windows path.  This
+in the git installer to add the Unix tools to the Windows path. This
 will make accessing the virtual box via SSH much easier.
 
 ### Clone the project ###
@@ -77,7 +73,11 @@ Go into the resulting directory:
     cd developer-startup
     vagrant up
 
-*Gotcha: You might get an error message about virtual box not being able to start virtual machines. This means you have to enable virtualization support on your computers BIOS, which is accessed during your computers power-on process. 
+**Troubleshooting:**
+* You might get an error message about VirtualBox not being able to start virtual machines. This means you may have to enable virtualization support on your computers BIOS, which is accessed during your computers power-on process.
+
+* If you see the error: `Stderr: VBoxManage.exe: error: RawFile#0 failed to create the raw output file /dev/null (VERR_PATH_NOT_FOUND)
+VBoxManage.exe: error: Details: code E_FAIL (0x80004005), component ConsoleWrap, interface IConsole` this can be resolved by disabling the serial port for the development VM from within the VirtualBox GUI. In VirtualBox select the development machine. Click Settings > Serial Ports. Uncheck Enable Serial Port for Port 1. Then run vagrant up again.
 
 ### Setup your Virtual Machine ###
 
@@ -85,10 +85,10 @@ Login to your new VM:
 
     % vagrant ssh
 
-On Windows machines this may require installing an ssh client like
-[PuTTY][].  Attempting to run `vagrant ssh` will give you the parameters
+Some Windows machines this may require installing an ssh client like
+[PuTTY][]. Attempting to run `vagrant ssh` will give you the parameters
 you need to give to [PuTTY][]. Note: if you have Git installed with the Unix tools
-you will not need to install [PuTTY][].
+you will not need to install [PuTTY][]. Note: As of Nov 11, 2022 Windows 10 & 11 [have built in ssh support](https://learn.microsoft.com/en-us/windows/terminal/tutorials/ssh).
 
 You have been successful if the final output line is:
 
@@ -103,7 +103,7 @@ can either generate a new key pair with:
     $ ssh-keygen -f /home/vagrant/.ssh/id_rsa -N ''
 
 and accepting all the defaults. You then need to add ~/.ssh/id_rsa.pub
-to your SSH Keys in your github settings.  You can also reuse an
+to your SSH Keys in your github settings. You can also reuse an
 existing private key by copying it to the developer-startup directory
 on the host machine. Assuming the key is called id_rsa, on the VM run:
 
@@ -114,18 +114,27 @@ on the host machine. Assuming the key is called id_rsa, on the VM run:
 
 #### Setup the new VM ####
 
-    $ mo-dev /vagrant
+    $ mo-dev /vagrant https://github.com/MushroomObserver/mushroom-observer.git
 
-*Gotcha for Windows users.  If you see this error:
+##### Notes on mo-dev command:
+  - The second parameter specifying the Github repository url in the `mo-dev` command is optional, if not provided the default is to use the [Official MO Repository](https://github.com/MushroomObserver/mushroom-observer).
+  - If you want to initialize your environment from a fork, pass the URL of the fork. For example:
+  `mo-dev /vagrant https://github.com/<YourGithubUserName>/mushroom-observer.git`
+  - If you are cloning from your own fork, this may impact your ability to sync your fork with the Official MO Repository via git command line interface(s). If you plan on using Github to keep things in sync, this should not be an issue.
+
+Example:
+`mo-dev /vagrant https://github.com/MyGithubUsername/mushroom-observer.git`
+
+*Gotcha for Windows users. If you see this error:
 
 `/bin/bash: bad interpreter: No such file or directory`
 
-it means that the line endings of the file have been formatted for
-windows when you cloned the developer-startup repository.  To fix
+likely means that the line endings of the file have been formatted for
+windows when you cloned the developer-startup repository. To fix
 this, use a program like Notepad++ to convert the mo-dev file to
 "Unix/Linux EOL (Line Endings)".
 
-Note: You can give mo-dev any directory on the VM you want.  The advantage of
+Note: You can give mo-dev any directory on the VM you want. The advantage of
 using /vagrant is that the MO source code will be available both on the
 VM and on the host machine in the same directory as the Vagrantfile.
 This is handy if you want to edit MO files on your host machine with your
@@ -134,13 +143,13 @@ Another common option is to just use:
 
     $ mo-dev .
 
-and use Linux editors such as vi or emacs.  The rest of this document
+and use Linux editors such as vi or emacs. The rest of this document
 assumes that you used /vagrant when calling mo-dev.
 
 *Another Gotcha for Windows users:
 
 You may need to update the the "guest additions" on the VM in order for 'folder sharing'
-to work.  If you are unable to see any files in the /vagrant directory on the VM, then run
+to work. If you are unable to see any files in the /vagrant directory on the VM, then run
 this command on your host.
 
     > vagrant plugins update vbguest
@@ -149,9 +158,9 @@ this command on your host.
 Assuming all of that was successful, you now have a running virtual
 machine with the MO source code installed, an instance of MySQL and
 all the goodies to successfully run all the tests and startup a local
-server (see below).  You access the new machine by being in the
+server (see below). You access the new machine by being in the
 developer-startup directory and running 'vagrant ssh' or through
-Putty.  The new instance of MySQL can be accessed with
+Putty. The new instance of MySQL can be accessed with
 usernames/passwords mo/mo or root/root.
 
 To run the tests in the new environment
@@ -160,11 +169,11 @@ Go to the VM ('vagrant ssh' or through Putty)
 
     $ cd /vagrant/mushroom-observer
     $ rails test
-    
+
 Note if the VM has been inactive for a while or you know additional
 changes have been added to the source code repository, you may want
 to re-run mo-dev using the directory containing the mushroom-observer
-directory.  This will run standard things like 'git pull',
+directory. This will run standard things like 'git pull',
 'bundle install', run any pending database migrations, and make sure
 your lang files are up to date.
 
@@ -200,7 +209,7 @@ looking in develop-startup/mushroom-observer/log/development.log
 Go to verification URL in your browser
 
 Have fun!  (Note the initial database, developer-startup/init.sql,
-just has the admin user and the language stuff.  It probably makes
+just has the admin user and the language stuff. It probably makes
 sense to add some observations, names and images for testing, but we
 haven't gotten to it yet.)
 
@@ -225,8 +234,8 @@ Rebuilding the Vagrant box from scratch
 ---------------------------------------
 If for some reason the VM created using the ./startup does not work or
 it gets outdated and you wish to refresh it, you can build a new VM
-from scratch.  First, you may want to update the base box in the
-Vagrantfile.  Once you have the base box you want, run:
+from scratch. First, you may want to update the base box in the
+Vagrantfile. Once you have the base box you want, run:
 
     % vagrant up clean
 
@@ -235,9 +244,9 @@ Once the VM is setup, you should create a new version of the box with:
     % vagrant package clean
 
 This will create a package.box file in the developer-startup
-directory.  To allow others to use it, this should get uploaded to
+directory. To allow others to use it, this should get uploaded to
 https://images.mushroomobserver.org and placed in the web root
-directory under a distinct name.  Finally, the Vagrantfile should be
+directory under a distinct name. Finally, the Vagrantfile should be
 updated to reference the new box and checked in.
 
 Other developers should now be able to get the upgraded box by simply
@@ -249,7 +258,7 @@ updating their local developer-startup repo and running:
 They may also want to get rid of any old boxes by running:
 
     % vagrant box list
-    % vagrant box remove [boxname] 
+    % vagrant box remove [boxname]
 
 - - -
 [comment]: # (The following are link reference definitions)

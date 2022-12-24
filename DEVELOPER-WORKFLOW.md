@@ -15,6 +15,8 @@ This file assumes that you followed the directions in [README.md][] through [Cre
 - Add your personal [Github][] repository as a remote repository <br>
   `git remote add personal git@github.com:<YourGitUserName>/mushroom-observer.git`
 
+Note: the final two steps are not required if you provided the URL to your fork when you ran the `mo-dev` command during the VM setup process. This will impact your ability to sync your fork with the Offical MO Repo via command git commands. If you plan on using Github for keeping your fork in sync, this should not be an issue.
+
 ## The Development Cycle ##
 ### Sync with the Official MO Repo ###
 Synchronize your local machine, the VM, and your personal [Github][] to the [Official MO Repo][]. Use a [Git GUI][] or on your local machine:
@@ -90,7 +92,7 @@ rake db:drop
 mysql -u root -p < db/initialize.sql
 ```
 When asked for the password, use `root`. <br/>
-Warning: The next line can take a long time to execute. 
+Warning: The next line can take a long time to execute.
 (It used to take 20 minutes on my machine. JDC)
 ```sh
 gunzip -c checkpoint_stripped.gz | mysql -u mo -pmo mo_development
