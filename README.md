@@ -83,10 +83,15 @@ Login to your new VM:
 
     % vagrant ssh
 
-Some Windows machines this may require installing an ssh client like
+Older Windows machines may require installing an ssh client like
 [PuTTY][]. Attempting to run `vagrant ssh` will give you the parameters
-you need to give to [PuTTY][]. Note: if you have Git installed with the Unix tools
-you will not need to install [PuTTY][]. Note: As of Nov 11, 2022 Windows 10 & 11 [have built in ssh support](https://learn.microsoft.com/en-us/windows/terminal/tutorials/ssh).
+you need to give to [PuTTY][].
+
+Note: Windows 10 & 11 now [have built in ssh support](https://learn.microsoft.com/en-us/windows/terminal/tutorials/ssh). You can see if this feature is enabled by typing "ssh" into the command prompt.
+
+Note: if you have Git installed with the Unix tools
+you will not need to install [PuTTY][].
+
 
 You have been successful if the final output line is:
 
@@ -119,10 +124,10 @@ on the host machine. Assuming the key is called id_rsa, on the VM run:
 
 `/bin/bash: bad interpreter: No such file or directory`
 
-likely means that the line endings of the file have been formatted for
+it likely means that the line endings of the file have been formatted for
 windows when you cloned the developer-startup repository. To fix
 this, use a program like Notepad++ to convert the mo-dev file to
-"Unix/Linux EOL (Line Endings)".
+"Unix/Linux EOL (Line Endings)", or
 
 Note: You can give mo-dev any directory on the VM you want. The advantage of
 using /vagrant is that the MO source code will be available both on the
