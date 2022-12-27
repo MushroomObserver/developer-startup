@@ -10,7 +10,7 @@ of the Mushroom Observer website and to access the code.
 This system does require a reasonably powerful computer probably
 purchased in the last 3 years.
 
->  :warning: The development team is using macOS. **If you are using Windows some of the notes relate to older versions of the Developer System; they may be irrelevant to the
+>  :warning: The development team is using macOS. **If you are using Windows, some of the notes relate to older versions of the Developer System; they may be irrelevant to the
 current version or more recent versions of windows (example: ssh support is now built into most windows machines)
 
 If you're interested in contributing your code to MO, please also read
@@ -36,7 +36,7 @@ In a Terminal shell:
     cd developer-startup
     vagrant up
     vagrant ssh
-    mo-dev /vagrant https://github.com/MushroomObserver/mushroom-observer.git
+    mo-dev /vagrant
     cd /vagrant/mushroom-observer
     rails lang:update
     rails test
@@ -45,8 +45,6 @@ In a Terminal shell:
 That should be it. If something did not work, then see below for a
 more detailed walk through which addresses the issues that have been
 reported.
-
-**If you want to clone from your own fork see [the notes on mo-dev command](#notes-on-mo-dev-command).**
 
 ### Install development tools on your local machine ###
 
@@ -114,16 +112,8 @@ on the host machine. Assuming the key is called id_rsa, on the VM run:
 
 #### Setup the new VM ####
 
-    $ mo-dev /vagrant https://github.com/MushroomObserver/mushroom-observer.git
+    $ mo-dev /vagrant
 
-##### Notes on mo-dev command:
-  - The second parameter specifying the Github repository url in the `mo-dev` command is optional, if not provided the default is to use the [Official MO Repository](https://github.com/MushroomObserver/mushroom-observer).
-  - If you want to initialize your environment from a fork, pass the URL of the fork. For example:
-  `mo-dev /vagrant https://github.com/<YourGithubUserName>/mushroom-observer.git`
-  - If you are cloning from your own fork, this may impact your ability to sync your fork with the Official MO Repository via git command line interface(s). If you plan on using Github to keep things in sync, this should not be an issue.
-
-Example:
-`mo-dev /vagrant https://github.com/MyGithubUsername/mushroom-observer.git`
 
 *Gotcha for Windows users. If you see this error:
 
