@@ -119,16 +119,6 @@ on the host machine. Assuming the key is called id_rsa, on the VM run:
 
     $ mo-dev /vagrant
 
-
-*Gotcha for Windows users. If you see this error:
-
-`/bin/bash: bad interpreter: No such file or directory`
-
-it likely means that the line endings of the file have been formatted for
-windows when you cloned the developer-startup repository. To fix
-this, use a program like Notepad++ to convert the mo-dev file to
-"Unix/Linux EOL (Line Endings)", or
-
 Note: You can give mo-dev any directory on the VM you want. The advantage of
 using /vagrant is that the MO source code will be available both on the
 VM and on the host machine in the same directory as the Vagrantfile.
@@ -141,7 +131,7 @@ Another common option is to just use:
 and use Linux editors such as vi or emacs. The rest of this document
 assumes that you used /vagrant when calling mo-dev.
 
-*Another Gotcha for Windows users:
+*Gotcha for Windows users:
 
 You may need to update the the "guest additions" on the VM in order for 'folder sharing'
 to work. If you are unable to see any files in the /vagrant directory on the VM, then run
