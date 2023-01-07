@@ -3,6 +3,7 @@ tmp
 .vagrant*
 Cheffile.lock
 .DS_Store
-mushroom-observer
+/mushroom-observer/*
+!/mushroom-observer/.ruby-version
 *~
 clean-*

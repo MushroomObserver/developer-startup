@@ -1,7 +1,11 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-RUBY_V = File.open("./mushroom-observer/.ruby-version") { |f| f.read }.chomp
+if [ -f "./mushroom-observer/.ruby-version" ]; then
+  RUBY_V = File.open("./mushroom-observer/.ruby-version") { |f| f.read }.chomp
+else
+  RUBY_V = "3.1.2"
+end
 
 # from the example at https://gist.github.com/creisor/e20f254a89070f46b91cc3e0c5cd18db
 $apt_script = <<-SHELL
@@ -14,12 +18,11 @@ apt-get -y install mysql-server
 apt-get -y install libmysqlclient-dev
 sed "s/\\[mysqld\\]/[mysqld]\\nsql-mode = ''/" -i'' /etc/mysql/mysql.conf.d/mysqld.cnf
 ln -fs /vagrant/mo-dev /usr/local/bin/mo-dev
-apt-get -y install git build-essential wget curl vim ruby \
-  imagemagick libmagickcore-dev libmagickwand-dev libjpeg-dev \
-  libgmp3-dev gnupg2 firefox
+apt-get -y install git build-essential wget curl vim ruby imagemagick \
+  libmagickcore-dev libmagickwand-dev libjpeg-dev libgmp3-dev gnupg2 firefox
 SHELL
 
-# their rbenv example, unaltered except the line cd /vagrant/mushroom-observer 
+# their rbenv example, unaltered except the line cd /vagrant/mushroom-observer
 # uses our .ruby-version, found above
 $rbenv_script = <<SCRIPT
 if [ ! -d ~/.rbenv ]; then
