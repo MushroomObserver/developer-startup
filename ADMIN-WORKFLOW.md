@@ -35,9 +35,9 @@ git -b myfix JoeCohen/myfix
 ## Add the changes to the [Official MO Repo][] ##
 I'm again unsure of the best practice.  To be safe, it's probably best to  sync to the [Official MO Repo][] because if it changed, we need to make sure we're still compatible.  If everything's okay, merge the developer's work and push it to the [Official MO Repo][]. (If there are incompatibilties, either (a) the admin can fix them, complete the merge, and then push to the [Official MO Repo][], or (b) ask the developer to fix them.) Use a [Git GUI][] or 
 ```
-git checkout master
+git checkout main
 git fetch origin
-git merge origin/master
+git merge origin/main
 git merge <developer's feature branch>
 git push origin
 ```

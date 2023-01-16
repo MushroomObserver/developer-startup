@@ -84,7 +84,7 @@ This should return something like:
 	Homepage: https://github.com/rubocop/rubocop
 	Documentation: https://docs.rubocop.org/rubocop/1.39/
 	Source Code: https://github.com/rubocop/rubocop/
-	Changelog: https://github.com/rubocop/rubocop/blob/master/CHANGELOG.md
+	Changelog: https://github.com/rubocop/rubocop/blob/main/CHANGELOG.md
 	Bug Tracker: https://github.com/rubocop/rubocop/issues
 	Path: /home/vagrant/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/rubocop-1.39.0
 	Reverse Dependencies: 
