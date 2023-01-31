@@ -95,5 +95,3 @@ else
 fi
 
 rails lang:update
-rm config/credentials.yml.enc
-EDITOR='echo "test_secret: magic" >> ' rails credentials:edit

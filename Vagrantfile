@@ -1,6 +1,54 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+if [ -f "./mushroom-observer/.ruby-version" ]; then
+  RUBY_V = File.open("./mushroom-observer/.ruby-version") { |f| f.read }.chomp
+else
+  RUBY_V = "3.1.2"
+end
+
+# from the example at https://gist.github.com/creisor/e20f254a89070f46b91cc3e0c5cd18db
+$apt_script = <<-SHELL
+update-locale LANG=en_US.UTF-8
+apt-get update --fix-missing
+DEBIAN_FRONTEND=noninteractive apt-get -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" dist-upgrade
+debconf-set-selections <<< 'mysql-server mysql-server/root_password password root'
+debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password root'
+apt-get -y install mysql-server
+apt-get -y install libmysqlclient-dev
+sed "s/\\[mysqld\\]/[mysqld]\\nsql-mode = ''/" -i'' /etc/mysql/mysql.conf.d/mysqld.cnf
+ln -fs /vagrant/mo-dev /usr/local/bin/mo-dev
+apt-get -y install git build-essential wget curl vim ruby imagemagick \
+  libmagickcore-dev libmagickwand-dev libjpeg-dev libgmp3-dev gnupg2 firefox
+SHELL
+
+# their rbenv example, unaltered except the line cd /vagrant/mushroom-observer
+# uses our .ruby-version, found above
+$rbenv_script = <<SCRIPT
+if [ ! -d ~/.rbenv ]; then
+  git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+  echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+  echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+fi
+if [ ! -d ~/.rbenv/plugins/ruby-build ]; then
+  git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+  echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc
+fi
+export PATH="$HOME/.rbenv/bin:$PATH"
+export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
+eval "$(rbenv init -)"
+if [ ! -e .rbenv/versions/#{RUBY_V} ]; then
+  rbenv install #{RUBY_V}
+fi
+rbenv global #{RUBY_V}
+cd /vagrant/mushroom-observer
+if [ ! -e /home/vagrant/.rbenv/shims/bundle ]; then
+  gem install bundler
+  rbenv rehash
+fi
+bundle install
+SCRIPT
+
 # All Vagrant configuration is done below. The "2" in Vagrant.configure
 # configures the configuration version (we support older styles for
 # backwards compatibility). Please don't change it unless you know what
@@ -23,39 +71,9 @@ Vagrant.configure("2") do |config|
 
       clean.vm.network "forwarded_port", guest: 3000, host: 3000
 
-      clean.vm.provision :shell, inline: <<-SHELL
-        update-locale LANG=en_US.UTF-8
-        apt-get -y update
-        DEBIAN_FRONTEND=noninteractive apt-get -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" dist-upgrade
-        debconf-set-selections <<< 'mysql-server mysql-server/root_password password root'
-        debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password root'
-        apt-get -y install mysql-server
-        apt-get -y install libmysqlclient-dev
-        sed "s/\\[mysqld\\]/[mysqld]\\nsql-mode = ''/" -i'' /etc/mysql/mysql.conf.d/mysqld.cnf
-        ln -fs /vagrant/mo-dev /usr/local/bin/mo-dev
-        apt-get -y install git build-essential wget curl vim ruby \
-          imagemagick libmagickcore-dev libmagickwand-dev libjpeg-dev \
-          libgmp3-dev gnupg2
-      SHELL
+      clean.vm.provision :shell, inline: $apt_script
 
-      clean.vm.provision :shell, privileged: false, inline: <<-SHELL
-        # # These may be less secure than keyservers, but at least they load.
-        curl -sSL https://rvm.io/mpapis.asc | gpg --import -
-        curl -sSL https://rvm.io/pkuczynski.asc | gpg --import -
-        # Trust them keys
-        echo 409B6B1796C275462A1703113804BB82D39DC0E3:6: | gpg --import-ownertrust # mpapis@gmail.com
-        echo 7D2BAF1CF37B13E2069D6956105BD0E739499BDB:6: | gpg --import-ownertrust # piotr.kuczynski@gmail.com
-
-        # These keyservers reliably fail!
-        # gpg2 --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
-
-        curl -L https://get.rvm.io | bash -s stable
-        source ~/.rvm/scripts/rvm
-        rvm install 3.1.2
-      SHELL
-
-      # Add Firefox for selenium tests
-      config.vm.provision :shell, inline: "apt-get install -y firefox"
+      clean.vm.provision :shell, privileged: false, inline: $rbenv_script
 
       clean.trigger.after [:provision] do |t|
         t.name = "Reboot after provisioning"
@@ -63,7 +81,7 @@ Vagrant.configure("2") do |config|
       end
     end
   else
-    version_date = "2022-12-01"
+    version_date = "2022-12-21"
     config.vm.define "mo-focal-#{version_date}", primary: true do |mo|
       mo.vm.box = "mo-focal-#{version_date}"
       mo.vm.box_url = "https://images.mushroomobserver.org/mo-focal-#{version_date}.box"
