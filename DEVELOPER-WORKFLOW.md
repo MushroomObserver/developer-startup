@@ -19,10 +19,10 @@ This file assumes that you followed the directions in [README.md][] through [Cre
 ### Sync with the Official MO Repo ###
 Synchronize your local machine, the VM, and your personal [Github][] to the [Official MO Repo][]. Use a [Git GUI][] or on your local machine:
 ```
-git checkout master
+git checkout main
 git fetch origin
-git merge origin/master
-git push personal master
+git merge origin/main
+git push personal main
 ```
 
 ### Create a personal, feature branch ###
@@ -59,7 +59,7 @@ For some ideas about writing commit messages, see [How to Write a Git Commit Mes
 Make sure that your local commits are compatible with any changes to the [Official MO Repo][] since you last synced:
 - Replay your local fixes on top of the [Official MO Repo][]. Use a [Git GUI][] or on your local machine: <br>
 `git checkout myfixes` <br>
-`git pull --rebase origin master` <br>
+`git pull --rebase origin main` <br>
 - **Fix any conflicts.**
 
 #### Push your changes to your personal [Github][] repository ####
@@ -71,7 +71,7 @@ Use a [Git GUI][] or on your local machine  <br>
 - Go to your personal [Github][] repository and click on "Pull Request".
 - Switch to your feature branch
 - Choose your feature branch in your personal [Github][] repo as the source branch
-- Choose origin repo "master" as the destination branch.
+- Choose origin repo "main" as the destination branch.
 - Check the "Allow edits from maintainers" checkbox. See [Improving collaboration with forks][]
 - In the PR description please:
   - Say what problem/feature the PR addesses, including a link to to any Pivotal story or MO Developers disussion;
