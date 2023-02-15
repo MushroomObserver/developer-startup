@@ -4,7 +4,7 @@ dir=$1
 new_db=
 
 if [ ! $dir ]; then
-    echo "Usage: mo-dev <dir>"
+    echo "Usage: mo-dev <dir> <repo>"
     exit
 fi
 

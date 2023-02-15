@@ -90,7 +90,7 @@ rake db:drop
 mysql -u root -p < db/initialize.sql
 ```
 When asked for the password, use `root`. <br/>
-Warning: The next line can take a long time to execute. 
+Warning: The next line can take a long time to execute.
 (It used to take 20 minutes on my machine. JDC)
 ```sh
 gunzip -c checkpoint_stripped.gz | mysql -u mo -pmo mo_development
