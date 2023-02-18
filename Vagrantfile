@@ -46,7 +46,9 @@ if [ ! -e /home/vagrant/.rbenv/shims/bundle ]; then
   gem install bundler
   rbenv rehash
 fi
-bundle install
+if [ -f "./mushroom-observer/Gemfile" ]; then
+  bundle install
+end
 SCRIPT
 
 # All Vagrant configuration is done below. The "2" in Vagrant.configure
