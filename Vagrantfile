@@ -1,7 +1,7 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-if [ -f "./mushroom-observer/.ruby-version" ]; then
+if File.exists?("./mushroom-observer/.ruby-version")
   RUBY_V = File.open("./mushroom-observer/.ruby-version") { |f| f.read }.chomp
 else
   RUBY_V = "3.1.2"
