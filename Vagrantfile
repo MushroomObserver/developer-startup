@@ -46,7 +46,7 @@ if [ ! -e /home/vagrant/.rbenv/shims/bundle ]; then
   gem install bundler
   rbenv rehash
 fi
-if [ -f "./mushroom-observer/Gemfile" ]; then
+if [ -f "./Gemfile" ]; then
   bundle install
 end
 SCRIPT
