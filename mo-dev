@@ -14,7 +14,8 @@ if [ ! $? -eq 0 ]; then
     exit
 fi
 
-if [ ! -d mushroom-observer ]; then
+if [ ! -d mushroom-observer/app ]; then
+    rm -rf mushroom-observer # must be clean or git clone fails!
     git clone https://github.com/MushroomObserver/mushroom-observer.git
 fi
 
