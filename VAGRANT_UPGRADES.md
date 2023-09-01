@@ -29,6 +29,12 @@ The `--prune` flag will ensure that the list is current.
 
 ### 4) Update the Vagrantfile ###
 
+IMPORTANT: You must either change the box names in the Vagrant file or
+destroy any relevant boxes.  Vagrant gets a lot of efficiency by
+relying on cached copies of things, so make sure you clean out anything
+you can.  You can change `version_date` as a simple way to change the
+name of the default box.
+
 ##### Change the version_date: #####
 
 MO boxes are named by the date they were created. In the Vagrantfile, set 
@@ -59,12 +65,6 @@ so ideally, change the Ruby version number there, first. The number specified in
 the Vagrantfile should match, it's the fallback default.
 
     RUBY_V = "3.1.2"
-
-IMPORTANT: You must either change the box names in the Vagrant file or
-destroy any relevant boxes.  Vagrant gets a lot of efficiency by
-relying on cached copies of things, so make sure you clean out anything
-you can.  You can change `version_date` as a simple way to change the
-name of the default box.
 
 ### 5) Build the "clean" box. ###
 
