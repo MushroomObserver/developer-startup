@@ -48,7 +48,7 @@ if [ ! -e /home/vagrant/.rbenv/shims/bundle ]; then
 fi
 if [ -f "./Gemfile" ]; then
   bundle install
-end
+fi
 SCRIPT
 
 # All Vagrant configuration is done below. The "2" in Vagrant.configure
