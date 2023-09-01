@@ -35,9 +35,12 @@ When doing an OS upgrade I look first for a Hashicorp box and if I there
 isn't one, then I'll look for an Ubuntu one.  In the current
 Vagrantfile we're using `ubuntu/focal64`.
 
-For Ruby upgrades you will change the list that looks like:
+For Ruby upgrades, it first looks for the version in the Mushroom Observer repo:
 
-    rvm config <version>
+    RUBY_V = File.open("./mushroom-observer/.ruby-version") { |f| f.read }.chomp
+
+so ideally, change the Ruby version number there, first. The number specified in 
+the Vagrantfile should match, it's the fallback default.
 
 IMPORTANT: You must either change the box names in the Vagrant file or
 destroy any relevant boxes.  Vagrant gets a lot of efficiency by
