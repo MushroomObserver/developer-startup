@@ -88,16 +88,19 @@ In the current case I ran:
 This results in a file called `package.box`. You can rename this to something 
 like `mo-focal-2023-09-01.box`.
 
-Ultimately this should be uploaded to the image server (instructions #10 below.)
-But before uploading, you may want to test it locally. Do this by changing the
-`mo.vm.box_url` to refer to the local file. In the current case I updated the 
-variable to point to:
+Ultimately this should be uploaded to the image server (instructions #11 below.)
+But before uploading, you may want to test it locally. 
 
-    file:///home/nathan/src/developer-startup/mo-focal-2023-09-01.box
+### 7) Prepare Vagrantfile to test the box ###
+
+Do this by changing the `mo.vm.box_url` to refer to the local file. 
+In the current case I commented out the remote definition, and added a line pointing the variable to:
+
+    mo.vm.box_url = file:///home/nathan/src/developer-startup/mo-focal-2023-09-01.box
 
 Just remember to switch it back to the remote URL in the Vagrantfile after you have things working: this allows others to download the box you have made.
 
-### 7) Bring up the vagrant box. ###
+### 8) Bring up the vagrant box. ###
 
 Run:
 
@@ -111,7 +114,7 @@ Now run:
 
 This should connect you to the new box.
 
-### 8) Setup the local build environment. ###
+### 9) Setup the local build environment. ###
 
 Run:
 
@@ -120,7 +123,7 @@ Run:
 This will run bundler and the other bits needed to get the new box
 setup to actually run MO.
 
-### 9) Run the tests. ###
+### 10) Run the tests. ###
 
 Run:
 
@@ -130,9 +133,17 @@ If everything is green you great!
 
 If stuff fails now you have to figure out how to fix it.
 
-### 10) Upload the new box to `images.mushroomobserver.org`. ###
-> [!important]
-> Don't forget to update `box_url` in the Vagrantfile before uploading the box.
+### 11) Change Vagrantfile `box_url` back to point to the remote server ###
+
+> [!IMPORTANT]
+> Don't forget to update Vagrantfile before uploading the box.
+> This url is what enables others to use the box you've just built. 
+
+Either uncomment the original variable definition, or change `mo.vm.box_url` back to something like:
+
+    mo.vm.box_url = "https://images.mushroomobserver.org/mo-focal-#{version_date}.box"
+
+### 12) Upload the new box to `images.mushroomobserver.org`. ###
 
 To upload the box to the image server, you will need an ssh account on that server. 
 
