@@ -85,20 +85,17 @@ In the current case I ran:
 
     vagrant package clean-focal
 
-This results in a file called `package.box`.
+This results in a file called `package.box`. You can rename this to something 
+like `mo-focal-2023-09-01.box`.
 
-Ultimately this should be uploaded to `images.mushroomobserver.org` and
-moved to the directory `/data/images/mo` with the right ownership (`mo:mo`)
-and permissions (`644`). (Detailed instructions below.)
+Ultimately this should be uploaded to the image server (instructions #10 below.)
+But before uploading, you may want to test it locally. Do this by changing the
+`mo.vm.box_url` to refer to the local file. In the current case I updated the 
+variable to point to:
 
-Before doing this you may want to test it locally by changing the
-`mo.vm.box_url` to refer to the local file.  Just remember to
-switch it back to the real URL after you have things working.
+    file:///home/nathan/src/developer-startup/mo-focal-2023-09-01.box
 
-In the current case I renamed `package.box` to `mo-focal-2022-06-04.box` and
-updated the variable to point to:
-
-    file:///home/nathan/src/developer-startup/mo-focal-2022-06-04.box
+Just remember to switch it back to the remote URL in the Vagrantfile after you have things working: this allows others to download the box you have made.
 
 ### 7) Bring up the vagrant box. ###
 
@@ -133,12 +130,15 @@ If everything is green you great!
 
 If stuff fails now you have to figure out how to fix it.
 
-### 10) Don't forget to update `box_url` in the Vagrantfile, and upload the new box
-to `images.mushroomobserver.org`. (You will need an ssh account on that server.) ###
+### 10) Upload the new box to `images.mushroomobserver.org`. ###
+> [!important]
+> Don't forget to update `box_url` in the Vagrantfile before uploading the box.
+
+To upload the box to the image server, you will need an ssh account on that server. 
 
     scp /path/to/your/mo-focal-2022-12-01.box youraccount@images.mushroomobserver.org:/data/images/mo
 
-You may have to first upload it to your own directory, if you don't have permissions for `/data/images/mo`.
+You may have to first upload it to your home directory on the server, if you don't have permissions for `/data/images/mo`.
 
     scp /path/to/your/mo-focal-2022-12-01.box youraccount@images.mushroomobserver.org:~/
     
