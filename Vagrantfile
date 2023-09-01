@@ -26,12 +26,12 @@ SHELL
 # uses our .ruby-version, found above
 $rbenv_script = <<SCRIPT
 if [ ! -d ~/.rbenv ]; then
-  git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+  git clone https://github.com/rbenv/rbenv.git ~/.rbenv --verbose
   echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
   echo 'eval "$(rbenv init -)"' >> ~/.bashrc
 fi
 if [ ! -d ~/.rbenv/plugins/ruby-build ]; then
-  git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+  git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build --verbose
   echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc
 fi
 export PATH="$HOME/.rbenv/bin:$PATH"
