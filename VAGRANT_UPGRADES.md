@@ -43,7 +43,7 @@ MO boxes are named by the date they were created. In the Vagrantfile, set
 
     version_date = "2023-09-01"
 
-##### Choose a box (Linux version): #####
+##### Choose a box for your desired Linux distribution: #####
 
 For operating system upgrades, I generally go to the [Vagrant Boxes](https://app.vagrantup.com/boxes/search)
 search page on the HashiCorp website and search for the OS I'm looking
