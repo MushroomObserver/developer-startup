@@ -36,14 +36,14 @@ relying on cached copies of things, so make sure you clean out anything
 you can.  You can change `version_date` as a simple way to change the
 name of the default box.
 
-##### Change the version_date: #####
+###### Change the version_date: ######
 
 MO boxes are named by the date they were created. In the Vagrantfile, set 
 `version_date` to today's date:
 
     version_date = "2023-09-01"
 
-##### Choose a box for your desired Linux distribution: #####
+###### Choose a box for your desired Linux distribution: ######
 
 For operating system upgrades, I generally go to the [Vagrant Boxes](https://app.vagrantup.com/boxes/search)
 search page on the HashiCorp website and search for the OS I'm looking
@@ -56,7 +56,7 @@ in the Vagrantfile; you don't have to download the box yourself.
 
     config.vm.box = "ubuntu/focal64"
 
-##### Set .ruby-version (optional): #####
+###### Set .ruby-version (optional): ######
 
 For Ruby upgrades, it first looks for the version in the Mushroom Observer repo:
 
