@@ -29,7 +29,8 @@ The `--prune` flag will ensure that the list is current.
 
 ### 4) Update the Vagrantfile ###
 
-IMPORTANT: You must either change the box names in the Vagrant file or
+> [!IMPORTANT]
+> You must either change the box names in the Vagrant file or
 destroy any relevant boxes.  Vagrant gets a lot of efficiency by
 relying on cached copies of things, so make sure you clean out anything
 you can.  You can change `version_date` as a simple way to change the
