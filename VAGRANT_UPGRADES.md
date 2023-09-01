@@ -44,7 +44,10 @@ for.
 
 When doing an OS upgrade I look first for a Hashicorp box and if I there
 isn't one, then I'll look for an Ubuntu one.  In the current
-Vagrantfile we're using `ubuntu/focal64`.
+Vagrantfile we're using `ubuntu/focal64`. You just have to set the box name
+in the Vagrantfile; you don't have to download the box yourself.
+
+    config.vm.box = "ubuntu/focal64"
 
 ##### Set .ruby-version (optional): #####
 
@@ -54,6 +57,8 @@ For Ruby upgrades, it first looks for the version in the Mushroom Observer repo:
 
 so ideally, change the Ruby version number there, first. The number specified in 
 the Vagrantfile should match, it's the fallback default.
+
+    RUBY_V = "3.1.2"
 
 IMPORTANT: You must either change the box names in the Vagrant file or
 destroy any relevant boxes.  Vagrant gets a lot of efficiency by
@@ -83,7 +88,7 @@ This results in a file called `package.box`.
 
 Ultimately this should be uploaded to `images.mushroomobserver.org` and
 moved to the directory `/data/images/mo` with the right ownership (`mo:mo`)
-and permissions (`644`).
+and permissions (`644`). (Detailed instructions below.)
 
 Before doing this you may want to test it locally by changing the
 `mo.vm.box_url` to refer to the local file.  Just remember to
