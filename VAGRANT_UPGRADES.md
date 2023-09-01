@@ -94,11 +94,12 @@ But before uploading, you may want to test it locally.
 ### 7) Prepare Vagrantfile to test the box ###
 
 Do this by changing the `mo.vm.box_url` to refer to the local file. 
-In the current case I commented out the remote definition, and added a line pointing the variable to:
+In the current case I commented out the remote url, and added a line pointing the variable to my local copy:
 
+    # mo.vm.box_url = "https://images.mushroomobserver.org/mo-focal-#{version_date}.box"
     mo.vm.box_url = file:///home/nathan/src/developer-startup/mo-focal-2023-09-01.box
 
-Just remember to switch it back to the remote URL in the Vagrantfile after you have things working: this allows others to download the box you have made.
+Just remember to switch it back to the remote URL in the Vagrantfile after you have things working.
 
 ### 8) Bring up the vagrant box. ###
 
