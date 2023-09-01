@@ -29,6 +29,15 @@ The `--prune` flag will ensure that the list is current.
 
 ### 4) Update the Vagrantfile ###
 
+##### Change the version_date: #####
+
+MO boxes are named by the date they were created. In the Vagrantfile, set 
+`version_date` to today's date:
+
+    version_date = "2023-09-01"
+
+##### Choose a box (Linux version): #####
+
 For operating system upgrades, I generally go to the [Vagrant Boxes](https://app.vagrantup.com/boxes/search)
 search page on the HashiCorp website and search for the OS I'm looking
 for.
@@ -36,6 +45,8 @@ for.
 When doing an OS upgrade I look first for a Hashicorp box and if I there
 isn't one, then I'll look for an Ubuntu one.  In the current
 Vagrantfile we're using `ubuntu/focal64`.
+
+##### Set .ruby-version (optional): #####
 
 For Ruby upgrades, it first looks for the version in the Mushroom Observer repo:
 
