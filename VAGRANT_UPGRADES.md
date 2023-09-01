@@ -23,7 +23,9 @@ and these boxes should not be considered precious.
 You may also want to check for any other boxes that may be lingering
 and could cause issues with:
 
-    vagrant global-status
+    vagrant global-status --prune
+
+The `--prune` flag will ensure that the list is current.
 
 ### 4) Update the Vagrantfile ###
 
