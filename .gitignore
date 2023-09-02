@@ -7,3 +7,7 @@ Cheffile.lock
 !/mushroom-observer/.ruby-version
 *~
 clean-*
+.vscode/settings.json
+local_gems/acts_as_versioned/
+local_gems/rails_db/
+mushroom-observer/
