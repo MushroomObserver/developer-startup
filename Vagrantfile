@@ -60,15 +60,15 @@ SCRIPT
 # backwards compatibility). Please don't change it unless you know what
 # you're doing.
 Vagrant.configure("2") do |config|
-  if ARGV[1] == "clean-jammy"
-    config.vm.define("clean-jammy") do |clean|
+  if ARGV[1] == "clean-focal"
+    config.vm.define("clean-focal") do |clean|
       # The most common configuration options documented and commented below.
       # For a complete reference, please see the online documentation at
       # https://docs.vagrantup.com.
 
       # Every Vagrant development environment requires a box.
       # You can search for boxes at https://vagrantcloud.com/search.
-      config.vm.box = "ubuntu/jammy64"
+      config.vm.box = "ubuntu/focal64"
 
       clean.vm.provider("virtualbox") do |vb|
         # Use VBoxManage to customize the VM. For example to change memory:
@@ -89,10 +89,10 @@ Vagrant.configure("2") do |config|
     end
   else
     version_date = "2023-10-21"
-    config.vm.define("mo-jammy-#{version_date}", primary: true) do |mo|
-      mo.vm.box = "mo-jammy-#{version_date}"
-      mo.vm.box_url = "https://images.mushroomobserver.org/mo-jammy-#{version_date}.box"
-      # mo.vm.box_url = "/Users/nimmo/Documents/GitHub/developer-startup/mo-jammy-2023-09-01.box"
+    config.vm.define("mo-focal-#{version_date}", primary: true) do |mo|
+      mo.vm.box = "mo-focal-#{version_date}"
+      mo.vm.box_url = "https://images.mushroomobserver.org/mo-focal-#{version_date}.box"
+      # mo.vm.box_url = "/Users/nimmo/Documents/GitHub/developer-startup/mo-focal-2023-10-21.box"
       mo.vm.network("forwarded_port", guest: 3000, host: 3000)
       mo.vm.provider("virtualbox") do |vb|
         # Use VBoxManage to customize the VM. For example to change memory:
