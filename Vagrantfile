@@ -4,7 +4,7 @@
 RUBY_V = if File.exist?("./mushroom-observer/.ruby-version")
            File.read("./mushroom-observer/.ruby-version").chomp
          else
-           "3.1.2"
+           "3.1.4"
          end
 
 # from the example at https://gist.github.com/creisor/e20f254a89070f46b91cc3e0c5cd18db
