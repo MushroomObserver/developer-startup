@@ -8,7 +8,7 @@ RUBY_V = if File.exist?("./mushroom-observer/.ruby-version")
          end
 
 # from the example at https://gist.github.com/creisor/e20f254a89070f46b91cc3e0c5cd18db
-$apt_script = <<~SCRIPT
+mo_apt_script = <<~SCRIPT
   update-locale LANG=en_US.UTF-8
   apt-get update --fix-missing
   DEBIAN_FRONTEND=noninteractive apt-get -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" dist-upgrade
@@ -24,7 +24,8 @@ SCRIPT
 
 # their rbenv example, unaltered except the line cd /vagrant/mushroom-observer
 # uses our .ruby-version, found above
-$rbenv_script = <<~SCRIPT
+# makes a `cdable_vars` alias `mo` for /vagrant/mushroom-observer
+mo_rbenv_script = <<~SCRIPT
   if [ ! -d ~/.rbenv ]; then
     git clone https://github.com/rbenv/rbenv.git ~/.rbenv --verbose
     echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
@@ -49,6 +50,8 @@ $rbenv_script = <<~SCRIPT
   if [ -f "./Gemfile" ]; then
     bundle install
   fi
+  shopt -s cdable_vars
+  mo=/vagrant/mushroom-observer
 SCRIPT
 
 # All Vagrant configuration is done below. The "2" in Vagrant.configure
@@ -58,7 +61,7 @@ SCRIPT
 Vagrant.configure("2") do |config|
   if ARGV[1] == "clean-jammy"
     config.vm.define("clean-jammy") do |clean|
-      # The most common configuration options are documented and commented below.
+      # The most common configuration options documented and commented below.
       # For a complete reference, please see the online documentation at
       # https://docs.vagrantup.com.
 
@@ -73,9 +76,9 @@ Vagrant.configure("2") do |config|
 
       clean.vm.network("forwarded_port", guest: 3000, host: 3000)
 
-      clean.vm.provision(:shell, inline: $apt_script)
+      clean.vm.provision(:shell, inline: mo_apt_script)
 
-      clean.vm.provision(:shell, privileged: false, inline: $rbenv_script)
+      clean.vm.provision(:shell, privileged: false, inline: mo_rbenv_script)
 
       clean.trigger.after([:provision]) do |t|
         t.name = "Reboot after provisioning"
