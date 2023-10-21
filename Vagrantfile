@@ -19,7 +19,8 @@ mo_apt_script = <<~SCRIPT
   sed "s/\\[mysqld\\]/[mysqld]\\nsql-mode = ''/" -i'' /etc/mysql/mysql.conf.d/mysqld.cnf
   ln -fs /vagrant/mo-dev /usr/local/bin/mo-dev
   apt-get -y install git build-essential wget curl vim ruby imagemagick \
-    libmagickcore-dev libmagickwand-dev libjpeg-dev libgmp3-dev gnupg2 firefox
+    libmagickcore-dev libmagickwand-dev libjpeg-dev libgmp3-dev gnupg2 \
+    chromium-browser
 SCRIPT
 
 # their rbenv example, unaltered except the line cd /vagrant/mushroom-observer
@@ -87,7 +88,7 @@ Vagrant.configure("2") do |config|
       end
     end
   else
-    version_date = "2023-09-01"
+    version_date = "2023-10-21"
     config.vm.define("mo-jammy-#{version_date}", primary: true) do |mo|
       mo.vm.box = "mo-jammy-#{version_date}"
       mo.vm.box_url = "https://images.mushroomobserver.org/mo-jammy-#{version_date}.box"
