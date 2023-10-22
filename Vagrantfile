@@ -18,8 +18,9 @@ mo_apt_script = <<~SCRIPT
   apt-get -y install libmysqlclient-dev
   sed "s/\\[mysqld\\]/[mysqld]\\nsql-mode = ''/" -i'' /etc/mysql/mysql.conf.d/mysqld.cnf
   ln -fs /vagrant/mo-dev /usr/local/bin/mo-dev
-  apt-get -y install git build-essential wget curl vim ruby imagemagick \
-    libmagickcore-dev libmagickwand-dev libjpeg-dev libgmp3-dev gnupg2 \
+  apt-get -y install git build-essential wget curl vim ruby \
+    imagemagick libmagickcore-dev libmagickwand-dev libjpeg-dev \
+    libgmp3-dev libyaml-dev gnupg2 \
     chromium-browser
 SCRIPT
 
