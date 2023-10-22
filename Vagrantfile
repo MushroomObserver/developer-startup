@@ -46,7 +46,7 @@ mo_rbenv_script = <<~SCRIPT
   rbenv global #{RUBY_V}
   cd /vagrant/mushroom-observer
   if [ ! -e /home/vagrant/.rbenv/shims/bundle ]; then
-    gem install bundler
+    gem install bundler --no-ri --no-rdoc
     rbenv rehash
   fi
   if [ -f "./Gemfile" ]; then
