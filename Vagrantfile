@@ -18,8 +18,9 @@ mo_apt_script = <<~SCRIPT
   apt-get -y install libmysqlclient-dev
   sed "s/\\[mysqld\\]/[mysqld]\\nsql-mode = ''/" -i'' /etc/mysql/mysql.conf.d/mysqld.cnf
   ln -fs /vagrant/mo-dev /usr/local/bin/mo-dev
-  apt-get -y install git build-essential wget curl vim ruby imagemagick \
-    libmagickcore-dev libmagickwand-dev libjpeg-dev libgmp3-dev gnupg2 \
+  apt-get -y install git build-essential wget curl vim ruby \
+    imagemagick libmagickcore-dev libmagickwand-dev libjpeg-dev \
+    libgmp3-dev libyaml-dev gnupg2 \
     chromium-browser
 SCRIPT
 
@@ -45,7 +46,7 @@ mo_rbenv_script = <<~SCRIPT
   rbenv global #{RUBY_V}
   cd /vagrant/mushroom-observer
   if [ ! -e /home/vagrant/.rbenv/shims/bundle ]; then
-    gem install bundler
+    gem install bundler --no-ri --no-rdoc
     rbenv rehash
   fi
   if [ -f "./Gemfile" ]; then
