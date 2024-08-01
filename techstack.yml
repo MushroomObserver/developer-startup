@@ -1,0 +1,55 @@
+repo_name: MushroomObserver/developer-startup
+report_id: ffaddde8c03772b79ef37c59641c7d0e
+version: 0.1
+repo_type: Public
+timestamp: '2024-08-01T19:48:14+00:00'
+requested_by: JoeCohen
+provider: github
+branch: main
+detected_tools_count: 4
+tools:
+- name: Ruby
+  description: A dynamic, interpreted, open source programming language with a focus
+    on simplicity and productivity
+  website_url: https://www.ruby-lang.org
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/989/ruby.png
+  detection_source_url: https://github.com/MushroomObserver/developer-startup
+  detection_source: Repo Metadata
+- name: Git
+  description: Fast, scalable, distributed revision control system
+  website_url: http://git-scm.com/
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Version Control System
+  image_url: https://img.stackshare.io/service/1046/git.png
+  detection_source_url: https://github.com/MushroomObserver/developer-startup
+  detection_source: Repo Metadata
+- name: Vagrant
+  description: A tool for building and distributing development environments
+  website_url: http://www.vagrantup.com/
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Virtual Machine Management
+  image_url: https://img.stackshare.io/service/768/150px-Vagrant.png
+  detection_source_url: https://github.com/MushroomObserver/developer-startup/blob/main/Vagrantfile
+  detection_source: Vagrantfile
+  last_updated_by: andrew nimmo
+  last_updated_on: 2023-10-21 21:04:16.000000000 Z
+- name: Shell
+  description: A shell is a text-based terminal, used for manipulating programs and
+    files. Shell scripts typically manage program execution.
+  website_url: https://en.wikipedia.org/wiki/Shell_script
+  open_source: false
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/4631/default_c2062d40130562bdc836c13dbca02d318205a962.png
+  detection_source_url: https://github.com/MushroomObserver/developer-startup
+  detection_source: Repo Metadata
