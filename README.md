@@ -139,7 +139,7 @@ this command on your host.
 
     > vagrant plugins update vbguest
     
-#### Update your local mo_development database (optional) ####
+### Update your local mo_development database (optional) ###
 
 The default database on developer-startup is very minimal. If you'd like to use a more recent copy of the live database locally, you'll need to request a zipped database file from MO developers. Download `checkpoint_stripped.gz` and place it in your  `/developer-startup` directory on your local machine. Then, after bringing `vagrant up`, execute the following commands from within the Vagrant box:
 
